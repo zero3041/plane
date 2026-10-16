@@ -64,6 +64,12 @@ class S3Storage(S3Boto3Storage):
 
     def generate_presigned_post(self, object_name, file_type, file_size, expiration=None):
         """Generate a presigned URL to upload an S3 object"""
+        # Some S3-compatible providers (e.g. Cloudflare R2) reject presigned
+        # POST policies outright. When S3_PRESIGNED_PUT is enabled, serve a
+        # presigned PUT URL in the same envelope instead; the web client PUTs
+        # the raw file with the signed Content-Type header.
+        if os.environ.get("S3_PRESIGNED_PUT", "").strip().lower() == "true":
+            return self.generate_presigned_put(object_name, file_type, expiration)
         if expiration is None:
             expiration = self.signed_url_expiration
         fields = {"Content-Type": file_type}
@@ -97,6 +103,32 @@ class S3Storage(S3Boto3Storage):
             return None
 
         return response
+
+    def generate_presigned_put(self, object_name, file_type, expiration=None):
+        """Generate a presigned PUT URL to upload an S3 object.
+
+        Used when S3_PRESIGNED_PUT is enabled (providers without POST-policy
+        support, e.g. Cloudflare R2). The client must PUT the raw file bytes
+        with exactly the signed Content-Type header.
+        """
+        if expiration is None:
+            expiration = self.signed_url_expiration
+        try:
+            url = self.s3_client.generate_presigned_url(
+                "put_object",
+                Params={
+                    "Bucket": self.aws_storage_bucket_name,
+                    "Key": object_name,
+                    "ContentType": file_type,
+                },
+                ExpiresIn=expiration,
+                HttpMethod="PUT",
+            )
+        except ClientError as e:
+            print(f"Error generating presigned PUT URL: {e}")
+            return None
+
+        return {"url": url, "fields": {"Content-Type": file_type}, "method": "PUT"}
 
     def _get_content_disposition(self, disposition, filename=None):
         """Helper method to generate Content-Disposition header value"""

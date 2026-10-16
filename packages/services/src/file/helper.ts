@@ -50,12 +50,24 @@ const validateFilename = (filename: string): string | null => {
 };
 
 /**
+ * @description Whether the signed URL response expects a raw PUT upload
+ * (S3_PRESIGNED_PUT backends such as Cloudflare R2) instead of a POST policy.
+ */
+export const isPresignedPutUpload = (signedURLResponse: TFileSignedURLResponse): boolean =>
+  signedURLResponse?.upload_data?.method === "PUT";
+
+/**
  * @description from the provided signed URL response, generate a payload to be used to upload the file
  * @param {TFileSignedURLResponse} signedURLResponse
  * @param {File} file
- * @returns {FormData} file upload request payload
+ * @returns {FormData | File} POST-policy form data, or the raw file (typed with
+ * the signed Content-Type) for presigned PUT uploads
  */
-export const generateFileUploadPayload = (signedURLResponse: TFileSignedURLResponse, file: File): FormData => {
+export const generateFileUploadPayload = (signedURLResponse: TFileSignedURLResponse, file: File): FormData | File => {
+  if (isPresignedPutUpload(signedURLResponse)) {
+    const contentType = signedURLResponse.upload_data.fields?.["Content-Type"] || file.type;
+    return new File([file], file.name, { type: contentType, lastModified: file.lastModified });
+  }
   const formData = new FormData();
   Object.entries(signedURLResponse.upload_data.fields).forEach(([key, value]) => formData.append(key, value));
   formData.append("file", file);

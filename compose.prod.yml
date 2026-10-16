@@ -1,0 +1,74 @@
+# Production override for pms.vanminh76.com behind the existing
+# vm-hrm-prod Caddy (TLS + routing). Usage:
+#   docker compose -f docker-compose.yml -f compose.prod.yml <build|up>
+#
+# - Disables stock `proxy` (would bind 80/443, conflicts with existing Caddy)
+#   and `plane-minio` (uploads go to Cloudflare R2 instead).
+# - Attaches public-facing services to the shared `vmhrm-edge` network so the
+#   existing Caddy can `reverse_proxy web:3000`, `api:8000`, etc.
+# - Bakes the public base URLs into web/admin/space at build time (Vite).
+
+x-plane-edge: &plane-edge
+  networks:
+    - default
+    - edge
+
+services:
+  web:
+    <<: *plane-edge
+    build:
+      args:
+        VITE_API_BASE_URL: "https://pms.vanminh76.com"
+        VITE_WEB_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_PATH: "/god-mode"
+        VITE_SPACE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_SPACE_BASE_PATH: "/spaces"
+        VITE_LIVE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_LIVE_BASE_PATH: "/live"
+
+  admin:
+    <<: *plane-edge
+    build:
+      args:
+        VITE_API_BASE_URL: "https://pms.vanminh76.com"
+        VITE_WEB_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_PATH: "/god-mode"
+        VITE_SPACE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_SPACE_BASE_PATH: "/spaces"
+        VITE_LIVE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_LIVE_BASE_PATH: "/live"
+
+  space:
+    <<: *plane-edge
+    build:
+      args:
+        VITE_API_BASE_URL: "https://pms.vanminh76.com"
+        VITE_WEB_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_URL: "https://pms.vanminh76.com"
+        VITE_ADMIN_BASE_PATH: "/god-mode"
+        VITE_SPACE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_SPACE_BASE_PATH: "/spaces"
+        VITE_LIVE_BASE_URL: "https://pms.vanminh76.com"
+        VITE_LIVE_BASE_PATH: "/live"
+
+  api:
+    <<: *plane-edge
+
+  live:
+    <<: *plane-edge
+    env_file:
+      - ./apps/live/.env
+
+  # Disabled: the existing vm-hrm-prod Caddy already owns 80/443,
+  # and uploads go to Cloudflare R2 (S3_PRESIGNED_PUT) instead of local MinIO.
+  proxy:
+    profiles: ["disabled"]
+  plane-minio:
+    profiles: ["disabled"]
+
+networks:
+  edge:
+    name: vmhrm-edge
+    external: true

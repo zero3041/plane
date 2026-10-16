@@ -25,6 +25,9 @@ export type TFileSignedURLResponse = {
   asset_url: string;
   upload_data: {
     url: string;
+    // Present and equal to "PUT" when the backend serves a presigned PUT
+    // URL (S3_PRESIGNED_PUT, e.g. Cloudflare R2) instead of a POST policy.
+    method?: "POST" | "PUT";
     fields: {
       "Content-Type": string;
       key: string;
