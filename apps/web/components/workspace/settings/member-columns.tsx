@@ -139,7 +139,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
     <>
       {isSuspended ? (
         <div className="flex w-32">
-          <Badge variant="neutral" size="sm" label="Suspended" />
+          <Badge variant="neutral" size="sm" label="Đã tạm ngưng" />
         </div>
       ) : isRoleNonEditable ? (
         <div className="flex w-32">
@@ -164,7 +164,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
 
                     setToast({
                       type: "error",
-                      title: "Error!",
+                      title: "Lỗi!",
                       message: errorString ?? "An error occurred while updating member role. Please try again.",
                     });
                   });

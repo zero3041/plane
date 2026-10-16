@@ -22,9 +22,11 @@ export function WebhooksEmptyState(props: Props) {
     >
       <div className="flex w-full flex-col items-center text-center">
         <img src={EmptyWebhook} className="w-52 object-cover sm:w-60" alt="empty" />
-        <h6 className="mt-6 mb-3 text-18 font-semibold sm:mt-8">No webhooks</h6>
-        <p className="mb-7 text-tertiary sm:mb-8">Create webhooks to receive real-time updates and automate actions</p>
-        <Button variant="primary" size="sm" stretch="auto" label="Add webhook" onClick={onClick} />
+        <h6 className="mt-6 mb-3 text-18 font-semibold sm:mt-8">Chưa có webhook</h6>
+        <p className="mb-7 text-tertiary sm:mb-8">
+          Tạo webhook để nhận cập nhật theo thời gian thực và tự động hóa thao tác
+        </p>
+        <Button variant="primary" size="sm" stretch="auto" label="Thêm webhook" onClick={onClick} />
       </div>
     </div>
   );

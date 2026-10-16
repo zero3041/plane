@@ -20,8 +20,8 @@ export function SomethingWentWrongError() {
             />
           </div>
         </div>
-        <h1 className="mt-12 text-24 font-semibold">Oops! Something went wrong.</h1>
-        <p className="mt-4 text-tertiary">The public board does not exist. Please check the URL.</p>
+        <h1 className="mt-12 text-24 font-semibold">Rất tiếc! Đã xảy ra lỗi.</h1>
+        <p className="mt-4 text-tertiary">Bảng công khai không tồn tại. Vui lòng kiểm tra URL.</p>
       </div>
     </div>
   );

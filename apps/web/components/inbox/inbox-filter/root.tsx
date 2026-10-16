@@ -20,7 +20,7 @@ const smallButton = <FilterOutline className="size-3" />;
 const largeButton = (
   <Button variant="secondary" size="sm" stretch="auto" render={<span />}>
     <FilterOutline className="size-3" />
-    <span>Filters</span>
+    <span>Bộ lọc</span>
     <ChevronDownOutline className="size-3" />
   </Button>
 );

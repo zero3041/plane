@@ -91,7 +91,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
 
         setToast({
           type: "success",
-          title: "Deleted successfully!",
+          title: "Đã xóa!",
           message: `${integration.title} integration deleted successfully.`,
         });
       })
@@ -100,7 +100,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
 
         setToast({
           type: "error",
-          title: "Error!",
+          title: "Lỗi!",
           message: `${integration.title} integration could not be deleted. Please try again.`,
         });
       });

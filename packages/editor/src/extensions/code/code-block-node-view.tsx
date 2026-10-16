@@ -45,7 +45,7 @@ export function CodeBlockComponent({ node }: Props) {
 
   return (
     <NodeViewWrapper key={attrs[ECodeBlockAttributeNames.ID]} className="code-block group/code relative">
-      <Tooltip label="Copy code">
+      <Tooltip label="Sao chép mã">
         <button
           type="button"
           className={cn(

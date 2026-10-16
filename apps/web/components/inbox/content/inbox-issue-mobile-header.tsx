@@ -124,14 +124,14 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
             variant="secondary"
             size="md"
             icon={<Icon icon={ChevronUpOutline} />}
-            aria-label="Previous work item"
+            aria-label="Mục công việc trước"
             onClick={() => handleInboxIssueNavigation("prev")}
           />
           <IconButton
             variant="secondary"
             size="md"
             icon={<Icon icon={ChevronDownOutline} />}
-            aria-label="Next work item"
+            aria-label="Mục công việc tiếp theo"
             onClick={() => handleInboxIssueNavigation("next")}
           />
         </div>
@@ -157,14 +157,14 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
               {isAcceptedOrDeclined && (
                 <MenuItem
                   icon={<Icon icon={LinkOutline} />}
-                  label="Copy work item link"
+                  label="Sao chép liên kết mục công việc"
                   onClick={handleCopyIssueLink}
                 />
               )}
               {isAcceptedOrDeclined && (
                 <MenuItem
                   icon={<Icon icon={NewTabOutline} />}
-                  label="Open work item"
+                  label="Mở mục công việc"
                   onClick={() => router.push(workItemLink)}
                 />
               )}
@@ -184,7 +184,7 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
               {canMarkAsDuplicate && !isAcceptedOrDeclined && (
                 <MenuItem
                   icon={<Icon icon={DuplicateOfOutline} />}
-                  label="Mark as duplicate"
+                  label="Đánh dấu trùng lặp"
                   onClick={() =>
                     handleActionWithPermission(
                       isProjectAdmin,
@@ -198,7 +198,7 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
                 // Propel menu rows are neutral/accent/danger only, so the accept/decline tint lives on the glyph.
                 <MenuItem
                   icon={<Icon icon={<TickCircleFilled className="text-success-secondary" />} />}
-                  label="Accept"
+                  label="Chấp nhận"
                   onClick={() =>
                     handleActionWithPermission(
                       isProjectAdmin,
@@ -211,7 +211,7 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
               {canMarkAsDeclined && (
                 <MenuItem
                   icon={<Icon icon={<CloseCircleFilled className="text-danger-secondary" />} />}
-                  label="Decline"
+                  label="Từ chối"
                   onClick={() =>
                     handleActionWithPermission(
                       isProjectAdmin,
@@ -225,7 +225,7 @@ export const InboxIssueActionsMobileHeader = observer(function InboxIssueActions
                 <MenuItem
                   variant="danger"
                   icon={<Icon icon={DeleteOutline} />}
-                  label="Delete"
+                  label="Xóa"
                   onClick={() => setDeleteIssueModal(true)}
                 />
               )}

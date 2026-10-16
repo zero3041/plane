@@ -51,8 +51,8 @@ export const DeleteModuleModal = observer(function DeleteModuleModal(props: Prop
       if (moduleId || peekModule) router.push(`/${workspaceSlug}/projects/${data.project_id}/modules`);
       setToast({
         type: "success",
-        title: "Success!",
-        message: "Module deleted successfully.",
+        title: "Thành công!",
+        message: "Đã xóa nhóm công việc.",
       });
     } catch (errors) {
       const isPermissionError =
@@ -77,7 +77,7 @@ export const DeleteModuleModal = observer(function DeleteModuleModal(props: Prop
       handleSubmit={handleDeletion}
       isSubmitting={isDeleteLoading}
       isOpen={isOpen}
-      title="Delete module"
+      title="Xóa nhóm công việc"
       content={
         <>
           Are you sure you want to delete module-{" "}

@@ -38,7 +38,7 @@ export const EstimateTypeDropdown = observer(function EstimateTypeDropdown(props
         getOptionLabel={(option) => option.label}
         showSearch={false}
         pinSelected={false}
-        placeholder="None"
+        placeholder="Không có"
       >
         <Select.Trigger variant="select-md" className="rounded-sm border-none bg-surface-2 text-13 font-medium">
           <Select.Value />

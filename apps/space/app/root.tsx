@@ -24,8 +24,8 @@ import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wgh
 import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
-const APP_TITLE = "Plane Publish | Make your Plane boards public with one-click";
-const APP_DESCRIPTION = "Plane Publish is a customer feedback management tool built on top of plane.so";
+const APP_TITLE = "Plane Publish | Công khai bảng Plane chỉ với một lần nhấp";
+const APP_DESCRIPTION = "Plane Publish giúp quản lý phản hồi khách hàng trên nền tảng Plane.";
 
 export const links: Route.LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: appleTouchIcon },
@@ -52,7 +52,7 @@ export const headers: Route.HeadersFunction = () => ({
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="vi-VN" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

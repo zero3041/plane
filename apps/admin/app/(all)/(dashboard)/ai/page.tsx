@@ -25,8 +25,8 @@ const InstanceAIPage = observer(function InstanceAIPage(_props: Route.ComponentP
   return (
     <PageWrapper
       header={{
-        title: "AI features for all your workspaces",
-        description: "Configure your AI API credentials so Plane AI features are turned on for all your workspaces.",
+        title: "Tính năng AI cho mọi không gian làm việc",
+        description: "Cấu hình thông tin API AI để bật tính năng Plane AI cho mọi không gian làm việc.",
       }}
     >
       {formattedConfig ? (

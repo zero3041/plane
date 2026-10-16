@@ -80,7 +80,7 @@ export function PageForm(props: Props) {
       <DialogMain>
         <DialogHeader>
           <DialogHeading>
-            <DialogTitle>Create page</DialogTitle>
+            <DialogTitle>Tạo trang</DialogTitle>
           </DialogHeading>
         </DialogHeader>
         <DialogBody tabIndex={0}>
@@ -132,7 +132,7 @@ export function PageForm(props: Props) {
                 orientation="vertical"
                 value={formData.name}
                 onChange={(e) => handleFormData("name", e.target.value)}
-                placeholder="Title"
+                placeholder="Tiêu đề"
                 error={
                   isTitleLengthMoreThan255Character
                     ? "Max length of the name should be less than 255 characters"
@@ -164,7 +164,7 @@ export function PageForm(props: Props) {
           variant="secondary"
           size="md"
           stretch="auto"
-          label="Cancel"
+          label="Hủy"
           onClick={handleModalClose}
           tabIndex={getIndex("cancel")}
         />

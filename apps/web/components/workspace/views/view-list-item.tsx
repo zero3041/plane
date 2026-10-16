@@ -85,12 +85,12 @@ export const GlobalViewListItem = observer(function GlobalViewListItem(props: Pr
                     >
                       <MenuItem
                         icon={<Icon icon={EditOutline} />}
-                        label="Edit View"
+                        label="Sửa chế độ xem"
                         onClick={() => setUpdateViewModal(true)}
                       />
                       <MenuItem
                         icon={<Icon icon={DeleteOutline} />}
-                        label="Delete View"
+                        label="Xóa chế độ xem"
                         onClick={() => setDeleteViewModal(true)}
                       />
                     </MenuContent>

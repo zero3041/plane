@@ -247,10 +247,10 @@ export function CustomImageUploader(props: CustomImageUploaderProps) {
               "hover:bg-danger-subtle-hover": selected,
             }
           )}
-          title="Retry duplication"
+          title="Thử nhân bản lại"
         >
           <RefreshOutline className="size-3" />
-          <span className="text-11">Retry</span>
+          <span className="text-11">Thử lại</span>
         </button>
       )}
       <input

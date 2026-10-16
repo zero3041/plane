@@ -40,8 +40,8 @@ export function PowerKModalContextIndicator(props: Props) {
           type="button"
           onClick={handleClearContext}
           className="grid shrink-0 place-items-center p-1 text-secondary transition-colors hover:text-primary"
-          title="Clear context (Backspace)"
-          aria-label="Clear context (Backspace)"
+          title="Xóa ngữ cảnh (Backspace)"
+          aria-label="Xóa ngữ cảnh (Backspace)"
           tabIndex={-1}
         >
           <CloseOutline className="size-2.5" />

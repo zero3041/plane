@@ -24,14 +24,14 @@ export function InstanceFailureView() {
       <div className="relative w-auto max-w-2xl space-y-8 py-10">
         <div className="relative flex flex-col items-center justify-center space-y-4">
           <img src={instanceImage} alt="Plane instance failure image" />
-          <h3 className="text-20 font-medium text-on-color">Unable to fetch instance details.</h3>
+          <h3 className="text-20 font-medium text-on-color">Không thể tải thông tin hệ thống.</h3>
           <p className="text-center text-14 font-medium">
             We were unable to fetch the details of the instance. <br />
             Fret not, it might just be a connectivity work items.
           </p>
         </div>
         <div className="flex justify-center">
-          <Button variant="primary" size="md" stretch="auto" label="Retry" onClick={handleRetry} />
+          <Button variant="primary" size="md" stretch="auto" label="Thử lại" onClick={handleRetry} />
         </div>
       </div>
     </div>

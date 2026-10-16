@@ -26,11 +26,11 @@ type Props = {
 const integrationDetails: { [key: string]: any } = {
   github: {
     logo: GithubLogo,
-    description: "Select GitHub repository to enable sync.",
+    description: "Chọn kho GitHub để bật đồng bộ.",
   },
   slack: {
     logo: SlackLogo,
-    description: "Get regular updates and control which notification you want to receive.",
+    description: "Nhận cập nhật thường xuyên và chọn các thông báo bạn muốn nhận.",
   },
 };
 
@@ -68,7 +68,7 @@ export function IntegrationCard({ integration }: Props) {
 
         setToast({
           type: "success",
-          title: "Success!",
+          title: "Thành công!",
           message: `${login}/${name} repository synced with the project successfully.`,
         });
       })
@@ -76,8 +76,8 @@ export function IntegrationCard({ integration }: Props) {
         console.error(err);
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Repository could not be synced with the project. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể đồng bộ kho mã với dự án. Vui lòng thử lại.",
         });
       });
   };

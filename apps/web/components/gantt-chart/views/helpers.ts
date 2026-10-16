@@ -35,15 +35,14 @@ export const getNumberOfDaysInMonth = (month: number, year: number) => {
  * @returns
  */
 export const getWeekNumberByDate = (date: Date) => {
-  const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-  const daysOffset = firstDayOfYear.getDay();
+  const year = date.getFullYear();
+  const firstDayOffset = (new Date(year, 0, 1).getDay() + 6) % 7;
+  const currentDayOffset = (date.getDay() + 6) % 7;
+  const dayInMilliseconds = 24 * 60 * 60 * 1000;
+  const firstWeekStart = Date.UTC(year, 0, 1) - firstDayOffset * dayInMilliseconds;
+  const currentWeekStart = Date.UTC(year, date.getMonth(), date.getDate()) - currentDayOffset * dayInMilliseconds;
 
-  const firstWeekStart = firstDayOfYear.getTime() - daysOffset * 24 * 60 * 60 * 1000;
-  const weekStart = new Date(firstWeekStart);
-
-  const weekNumber = Math.floor((date.getTime() - weekStart.getTime()) / (7 * 24 * 60 * 60 * 1000)) + 1;
-
-  return weekNumber;
+  return Math.floor((currentWeekStart - firstWeekStart) / (7 * dayInMilliseconds)) + 1;
 };
 
 /**

@@ -121,7 +121,7 @@ export const BaseCalendarRoot = observer(function BaseCalendarRoot(props: IBaseC
       updateIssue
     ).catch((err) => {
       setToast({
-        title: "Error!",
+        title: "Lỗi!",
         type: "error",
         message: err?.detail ?? "Failed to perform this action",
       });

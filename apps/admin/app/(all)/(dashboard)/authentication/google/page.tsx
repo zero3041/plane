@@ -44,14 +44,14 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Đang lưu cấu hình",
       success: {
-        title: "Configuration saved",
-        message: () => `Google authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Đã lưu cấu hình",
+        message: () => `Xác thực Google hiện ${value === "1" ? "đang bật" : "đã tắt"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Lỗi",
+        message: () => "Không thể lưu cấu hình",
       },
     });
 
@@ -69,12 +69,11 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
       customHeader={
         <AuthenticationMethodCard
           name="Google"
-          description="Allow members to login or sign up to plane with their Google
-            accounts."
+          description="Cho phép thành viên đăng nhập hoặc đăng ký Plane bằng tài khoản Google."
           icon={<img src={GoogleLogo} height={24} width={24} alt="Google Logo" />}
           config={
             <Switch
-              aria-label="Enable Google authentication"
+              aria-label="Bật xác thực Google"
               checked={Boolean(parseInt(enableGoogleConfig))}
               onCheckedChange={() => {
                 if (Boolean(parseInt(enableGoogleConfig)) === true) {

@@ -52,15 +52,15 @@ export const ModuleEmptyState = observer(function ModuleEmptyState() {
       .then(() =>
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Work items added to the module successfully.",
+          title: "Thành công!",
+          message: "Đã thêm mục công việc vào nhóm.",
         })
       )
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Selected work items could not be added to the module. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể thêm các mục đã chọn vào nhóm. Vui lòng thử lại.",
         })
       );
   };

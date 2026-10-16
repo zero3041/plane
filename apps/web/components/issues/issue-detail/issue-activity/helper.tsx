@@ -162,15 +162,15 @@ export const useWorkItemCommentOperations = (
           if (!workspaceSlug || !projectId || !commentId) throw new Error("Missing fields");
           await createCommentReaction(workspaceSlug, projectId, commentId, reaction);
           setToast({
-            title: "Success!",
+            title: "Thành công!",
             type: "success",
-            message: "Reaction created successfully",
+            message: "Đã thêm cảm xúc",
           });
         } catch {
           setToast({
-            title: "Error!",
+            title: "Lỗi!",
             type: "error",
-            message: "Reaction creation failed",
+            message: "Không thể thêm cảm xúc",
           });
         }
       },
@@ -179,15 +179,15 @@ export const useWorkItemCommentOperations = (
           if (!workspaceSlug || !projectId || !commentId || !currentUser?.id) throw new Error("Missing fields");
           removeCommentReaction(workspaceSlug, projectId, commentId, reaction, currentUser.id);
           setToast({
-            title: "Success!",
+            title: "Thành công!",
             type: "success",
-            message: "Reaction removed successfully",
+            message: "Đã bỏ cảm xúc",
           });
         } catch {
           setToast({
-            title: "Error!",
+            title: "Lỗi!",
             type: "error",
-            message: "Reaction remove failed",
+            message: "Không thể bỏ cảm xúc",
           });
         }
       },

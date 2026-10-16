@@ -63,10 +63,10 @@ export function InstanceGitlabConfigForm(props: Props) {
     {
       key: "GITLAB_HOST",
       type: "text",
-      label: "Host",
+      label: "Máy chủ",
       description: (
         <>
-          This is either https://gitlab.com or the <CodeBlock>domain.tld</CodeBlock> where you host GitLab.
+          Dùng https://gitlab.com hoặc <CodeBlock>domain.tld</CodeBlock> nơi bạn đặt máy chủ GitLab.
         </>
       ),
       placeholder: "https://gitlab.com",
@@ -76,17 +76,17 @@ export function InstanceGitlabConfigForm(props: Props) {
     {
       key: "GITLAB_CLIENT_ID",
       type: "text",
-      label: "Application ID",
+      label: "ID ứng dụng",
       description: (
         <>
-          Get this from your{" "}
+          Lấy thông tin này trong{" "}
           <a
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application settings
+            cài đặt ứng dụng GitLab OAuth
           </a>
           .
         </>
@@ -98,17 +98,17 @@ export function InstanceGitlabConfigForm(props: Props) {
     {
       key: "GITLAB_CLIENT_SECRET",
       type: "password",
-      label: "Secret",
+      label: "Mã bí mật",
       description: (
         <>
-          The client secret is also found in your{" "}
+          Mã bí mật cũng có trong{" "}
           <a
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application settings
+            cài đặt ứng dụng GitLab OAuth
           </a>
           .
         </>
@@ -122,18 +122,18 @@ export function InstanceGitlabConfigForm(props: Props) {
   const GITLAB_SERVICE_FIELD: TCopyField[] = [
     {
       key: "Callback_URL",
-      label: "Callback URL",
+      label: "URL chuyển hướng",
       url: `${originURL}/auth/gitlab/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into the <CodeBlock darkerShade>Redirect URI</CodeBlock> field of your{" "}
+          Plane sẽ tự tạo giá trị này. Hãy dán vào trường <CodeBlock darkerShade>Redirect URI</CodeBlock> của{" "}
           <a
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application
+            ứng dụng GitLab OAuth
           </a>
           .
         </>
@@ -148,8 +148,8 @@ export function InstanceGitlabConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: "success",
-        title: "Done!",
-        message: "Your GitLab authentication is configured. You should test it now.",
+        title: "Hoàn tất!",
+        message: "Đã cấu hình xác thực GitLab. Hãy kiểm tra ngay.",
       });
       reset({
         GITLAB_HOST: response.find((item) => item.key === "GITLAB_HOST")?.value,
@@ -179,7 +179,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">GitLab-provided details for Plane</div>
+            <div className="pt-2.5 text-18 font-medium">Thông tin GitLab cung cấp cho Plane</div>
             {GITLAB_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -203,7 +203,7 @@ export function InstanceGitlabConfigForm(props: Props) {
                   onClick={(e) => void handleSubmit(onSubmit)(e)}
                   loading={isSubmitting}
                   disabled={!isDirty}
-                  label={isSubmitting ? "Saving" : "Save changes"}
+                  label={isSubmitting ? "Đang lưu" : "Lưu thay đổi"}
                 />
                 <Button
                   variant="secondary"
@@ -211,14 +211,14 @@ export function InstanceGitlabConfigForm(props: Props) {
                   stretch="auto"
                   nativeButton={false}
                   render={<Link href="/authentication" onClick={handleGoBack} />}
-                  label="Go back"
+                  label="Quay lại"
                 />
               </div>
             </div>
           </div>
           <div className="col-span-2 md:col-span-1">
             <div className="flex flex-col gap-y-4 rounded-lg bg-layer-3 px-6 pt-1.5 pb-4">
-              <div className="pt-2 text-18 font-medium">Plane-provided details for GitLab</div>
+              <div className="pt-2 text-18 font-medium">Thông tin Plane cung cấp cho GitLab</div>
               {GITLAB_SERVICE_FIELD.map((field) => (
                 <CopyField key={field.key} label={field.label} url={field.url} description={field.description} />
               ))}

@@ -52,16 +52,16 @@ export function IssueLinkRoot(props: TIssueLinkRoot) {
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing required fields");
           await createLink(workspaceSlug, projectId, issueId, data);
           setToast({
-            message: "The link has been successfully created",
+            message: "Đã tạo liên kết",
             type: "success",
-            title: "Link created",
+            title: "Đã tạo liên kết",
           });
           toggleIssueLinkModal(false);
         } catch (error: any) {
           setToast({
             message: error?.data?.error ?? "The link could not be created",
             type: "error",
-            title: "Link not created",
+            title: "Không thể tạo liên kết",
           });
           throw error;
         }
@@ -71,16 +71,16 @@ export function IssueLinkRoot(props: TIssueLinkRoot) {
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing required fields");
           await updateLink(workspaceSlug, projectId, issueId, linkId, data);
           setToast({
-            message: "The link has been successfully updated",
+            message: "Đã cập nhật liên kết",
             type: "success",
-            title: "Link updated",
+            title: "Đã cập nhật liên kết",
           });
           toggleIssueLinkModal(false);
         } catch (error) {
           setToast({
-            message: "The link could not be updated",
+            message: "Không thể cập nhật liên kết",
             type: "error",
-            title: "Link not updated",
+            title: "Không thể cập nhật liên kết",
           });
           throw error;
         }
@@ -90,16 +90,16 @@ export function IssueLinkRoot(props: TIssueLinkRoot) {
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing required fields");
           await removeLink(workspaceSlug, projectId, issueId, linkId);
           setToast({
-            message: "The link has been successfully removed",
+            message: "Đã xóa liên kết",
             type: "success",
-            title: "Link removed",
+            title: "Đã xóa liên kết",
           });
           toggleIssueLinkModal(false);
         } catch {
           setToast({
-            message: "The link could not be removed",
+            message: "Không thể xóa liên kết",
             type: "error",
-            title: "Link not removed",
+            title: "Không thể xóa liên kết",
           });
         }
       },
@@ -122,7 +122,7 @@ export function IssueLinkRoot(props: TIssueLinkRoot) {
 
       <div className="py-1 text-11">
         <div className="flex items-center justify-between gap-2">
-          <h4>Links</h4>
+          <h4>Liên kết</h4>
           {!disabled && (
             <button
               type="button"

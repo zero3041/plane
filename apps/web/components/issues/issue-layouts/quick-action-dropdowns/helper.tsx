@@ -81,7 +81,7 @@ export function handleOptionalAction<T>(
   } else {
     setToast({
       type: "error",
-      title: "Action not available",
+      title: "Thao tác không khả dụng",
       message: `${actionName} action is not implemented.`,
     });
   }
@@ -136,8 +136,8 @@ export const useIssueActionHandlers = (props: MenuItemFactoryProps) => {
     copyUrlToClipboard(workItemLink).then(() =>
       setToast({
         type: "success",
-        title: "Link copied",
-        message: "Work item link copied to clipboard",
+        title: "Đã sao chép liên kết",
+        message: "Đã sao chép liên kết mục công việc vào bộ nhớ tạm",
       })
     );
 
@@ -153,15 +153,15 @@ export const useIssueActionHandlers = (props: MenuItemFactoryProps) => {
       .then(() => {
         setToast({
           type: "success",
-          title: "Restore success",
-          message: "Your work item can be found in project work items.",
+          title: "Đã khôi phục",
+          message: "Bạn có thể tìm mục này trong danh sách công việc của dự án.",
         });
       })
       .catch(() => {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Work item could not be restored. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể khôi phục mục công việc. Vui lòng thử lại.",
         });
       });
   };
@@ -244,7 +244,7 @@ export const useMenuItemFactory = (props: MenuItemFactoryProps) => {
 
   const createRemoveFromCycleMenuItem = (): TContextMenuItem => ({
     key: "remove-from-cycle",
-    title: "Remove from cycle",
+    title: "Bỏ khỏi chu kỳ",
     icon: CloseCircleOutline,
     action: () => handleOptionalAction(handleRemoveFromView, "Remove from cycle"),
     shouldRender: isEditingAllowed,
@@ -252,7 +252,7 @@ export const useMenuItemFactory = (props: MenuItemFactoryProps) => {
 
   const createRemoveFromModuleMenuItem = (): TContextMenuItem => ({
     key: "remove-from-module",
-    title: "Remove from module",
+    title: "Bỏ khỏi nhóm công việc",
     icon: CloseCircleOutline,
     action: () => handleOptionalAction(handleRemoveFromView, "Remove from module"),
     shouldRender: isEditingAllowed,
@@ -270,7 +270,7 @@ export const useMenuItemFactory = (props: MenuItemFactoryProps) => {
 
   const createRestoreMenuItem = (): TContextMenuItem => ({
     key: "restore",
-    title: "Restore",
+    title: "Khôi phục",
     icon: RestoreOutline,
     action: actionHandlers.handleIssueRestore,
     shouldRender: isRestoringAllowed,

@@ -63,7 +63,7 @@ export const PaidPlanUpgradeModal = observer(function PaidPlanUpgradeModal(props
               {/* Free Plan Section */}
               <div className={cn(COMMON_CARD_CLASSNAME)}>
                 <h2 id="paid-plan-upgrade-modal-title" className="flex text-24 leading-8 font-bold">
-                  Upgrade to a paid plan and unlock missing features.
+                  Nâng cấp lên gói trả phí để mở khóa các tính năng còn thiếu.
                 </h2>
                 <div className="mt-4 mb-2">
                   <p className="mb-4 pr-8 text-13 text-primary">
@@ -90,7 +90,7 @@ export const PaidPlanUpgradeModal = observer(function PaidPlanUpgradeModal(props
                         target="_blank"
                         rel="noreferrer"
                       >
-                        See full features list
+                        Xem đầy đủ tính năng
                       </a>
                     </p>
                   }
@@ -112,7 +112,7 @@ export const PaidPlanUpgradeModal = observer(function PaidPlanUpgradeModal(props
                         target="_blank"
                         rel="noreferrer"
                       >
-                        See full features list
+                        Xem đầy đủ tính năng
                       </a>
                     </p>
                   }
@@ -134,7 +134,7 @@ export const PaidPlanUpgradeModal = observer(function PaidPlanUpgradeModal(props
                         target="_blank"
                         rel="noreferrer"
                       >
-                        See full features list
+                        Xem đầy đủ tính năng
                       </a>
                     </p>
                   }

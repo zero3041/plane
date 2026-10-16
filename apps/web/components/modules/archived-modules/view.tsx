@@ -40,7 +40,7 @@ export const ArchivedModulesView = observer(function ArchivedModulesView(props: 
             className="mx-auto h-36 w-36 sm:h-48 sm:w-48"
             alt="No matching modules"
           />
-          <h5 className="mt-7 mb-1 text-18 font-medium">No matching modules</h5>
+          <h5 className="mt-7 mb-1 text-18 font-medium">Không có nhóm công việc phù hợp</h5>
           <p className="text-14 text-placeholder">
             {archivedModulesSearchQuery.trim() === ""
               ? "Remove the filters to see all modules"

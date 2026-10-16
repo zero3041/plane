@@ -54,7 +54,7 @@ export const PageEditorHeaderRoot = observer(function PageEditorHeaderRoot(props
                   )}
                 >
                   <ReactionOutline className="size-4 flex-shrink-0" />
-                  Icon
+                  Biểu tượng
                 </button>
               }
               onChange={updatePageLogo}

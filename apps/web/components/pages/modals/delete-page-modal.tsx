@@ -52,8 +52,8 @@ export const DeletePageModal = observer(function DeletePageModal(props: TConfirm
       handleClose();
       setToast({
         type: "success",
-        title: "Success!",
-        message: "Page deleted successfully.",
+        title: "Thành công!",
+        message: "Đã xóa trang.",
       });
 
       if (routePageId) {
@@ -62,8 +62,8 @@ export const DeletePageModal = observer(function DeletePageModal(props: TConfirm
     } catch {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Page could not be deleted. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể xóa trang. Vui lòng thử lại.",
       });
     } finally {
       setIsDeleting(false);
@@ -78,7 +78,7 @@ export const DeletePageModal = observer(function DeletePageModal(props: TConfirm
       handleSubmit={handleDelete}
       isSubmitting={isDeleting}
       isOpen={isOpen}
-      title="Delete page"
+      title="Xóa trang"
       content={
         <>
           Are you sure you want to delete page-{" "}

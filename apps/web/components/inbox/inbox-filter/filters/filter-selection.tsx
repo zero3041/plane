@@ -36,7 +36,7 @@ export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelec
           <input
             type="text"
             className="w-full bg-surface-2 outline-none placeholder:text-placeholder"
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
             autoFocus={!isMobile}
@@ -62,7 +62,7 @@ export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelec
         <div className="py-2">
           <FilterMember
             filterKey="assignees"
-            label="Assignees"
+            label="Người được giao"
             searchQuery={filtersSearchQuery}
             memberIds={projectMemberIds ?? []}
           />
@@ -71,7 +71,7 @@ export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelec
         <div className="py-2">
           <FilterMember
             filterKey="created_by"
-            label="Created By"
+            label="Người tạo"
             searchQuery={filtersSearchQuery}
             memberIds={projectMemberIds ?? []}
           />
@@ -82,11 +82,11 @@ export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelec
         </div>
         {/* Created at */}
         <div className="py-2">
-          <FilterDate filterKey="created_at" label="Created date" searchQuery={filtersSearchQuery} />
+          <FilterDate filterKey="created_at" label="Ngày tạo" searchQuery={filtersSearchQuery} />
         </div>
         {/* Updated at */}
         <div className="py-2">
-          <FilterDate filterKey="updated_at" label="Last updated date" searchQuery={filtersSearchQuery} />
+          <FilterDate filterKey="updated_at" label="Ngày cập nhật gần nhất" searchQuery={filtersSearchQuery} />
         </div>
       </div>
     </div>

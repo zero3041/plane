@@ -35,14 +35,14 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
         await disableEmail();
         setIsSMTPEnabled(false);
         setToast({
-          title: "Email feature disabled",
-          message: "Email feature has been disabled",
+          title: "Đã tắt tính năng email",
+          message: "Tính năng email đã được tắt",
           type: "success",
         });
       } catch (_error) {
         setToast({
-          title: "Error disabling email",
-          message: "Failed to disable email feature. Please try again.",
+          title: "Lỗi khi tắt email",
+          message: "Không thể tắt tính năng email. Vui lòng thử lại.",
           type: "error",
         });
       } finally {
@@ -61,13 +61,14 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
   return (
     <PageWrapper
       header={{
-        title: "Secure emails from your own instance",
+        title: "Gửi email an toàn từ máy chủ của bạn",
         description: (
           <>
-            Plane can send useful emails to you and your users from your own instance without talking to the Internet.
+            Plane có thể gửi email hữu ích từ máy chủ của bạn đến bạn và người dùng mà không cần dịch vụ email bên
+            ngoài.
             <div className="text-13 font-regular text-tertiary">
-              Set it up below and please test your settings before you save them.&nbsp;
-              <span className="text-danger-primary">Misconfigs can lead to email bounces and errors.</span>
+              Hãy cấu hình bên dưới và kiểm tra trước khi lưu.&nbsp;
+              <span className="text-danger-primary">Cấu hình sai có thể khiến email bị trả lại hoặc gửi lỗi.</span>
             </div>
           </>
         ),
@@ -77,7 +78,7 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
           </Skeleton>
         ) : (
           <Switch
-            aria-label="Enable SMTP email"
+            aria-label="Bật email SMTP"
             checked={isSMTPEnabled}
             onCheckedChange={handleToggle}
             size="sm"

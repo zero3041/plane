@@ -38,9 +38,9 @@ export function InstanceNotReady() {
             <div className="flex flex-col items-center gap-11">
               <img src={GradientLogo} className="h-24 w-40 object-contain" alt="Plane Logo" />
               <div className="flex max-w-124 flex-col items-center gap-3">
-                <h1 className="text-h2-semibold text-primary">Welcome to Plane</h1>
+                <h1 className="text-h2-semibold text-primary">Chào mừng đến với Plane</h1>
                 <p className="text-center text-body-md-regular text-secondary">
-                  Set up your instance and create your first workspace to begin managing projects and work.
+                  Thiết lập máy chủ và tạo không gian làm việc đầu tiên để bắt đầu quản lý dự án và công việc.
                 </p>
               </div>
             </div>
@@ -50,8 +50,8 @@ export function InstanceNotReady() {
                 size="lg"
                 stretch="full"
                 nativeButton={false}
-                render={<a href={GOD_MODE_URL}>Get started</a>}
-                label="Get started"
+                render={<a href={GOD_MODE_URL}>Bắt đầu</a>}
+                label="Bắt đầu"
               />
             </div>
           </div>

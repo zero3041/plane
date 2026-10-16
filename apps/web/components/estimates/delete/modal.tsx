@@ -53,16 +53,16 @@ export const DeleteEstimateModal = observer(function DeleteEstimateModal(props: 
       setButtonLoader(false);
       setToast({
         type: "success",
-        title: "Estimate deleted",
-        message: "Estimate has been removed from your project.",
+        title: "Đã xóa ước tính",
+        message: "Đã xóa ước tính khỏi dự án.",
       });
       handleClose();
     } catch (_error) {
       setButtonLoader(false);
       setToast({
         type: "error",
-        title: "Estimate creation failed",
-        message: "We were unable to delete the estimate, please try again.",
+        title: "Không thể tạo ước tính",
+        message: "Không thể xóa ước tính. Vui lòng thử lại.",
       });
     }
   };
@@ -83,14 +83,14 @@ export const DeleteEstimateModal = observer(function DeleteEstimateModal(props: 
           {/* heading */}
           <DialogHeader>
             <DialogHeading>
-              <DialogTitle>Delete Estimate System</DialogTitle>
+              <DialogTitle>Xóa hệ thống ước tính</DialogTitle>
             </DialogHeading>
           </DialogHeader>
 
           {/* estimate steps */}
           <DialogBody tabIndex={0}>
             <div className="text-14 text-secondary">
-              Deleting the estimate <span className="font-bold text-primary">{estimate?.name}</span>
+              Đang xóa ước tính <span className="font-bold text-primary">{estimate?.name}</span>
               &nbsp;system will remove it from all work items permanently. This action cannot be undone. If you add
               estimates again, you will need to update all the work items.
             </div>
@@ -104,7 +104,7 @@ export const DeleteEstimateModal = observer(function DeleteEstimateModal(props: 
             onClick={handleClose}
             disabled={buttonLoader}
             stretch="auto"
-            label="Cancel"
+            label="Hủy"
           />
           <Button
             variant="danger"

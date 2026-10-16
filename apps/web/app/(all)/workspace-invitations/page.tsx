@@ -87,42 +87,38 @@ function WorkspaceInvitationPage() {
         {invitationDetail && !invitationDetail.responded_at ? (
           error ? (
             <div className="shadow-2xl flex w-full flex-col space-y-4 rounded-sm border border-subtle bg-surface-1 px-4 py-8 text-center md:w-1/3">
-              <h2 className="text-18 uppercase">INVITATION NOT FOUND</h2>
+              <h2 className="text-18 uppercase">KHÔNG TÌM THẤY LỜI MỜI</h2>
             </div>
           ) : (
             <EmptySpace
-              title={`You have been invited to ${invitationDetail.workspace.name}`}
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Plane account."
+              title={`Bạn được mời vào ${invitationDetail.workspace.name}`}
+              description="Trong không gian làm việc, bạn có thể tạo dự án, cộng tác và sắp xếp các công việc."
             >
-              <EmptySpaceItem Icon={TickOutline} title="Accept" action={handleAccept} />
-              <EmptySpaceItem Icon={CloseOutline} title="Ignore" action={handleReject} />
+              <EmptySpaceItem Icon={TickOutline} title="Chấp nhận" action={handleAccept} />
+              <EmptySpaceItem Icon={CloseOutline} title="Bỏ qua" action={handleReject} />
             </EmptySpace>
           )
         ) : error || invitationDetail?.responded_at ? (
           invitationDetail?.accepted ? (
             <EmptySpace
-              title={`You are already a member of ${invitationDetail.workspace.name}`}
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Plane account."
+              title={`Bạn đã là thành viên của ${invitationDetail.workspace.name}`}
+              description="Trong không gian làm việc, bạn có thể tạo dự án, cộng tác và sắp xếp các công việc."
             >
-              <EmptySpaceItem Icon={BoxesOutline} title="Continue to home" href="/" />
+              <EmptySpaceItem Icon={BoxesOutline} title="Về trang chủ" href="/" />
             </EmptySpace>
           ) : (
             <EmptySpace
-              title="This invitation link is not active anymore."
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Plane account."
-              link={{ text: "Or start from an empty project", href: "/" }}
+              title="Liên kết mời này không còn hiệu lực."
+              description="Trong không gian làm việc, bạn có thể tạo dự án, cộng tác và sắp xếp các công việc."
+              link={{ text: "Hoặc bắt đầu với dự án mới", href: "/" }}
             >
               {!currentUser ? (
-                <EmptySpaceItem Icon={UserOutline} title="Sign in to continue" href="/" />
+                <EmptySpaceItem Icon={UserOutline} title="Đăng nhập để tiếp tục" href="/" />
               ) : (
-                <EmptySpaceItem Icon={BoxesOutline} title="Continue to home" href="/" />
+                <EmptySpaceItem Icon={BoxesOutline} title="Về trang chủ" href="/" />
               )}
-              <EmptySpaceItem Icon={StarOutline} title="Star us on GitHub" href="https://github.com/makeplane" />
-              <EmptySpaceItem
-                Icon={ShareAltOutline}
-                title="Join our community of active creators"
-                href="https://forum.plane.so"
-              />
+              <EmptySpaceItem Icon={StarOutline} title="Ủng hộ Plane trên GitHub" href="https://github.com/makeplane" />
+              <EmptySpaceItem Icon={ShareAltOutline} title="Tham gia cộng đồng Plane" href="https://forum.plane.so" />
             </EmptySpace>
           )
         ) : (

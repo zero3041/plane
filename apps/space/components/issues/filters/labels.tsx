@@ -73,7 +73,7 @@ export function FilterLabels(props: Props) {
                 )}
               </>
             ) : (
-              <p className="text-11 text-placeholder italic">No matches found</p>
+              <p className="text-11 text-placeholder italic">Không tìm thấy kết quả phù hợp</p>
             )
           ) : (
             <Loader className="space-y-2">

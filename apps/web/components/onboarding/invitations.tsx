@@ -66,8 +66,8 @@ export function Invitations(props: Props) {
   return invitations && invitations.length > 0 ? (
     <div className="space-y-4">
       <div className="mx-auto space-y-1 py-4 text-center">
-        <h3 className="text-24 font-bold text-primary">You are invited!</h3>
-        <p className="font-medium text-placeholder">Accept the invites to collaborate with your team.</p>
+        <h3 className="text-24 font-bold text-primary">Bạn đã được mời!</h3>
+        <p className="font-medium text-placeholder">Chấp nhận lời mời để cộng tác với nhóm của bạn.</p>
       </div>
       <div>
         {invitations &&
@@ -121,10 +121,10 @@ export function Invitations(props: Props) {
         render={<button type="button" className="bg-surface-2 text-14" />}
         onClick={handleCurrentViewChange}
         disabled={isJoiningWorkspaces}
-        label="Create your own workspace"
+        label="Tạo không gian làm việc của bạn"
       />
     </div>
   ) : (
-    <div>No Invitations found</div>
+    <div>Không tìm thấy lời mời</div>
   );
 }

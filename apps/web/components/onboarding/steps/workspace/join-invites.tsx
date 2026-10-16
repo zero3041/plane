@@ -69,7 +69,10 @@ export function WorkspaceJoinInvitesStep(props: Props) {
 
   return invitations && invitations.length > 0 ? (
     <div className="flex flex-col gap-10">
-      <CommonOnboardingHeader title="Join invites or create a workspace" description="All your work — unified." />
+      <CommonOnboardingHeader
+        title="Chấp nhận lời mời hoặc tạo không gian làm việc"
+        description="Tất cả công việc của bạn ở cùng một nơi."
+      />
       <div className="flex flex-col gap-3">
         {invitations &&
           invitations.length > 0 &&
@@ -114,13 +117,13 @@ export function WorkspaceJoinInvitesStep(props: Props) {
           variant="ghost"
           size="lg"
           stretch="full"
-          label="Create new workspace"
+          label="Tạo không gian làm việc mới"
           onClick={handleCurrentViewChange}
           disabled={isJoiningWorkspaces}
         />
       </div>
     </div>
   ) : (
-    <div>No Invitations found</div>
+    <div>Không tìm thấy lời mời</div>
   );
 }

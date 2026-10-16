@@ -22,14 +22,14 @@ export function WebhookDeleteSection(props: Props) {
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        trigger={<span className="text-16 tracking-tight">Danger zone</span>}
+        trigger={<span className="text-16 tracking-tight">Vùng nguy hiểm</span>}
       >
         <div className="flex flex-col gap-8">
           <span className="text-13 tracking-tight">
-            Once a webhook is deleted, it cannot be restored. Future events will no longer be delivered to this webhook.
+            Webhook đã xóa sẽ không thể khôi phục. Các sự kiện tiếp theo sẽ không được gửi đến webhook này.
           </span>
           <div>
-            <Button variant="danger" size="md" stretch="auto" label="Delete webhook" onClick={openDeleteModal} />
+            <Button variant="danger" size="md" stretch="auto" label="Xóa webhook" onClick={openDeleteModal} />
           </div>
         </div>
       </Collapsible>

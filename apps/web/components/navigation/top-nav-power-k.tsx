@@ -235,7 +235,7 @@ export const TopNavPowerK = observer(() => {
             onMouseDown={handleMouseDown}
             onFocus={handleFocus}
             onKeyDown={handleKeyDown}
-            placeholder="Search commands..."
+            placeholder="Tìm lệnh..."
             className="placeholder-text-placeholder min-w-0 flex-1 bg-transparent text-13 text-primary outline-none"
           />
           {searchTerm && (

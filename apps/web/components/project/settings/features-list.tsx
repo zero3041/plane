@@ -31,8 +31,8 @@ const PROJECT_FEATURES_LIST = {
   cycles: {
     key: "cycles",
     property: "cycle_view",
-    title: "Cycles",
-    description: "Timebox work as you see fit per project and change frequency from one period to the next.",
+    title: "Chu kỳ",
+    description: "Lên lịch công việc theo từng dự án và điều chỉnh độ dài chu kỳ khi cần.",
     icon: <CyclesOutline className="h-5 w-5 flex-shrink-0 rotate-180 text-tertiary" />,
     isPro: false,
     isEnabled: true,
@@ -40,8 +40,8 @@ const PROJECT_FEATURES_LIST = {
   modules: {
     key: "modules",
     property: "module_view",
-    title: "Modules",
-    description: "Group work into sub-project-like set-ups with their own leads and assignees.",
+    title: "Nhóm công việc",
+    description: "Nhóm công việc thành các phần có người phụ trách và người được giao riêng.",
     icon: <ModuleOutline width={20} height={20} className="flex-shrink-0 text-tertiary" />,
     isPro: false,
     isEnabled: true,
@@ -49,8 +49,8 @@ const PROJECT_FEATURES_LIST = {
   views: {
     key: "views",
     property: "issue_views_view",
-    title: "Views",
-    description: "Save sorts, filters, and display options for later or share them.",
+    title: "Chế độ xem",
+    description: "Lưu và chia sẻ cách sắp xếp, bộ lọc và tùy chọn hiển thị.",
     icon: <ViewsOutline className="h-5 w-5 flex-shrink-0 text-tertiary" />,
     isPro: false,
     isEnabled: true,
@@ -58,8 +58,8 @@ const PROJECT_FEATURES_LIST = {
   pages: {
     key: "pages",
     property: "page_view",
-    title: "Pages",
-    description: "Write anything like you write anything.",
+    title: "Trang",
+    description: "Viết và lưu tài liệu theo cách bạn muốn.",
     icon: <PagesOutline className="h-5 w-5 flex-shrink-0 text-tertiary" />,
     isPro: false,
     isEnabled: true,
@@ -67,8 +67,8 @@ const PROJECT_FEATURES_LIST = {
   inbox: {
     key: "intake",
     property: "inbox_view",
-    title: "Intake",
-    description: "Consider and discuss work items before you add them to your project.",
+    title: "Tiếp nhận",
+    description: "Xem xét và thảo luận mục công việc trước khi đưa vào dự án.",
     icon: <IntakeOutline className="h-5 w-5 flex-shrink-0 text-tertiary" />,
     isPro: false,
     isEnabled: true,
@@ -95,11 +95,11 @@ export const ProjectFeaturesList = observer(function ProjectFeaturesList(props: 
     setPromiseToast(updateProjectPromise, {
       loading: "Updating project feature...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Project feature updated successfully.",
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Something went wrong while updating project feature. Please try again.",
       },
     });
@@ -117,7 +117,7 @@ export const ProjectFeaturesList = observer(function ProjectFeaturesList(props: 
                   <span className="flex items-center gap-2">
                     {t(featureItem.key)}
                     {featureItem.isPro && (
-                      <Tooltip label="Pro feature">
+                      <Tooltip label="Tính năng Pro">
                         <UpgradeBadge className="rounded-sm" />
                       </Tooltip>
                     )}

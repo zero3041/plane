@@ -20,11 +20,11 @@ type Props = {
 
 const PAGE_SORTING_KEY_OPTIONS: {
   key: TPageFiltersSortKey;
-  label: string;
+  labelKey: string;
 }[] = [
-  { key: "name", label: "Name" },
-  { key: "created_at", label: "Date created" },
-  { key: "updated_at", label: "Date modified" },
+  { key: "name", labelKey: "name" },
+  { key: "created_at", labelKey: "common.sort.created_on" },
+  { key: "updated_at", labelKey: "common.sort.updated_on" },
 ];
 
 export function PageOrderByDropdown(props: Props) {
@@ -41,13 +41,13 @@ export function PageOrderByDropdown(props: Props) {
           element and Base UI grafts the menu behavior onto it. */}
       <MenuTrigger render={<ButtonElement variant="secondary" size="md" stretch="auto" />}>
         {!isDescending ? <SortAscendingOutline className="size-3" /> : <SortDescendingOutline className="size-3" />}
-        {orderByDetails?.label}
+        {orderByDetails && t(orderByDetails.labelKey)}
       </MenuTrigger>
       <MenuContent side="bottom" align="end">
         {PAGE_SORTING_KEY_OPTIONS.map((option) => (
           <MenuItem
             key={option.key}
-            label={option.label}
+            label={t(option.labelKey)}
             selected={sortKey === option.key}
             onClick={() =>
               onChange({

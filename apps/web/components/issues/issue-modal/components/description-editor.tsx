@@ -98,8 +98,8 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
     } else {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Lỗi!",
+        message: "Trình soạn thảo đang xử lý thay đổi. Vui lòng đợi trước khi tiếp tục.",
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -128,9 +128,8 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (res.response === "")
           setToast({
             type: "error",
-            title: "Error!",
-            message:
-              "Work item title isn't informative enough to generate the description. Please try with a different title.",
+            title: "Lỗi!",
+            message: "Tiêu đề chưa đủ thông tin để tạo mô tả. Hãy thử tiêu đề khác.",
           });
         else handleAiAssistance(res.response_html);
       })
@@ -140,13 +139,13 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (err.status === 429)
           setToast({
             type: "error",
-            title: "Error!",
+            title: "Lỗi!",
             message: error || "You have reached the maximum number of requests of 50 requests per month per user.",
           });
         else
           setToast({
             type: "error",
-            title: "Error!",
+            title: "Lỗi!",
             message: error || "Some error occurred. Please try again.",
           });
       })

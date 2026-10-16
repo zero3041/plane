@@ -32,7 +32,7 @@ import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wgh
 import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
-const APP_TITLE = "Plane | Simple, extensible, open-source project management tool.";
+const APP_TITLE = "Plane | Công cụ quản lý dự án mã nguồn mở, linh hoạt.";
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32 },
@@ -55,7 +55,7 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="vi-VN" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -25,17 +25,17 @@ const CYCLE_VIEW_LAYOUTS: {
   {
     key: "list",
     icon: ListOutline,
-    title: "List layout",
+    title: "Bố cục danh sách",
   },
   {
     key: "board",
     icon: GridOutline,
-    title: "Gallery layout",
+    title: "Bố cục thư viện",
   },
   {
     key: "gantt",
     icon: TimelineOutline,
-    title: "Timeline layout",
+    title: "Bố cục dòng thời gian",
   },
 ];
 
@@ -54,7 +54,7 @@ export const CyclesListMobileHeader = observer(function CyclesListMobileHeader()
           >
             <span className="flex items-center gap-2">
               <ListOutline className="h-4 w-4" />
-              <span className="flex flex-grow justify-center text-13 text-secondary">Layout</span>
+              <span className="flex flex-grow justify-center text-13 text-secondary">Bố cục</span>
             </span>
           </MenuTrigger>
         </div>

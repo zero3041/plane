@@ -118,7 +118,7 @@ export class UserStore implements IUserStore {
         this.isAuthenticated = false;
         this.error = {
           status: "user-fetch-error",
-          message: "Failed to fetch current user",
+          message: "Không thể tải người dùng hiện tại",
         };
         if (error instanceof AxiosError && error.status === 401) {
           this.data = undefined;
@@ -154,7 +154,7 @@ export class UserStore implements IUserStore {
       runInAction(() => {
         this.error = {
           status: "user-update-error",
-          message: "Failed to update current user",
+          message: "Không thể cập nhật người dùng hiện tại",
         };
       });
       throw error;

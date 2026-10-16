@@ -44,14 +44,14 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Đang lưu cấu hình",
       success: {
-        title: "Configuration saved",
-        message: () => `GitLab authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Đã lưu cấu hình",
+        message: () => `Xác thực GitLab hiện ${value === "1" ? "đang bật" : "đã tắt"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Lỗi",
+        message: () => "Không thể lưu cấu hình",
       },
     });
 
@@ -69,11 +69,11 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
       customHeader={
         <AuthenticationMethodCard
           name="GitLab"
-          description="Allow members to login or sign up to plane with their GitLab accounts."
+          description="Cho phép thành viên đăng nhập hoặc đăng ký Plane bằng tài khoản GitLab."
           icon={<img src={GitlabLogo} height={24} width={24} alt="GitLab Logo" />}
           config={
             <Switch
-              aria-label="Enable GitLab authentication"
+              aria-label="Bật xác thực GitLab"
               checked={Boolean(parseInt(enableGitlabConfig))}
               onCheckedChange={() => {
                 if (Boolean(parseInt(enableGitlabConfig)) === true) {

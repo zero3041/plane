@@ -63,7 +63,7 @@ export const ProjectMemberListItem = observer(function ProjectMemberListItem(pro
       await removeMemberFromProject(workspaceSlug.toString(), projectId.toString(), memberId).catch((err) =>
         setToast({
           type: "error",
-          title: "You can't remove the member from this project yet.",
+          title: "Bạn chưa thể xóa thành viên này khỏi dự án.",
           message: err?.error || "Something went wrong. Please try again.",
         })
       );

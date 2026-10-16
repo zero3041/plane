@@ -117,7 +117,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # timezone
     USER_TIMEZONE_CHOICES = tuple(zip(pytz.common_timezones, pytz.common_timezones))
-    user_timezone = models.CharField(max_length=255, default="UTC", choices=USER_TIMEZONE_CHOICES)
+    user_timezone = models.CharField(max_length=255, default="Asia/Ho_Chi_Minh", choices=USER_TIMEZONE_CHOICES)
 
     # email validation
     is_email_valid = models.BooleanField(default=False)
@@ -235,7 +235,7 @@ class Profile(TimeAuditModel):
     # Last visited workspace
     last_workspace_id = models.UUIDField(null=True)
     # address data
-    billing_address_country = models.CharField(max_length=255, default="INDIA")
+    billing_address_country = models.CharField(max_length=255, default="VIETNAM")
     billing_address = models.JSONField(null=True)
     has_billing_address = models.BooleanField(default=False)
     company_name = models.CharField(max_length=255, blank=True)
@@ -248,8 +248,8 @@ class Profile(TimeAuditModel):
     mobile_onboarding_step = models.JSONField(default=get_mobile_default_onboarding)
     mobile_timezone_auto_set = models.BooleanField(default=False)
     # language
-    language = models.CharField(max_length=255, default="en")
-    start_of_the_week = models.PositiveSmallIntegerField(choices=START_OF_THE_WEEK_CHOICES, default=SUNDAY)
+    language = models.CharField(max_length=255, default="vi-VN")
+    start_of_the_week = models.PositiveSmallIntegerField(choices=START_OF_THE_WEEK_CHOICES, default=MONDAY)
     goals = models.JSONField(default=dict)
     background_color = models.CharField(max_length=255, default=get_random_color)
 

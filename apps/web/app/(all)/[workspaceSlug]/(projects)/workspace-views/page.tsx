@@ -38,8 +38,8 @@ function WorkspaceViewsPage() {
               size="2xl"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Tìm kiếm"
+              aria-label="Tìm kiếm"
             />
           </InputGroup>
         </div>

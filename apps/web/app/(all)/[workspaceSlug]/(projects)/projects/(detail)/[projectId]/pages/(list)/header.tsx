@@ -55,7 +55,7 @@ export const PagesListHeader = observer(function PagesListHeader() {
       .catch((err) => {
         setToast({
           type: "error",
-          title: "Error!",
+          title: "Lỗi!",
           message: err?.data?.error || "Page could not be created. Please try again.",
         });
       })
@@ -74,7 +74,7 @@ export const PagesListHeader = observer(function PagesListHeader() {
           <Breadcrumbs.Item
             component={
               <BreadcrumbLink
-                label="Pages"
+                label="Trang"
                 href={`/${workspaceSlug}/projects/${currentProjectDetails?.id}/pages/`}
                 icon={<PagesOutline className="h-4 w-4 text-tertiary" />}
                 isLast

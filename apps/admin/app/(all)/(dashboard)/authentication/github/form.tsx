@@ -64,17 +64,17 @@ export function InstanceGithubConfigForm(props: Props) {
     {
       key: "GITHUB_CLIENT_ID",
       type: "text",
-      label: "Client ID",
+      label: "ID ứng dụng khách",
       description: (
         <>
-          You will get this from your{" "}
+          Bạn có thể lấy mục này trong{" "}
           <a
             href="https://github.com/settings/applications/new"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitHub OAuth application settings.
+            Cài đặt ứng dụng GitHub OAuth.
           </a>
         </>
       ),
@@ -85,17 +85,17 @@ export function InstanceGithubConfigForm(props: Props) {
     {
       key: "GITHUB_CLIENT_SECRET",
       type: "password",
-      label: "Client secret",
+      label: "Mã bí mật ứng dụng khách",
       description: (
         <>
-          Your client secret is also found in your{" "}
+          Mã bí mật ứng dụng khách cũng có trong{" "}
           <a
             href="https://github.com/settings/applications/new"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitHub OAuth application settings.
+            Cài đặt ứng dụng GitHub OAuth.
           </a>
         </>
       ),
@@ -106,8 +106,8 @@ export function InstanceGithubConfigForm(props: Props) {
     {
       key: "GITHUB_ORGANIZATION_ID",
       type: "text",
-      label: "Organization ID",
-      description: <>The organization github ID.</>,
+      label: "ID tổ chức",
+      description: <>ID của tổ chức GitHub.</>,
       placeholder: "123456789",
       error: Boolean(errors.GITHUB_ORGANIZATION_ID),
       required: false,
@@ -117,19 +117,19 @@ export function InstanceGithubConfigForm(props: Props) {
   const GITHUB_COMMON_SERVICE_DETAILS: TCopyField[] = [
     {
       key: "Origin_URL",
-      label: "Origin URL",
+      label: "URL gốc",
       url: originURL,
       description: (
         <>
-          We will auto-generate this. Paste this into the <CodeBlock darkerShade>Authorized origin URL</CodeBlock> field{" "}
+          Plane sẽ tự tạo giá trị này. Hãy dán vào trường <CodeBlock darkerShade>Authorized origin URL</CodeBlock> tại{" "}
           <a
             href="https://github.com/settings/applications/new"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
-            aria-label="GitHub OAuth application settings"
+            aria-label="Cài đặt ứng dụng GitHub OAuth"
           >
-            here.
+            đây.
           </a>
         </>
       ),
@@ -139,20 +139,19 @@ export function InstanceGithubConfigForm(props: Props) {
   const GITHUB_SERVICE_DETAILS: TCopyField[] = [
     {
       key: "Callback_URI",
-      label: "Callback URI",
+      label: "URI chuyển hướng",
       url: `${originURL}/auth/github/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into your <CodeBlock darkerShade>Authorized Callback URI</CodeBlock>{" "}
-          field{" "}
+          Plane sẽ tự tạo giá trị này. Hãy dán vào trường <CodeBlock darkerShade>Authorized Callback URI</CodeBlock> tại{" "}
           <a
             href="https://github.com/settings/applications/new"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
-            aria-label="GitHub OAuth application settings"
+            aria-label="Cài đặt ứng dụng GitHub OAuth"
           >
-            here.
+            đây.
           </a>
         </>
       ),
@@ -166,8 +165,8 @@ export function InstanceGithubConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: "success",
-        title: "Done!",
-        message: "Your GitHub authentication is configured. You should test it now.",
+        title: "Hoàn tất!",
+        message: "Đã cấu hình xác thực GitHub. Hãy kiểm tra ngay.",
       });
       reset({
         GITHUB_CLIENT_ID: response.find((item) => item.key === "GITHUB_CLIENT_ID")?.value,
@@ -197,7 +196,7 @@ export function InstanceGithubConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">GitHub-provided details for Plane</div>
+            <div className="pt-2.5 text-18 font-medium">Thông tin GitHub cung cấp cho Plane</div>
             {GITHUB_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -221,7 +220,7 @@ export function InstanceGithubConfigForm(props: Props) {
                   onClick={(e) => void handleSubmit(onSubmit)(e)}
                   loading={isSubmitting}
                   disabled={!isDirty}
-                  label={isSubmitting ? "Saving" : "Save changes"}
+                  label={isSubmitting ? "Đang lưu" : "Lưu thay đổi"}
                 />
                 <Button
                   variant="secondary"
@@ -229,13 +228,13 @@ export function InstanceGithubConfigForm(props: Props) {
                   stretch="auto"
                   nativeButton={false}
                   render={<Link href="/authentication" onClick={handleGoBack} />}
-                  label="Go back"
+                  label="Quay lại"
                 />
               </div>
             </div>
           </div>
           <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
-            <div className="pt-2 text-18 font-medium">Plane-provided details for GitHub</div>
+            <div className="pt-2 text-18 font-medium">Thông tin Plane cung cấp cho GitHub</div>
 
             <div className="flex flex-col gap-y-4">
               {/* common service details */}

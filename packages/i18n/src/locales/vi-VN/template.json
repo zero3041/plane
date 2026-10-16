@@ -21,7 +21,7 @@
         "label": "Tạo mẫu",
         "no_permission": {
           "project": "Liên hệ quản trị dự án của bạn để tạo mẫu",
-          "workspace": "Liên hệ quản trị workspace của bạn để tạo mẫu"
+          "workspace": "Liên hệ quản trị không gian làm việc của bạn để tạo mẫu"
         }
       },
       "use_template": {
@@ -32,7 +32,7 @@
       },
       "template_source": {
         "workspace": {
-          "info": "Được thừa kế từ workspace"
+          "info": "Được thừa kế từ không gian làm việc"
         },
         "project": {
           "info": "Được thừa kế từ dự án"
@@ -260,7 +260,7 @@
       "create": {
         "success": {
           "title": "Mẫu đã được tạo",
-          "message": "{templateName}, mẫu {templateType}, hiện có sẵn cho workspace của bạn."
+          "message": "{templateName}, mẫu {templateType}, hiện có sẵn cho không gian làm việc của bạn."
         },
         "error": {
           "title": "Chúng tôi không thể tạo mẫu đó lần này.",
@@ -280,7 +280,7 @@
       "delete": {
         "success": {
           "title": "Mẫu đã được xóa",
-          "message": "{templateName}, mẫu {templateType}, đã được xóa khỏi workspace của bạn."
+          "message": "{templateName}, mẫu {templateType}, đã được xóa khỏi không gian làm việc của bạn."
         },
         "error": {
           "title": "Chúng tôi không thể xóa mẫu đó lần này.",

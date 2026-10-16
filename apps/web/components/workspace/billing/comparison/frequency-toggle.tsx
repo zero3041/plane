@@ -35,7 +35,7 @@ export const PlanFrequencyToggle = observer(function PlanFrequencyToggle(props: 
               : "text-tertiary hover:text-secondary"
           )}
         >
-          Monthly
+          Hàng tháng
         </button>
         <button
           type="button"

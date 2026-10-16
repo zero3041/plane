@@ -50,14 +50,14 @@ export const CreateUpdateProjectViewModal = observer(function CreateUpdateProjec
       router.push(`/${workspaceSlug}/projects/${projectId}/views/${res.id}`);
       setToast({
         type: "success",
-        title: "Success!",
-        message: "View created successfully.",
+        title: "Thành công!",
+        message: "Đã tạo chế độ xem.",
       });
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Failed to create view. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể tạo chế độ xem. Vui lòng thử lại.",
       });
     }
   };
@@ -71,8 +71,8 @@ export const CreateUpdateProjectViewModal = observer(function CreateUpdateProjec
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Failed to update view. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể cập nhật chế độ xem. Vui lòng thử lại.",
       });
     }
   };

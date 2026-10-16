@@ -132,7 +132,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
               <Breadcrumbs.Item
                 component={
                   <BreadcrumbLink
-                    label="Modules"
+                    label="Mô-đun"
                     href={`/${workspaceSlug}/projects/${projectId}/modules/`}
                     icon={<ModuleOutline className="h-4 w-4 text-tertiary" />}
                     isLast
@@ -199,7 +199,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
             </div>
             {moduleId && <WorkItemFiltersToggle entityType={EIssuesStoreType.MODULE} entityId={moduleId} />}
             <FiltersDropdown
-              title="Display"
+              title="Hiển thị"
               placement="bottom-end"
               miniIcon={<PreferencesOutline className="size-3.5" />}
             >
@@ -226,7 +226,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
                     variant="secondary"
                     size="md"
                     stretch="auto"
-                    label="Analytics"
+                    label="Phân tích"
                     onClick={() => setAnalyticsModal(true)}
                   />
                 </span>
@@ -235,7 +235,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
                     variant="secondary"
                     size="md"
                     icon={<Icon icon={BarOutline} />}
-                    aria-label="Analytics"
+                    aria-label="Phân tích"
                     onClick={() => setAnalyticsModal(true)}
                   />
                 </span>
@@ -245,7 +245,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
                   variant="primary"
                   size="md"
                   stretch="auto"
-                  label="Add work item"
+                  label="Thêm công việc"
                   onClick={() => {
                     toggleCreateIssueModal(true, EIssuesStoreType.MODULE);
                   }}
@@ -260,7 +260,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
             variant={isSidebarCollapsed ? "ghost" : "tertiary"}
             size="md"
             icon={<Icon icon={RightSidePaneOutline} />}
-            aria-label="Toggle sidebar"
+            aria-label="Đóng/mở thanh bên"
             aria-pressed={!isSidebarCollapsed}
             onClick={toggleSidebar}
           />

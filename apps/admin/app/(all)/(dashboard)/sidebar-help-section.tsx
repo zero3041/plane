@@ -25,17 +25,17 @@ import { useInstance, useTheme } from "@/hooks/store";
 
 const helpOptions = [
   {
-    name: "Documentation",
+    name: "Tài liệu",
     href: "https://docs.plane.so/",
     Icon: PagesOutline,
   },
   {
-    name: "Join our Forum",
+    name: "Tham gia diễn đàn",
     href: "https://forum.plane.so",
     Icon: ChatOutline,
   },
   {
-    name: "Report a bug",
+    name: "Báo lỗi",
     href: "https://github.com/makeplane/plane/issues/new/choose",
     Icon: Github,
   },
@@ -69,24 +69,24 @@ export const AdminSidebarHelpSection = observer(function AdminSidebarHelpSection
               className={`relative flex items-center gap-1 rounded-sm bg-layer-1 px-2 py-1 text-body-xs-medium whitespace-nowrap text-secondary`}
             >
               <NewTabOutline width={14} height={14} />
-              {!isSidebarCollapsed && "Redirect to Plane"}
+              {!isSidebarCollapsed && "Đi tới Plane"}
             </a>
           </>
         ) : (
-          <Tooltip label="Redirect to Plane" side="right">
+          <Tooltip label="Đi tới Plane" side="right">
             <a
               href={redirectionLink}
               className={`relative flex items-center gap-1 rounded-sm bg-layer-1 px-2 py-1 text-body-xs-medium whitespace-nowrap text-secondary`}
             >
               <NewTabOutline width={14} height={14} />
-              {!isSidebarCollapsed && "Redirect to Plane"}
+              {!isSidebarCollapsed && "Đi tới Plane"}
             </a>
           </Tooltip>
         )}
-        <Tooltip label="Help" side={isSidebarCollapsed ? "right" : "top"}>
+        <Tooltip label="Trợ giúp" side={isSidebarCollapsed ? "right" : "top"}>
           <button
             type="button"
-            aria-label="Help"
+            aria-label="Trợ giúp"
             className={`ml-auto grid place-items-center rounded-md p-1.5 text-secondary outline-none hover:bg-layer-1-hover hover:text-primary ${
               isSidebarCollapsed ? "w-full" : ""
             }`}
@@ -95,10 +95,10 @@ export const AdminSidebarHelpSection = observer(function AdminSidebarHelpSection
             <HelpOutline className="size-4" />
           </button>
         </Tooltip>
-        <Tooltip label="Toggle sidebar" side={isSidebarCollapsed ? "right" : "top"}>
+        <Tooltip label="Thu gọn hoặc mở rộng thanh bên" side={isSidebarCollapsed ? "right" : "top"}>
           <button
             type="button"
-            aria-label="Toggle sidebar"
+            aria-label="Thu gọn hoặc mở rộng thanh bên"
             className={`grid place-items-center rounded-md p-1.5 text-secondary outline-none hover:bg-layer-1-hover hover:text-primary ${
               isSidebarCollapsed ? "w-full" : ""
             }`}

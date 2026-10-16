@@ -95,7 +95,7 @@ export function GptAssistantPopover(props: Props) {
 
     setToast({
       type: "error",
-      title: "Error!",
+      title: "Lỗi!",
       message: errorMessage,
     });
 
@@ -121,8 +121,8 @@ export function GptAssistantPopover(props: Props) {
   const handleInvalidTask = () => {
     setToast({
       type: "error",
-      title: "Error!",
-      message: "Please enter some task to get AI assistance.",
+      title: "Lỗi!",
+      message: "Vui lòng nhập yêu cầu để nhận hỗ trợ từ AI.",
     });
   };
 
@@ -174,7 +174,7 @@ export function GptAssistantPopover(props: Props) {
       variant="primary"
       size="sm"
       stretch="auto"
-      label="Use this response"
+      label="Dùng câu trả lời này"
       onClick={() => {
         onResponse(response);
         onClose();
@@ -217,7 +217,7 @@ export function GptAssistantPopover(props: Props) {
               <div className="vertical-scroll-enable max-h-72 space-y-4 overflow-y-auto">
                 {prompt && (
                   <div className="text-13">
-                    Content:
+                    Nội dung:
                     <RichTextEditor
                       editable={false}
                       id="ai-assistant-content"
@@ -232,7 +232,7 @@ export function GptAssistantPopover(props: Props) {
                 )}
                 {response !== "" && (
                   <div className="page-block-section max-h-[8rem] text-13">
-                    Response:
+                    Phản hồi:
                     <RichTextEditor
                       editable={false}
                       id="ai-assistant-response"
@@ -282,12 +282,12 @@ export function GptAssistantPopover(props: Props) {
                 <>
                   <div className="flex items-start justify-center gap-2 text-13 text-accent-primary">
                     <WarningCircleOutline className="h-4 w-4" />
-                    <p>By using this feature, you consent to sharing the message with a 3rd party service. </p>
+                    <p>Khi dùng tính năng này, bạn đồng ý chia sẻ nội dung tin nhắn với dịch vụ bên thứ ba. </p>
                   </div>
                 </>
               )}
               <div className="flex items-center gap-2">
-                <Button variant="secondary" size="sm" stretch="auto" label="Close" onClick={onClose} />
+                <Button variant="secondary" size="sm" stretch="auto" label="Đóng" onClick={onClose} />
                 <Button
                   variant="primary"
                   size="sm"

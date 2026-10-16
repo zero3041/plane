@@ -37,8 +37,8 @@ export const ColorDropdown = memo(function ColorDropdown(props: Props) {
   return (
     <Popover>
       {/* Propel's ToolbarMenuTrigger only wraps a Menu; this is its Popover twin until Propel ships one */}
-      <PopoverTrigger render={<ToolbarMenuTriggerButton aria-label="Color" />}>
-        <ToolbarMenuTriggerLabel>Color</ToolbarMenuTriggerLabel>
+      <PopoverTrigger render={<ToolbarMenuTriggerButton aria-label="Màu sắc" />}>
+        <ToolbarMenuTriggerLabel>Màu sắc</ToolbarMenuTriggerLabel>
         {/* active text + background colour preview */}
         <span
           className={cn("grid size-5 shrink-0 place-items-center rounded-sm border-[0.5px] border-strong", {
@@ -63,7 +63,7 @@ export const ColorDropdown = memo(function ColorDropdown(props: Props) {
       </PopoverTrigger>
       <PopoverContent variant="rich" side="bottom" align="start">
         <div className="space-y-1.5">
-          <p className="text-11 font-semibold text-tertiary">Text colors</p>
+          <p className="text-11 font-semibold text-tertiary">Màu chữ</p>
           <div className="flex items-center gap-2">
             {COLORS_LIST.map((color) => (
               <button
@@ -81,14 +81,14 @@ export const ColorDropdown = memo(function ColorDropdown(props: Props) {
             <IconButton
               variant="secondary"
               size="sm"
-              aria-label="Remove text color"
+              aria-label="Bỏ màu chữ"
               icon={<Icon icon={DeactivatedOutline} />}
               onClick={() => handleColorSelect("text-color", undefined)}
             />
           </div>
         </div>
         <div className="space-y-1.5">
-          <p className="text-11 font-semibold text-tertiary">Background colors</p>
+          <p className="text-11 font-semibold text-tertiary">Màu nền</p>
           <div className="flex items-center gap-2">
             {COLORS_LIST.map((color) => (
               <button
@@ -106,7 +106,7 @@ export const ColorDropdown = memo(function ColorDropdown(props: Props) {
             <IconButton
               variant="secondary"
               size="sm"
-              aria-label="Remove background color"
+              aria-label="Bỏ màu nền"
               icon={<Icon icon={DeactivatedOutline} />}
               onClick={() => handleColorSelect("background-color", undefined)}
             />

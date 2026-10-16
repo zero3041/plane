@@ -54,7 +54,7 @@ export function ArchiveRestoreProjectModal(props: Props) {
       .then(() => {
         setToast({
           type: "success",
-          title: "Archive success",
+          title: "Đã lưu trữ",
           message: `${projectDetails.name} has been archived successfully`,
         });
         onClose();
@@ -64,8 +64,8 @@ export function ArchiveRestoreProjectModal(props: Props) {
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Project could not be archived. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể lưu trữ dự án. Vui lòng thử lại.",
         })
       )
       .finally(() => setIsLoading(false));
@@ -77,7 +77,7 @@ export function ArchiveRestoreProjectModal(props: Props) {
       .then(() => {
         setToast({
           type: "success",
-          title: "Restore success",
+          title: "Đã khôi phục",
           message: `You can find ${projectDetails.name} in your projects.`,
         });
         onClose();
@@ -87,8 +87,8 @@ export function ArchiveRestoreProjectModal(props: Props) {
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Project could not be restored. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể khôi phục dự án. Vui lòng thử lại.",
         })
       )
       .finally(() => setIsLoading(false));
@@ -119,7 +119,7 @@ export function ArchiveRestoreProjectModal(props: Props) {
           </DialogBody>
         </DialogMain>
         <DialogActions>
-          <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={onClose} />
+          <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={onClose} />
           <Button
             variant="primary"
             size="md"

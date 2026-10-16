@@ -108,7 +108,7 @@ export function EmojiPicker(props: EmojiPickerProps) {
         showEmojiTab
           ? {
               key: "emoji",
-              label: "Emoji",
+              label: "Biểu tượng cảm xúc",
               content: (
                 <EmojiRoot
                   onChange={handleEmojiChange}
@@ -122,7 +122,7 @@ export function EmojiPicker(props: EmojiPickerProps) {
           : null,
         {
           key: "icon",
-          label: "Icon",
+          label: "Biểu tượng",
           content: (
             <IconRoot
               defaultColor={defaultIconColor}

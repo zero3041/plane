@@ -48,7 +48,7 @@ export const WorkspaceStickyHeader = observer(function WorkspaceStickyHeader() {
             variant="primary"
             size="md"
             stretch="auto"
-            label="Add sticky"
+            label="Thêm ghi chú"
             onClick={() => {
               toggleShowNewSticky(true);
               stickyOperations.create();

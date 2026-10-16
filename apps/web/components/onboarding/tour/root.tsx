@@ -38,42 +38,40 @@ const TOUR_STEPS: {
 }[] = [
   {
     key: "work-items",
-    title: "Plan with work items",
+    title: "Lập kế hoạch bằng mục công việc",
     description:
-      "The work item is the building block of the Plane. Most concepts in Plane are either associated with work items and their properties.",
+      "Mục công việc là thành phần cơ bản của Plane. Hầu hết tính năng đều liên quan đến mục công việc và thuộc tính của chúng.",
     image: IssuesTour,
     nextStep: "cycles",
   },
   {
     key: "cycles",
-    title: "Move with cycles",
-    description:
-      "Cycles help you and your team to progress faster, similar to the sprints commonly used in agile development.",
+    title: "Tiến hành theo chu kỳ",
+    description: "Chu kỳ giúp nhóm tiến nhanh hơn, tương tự sprint trong phát triển Agile.",
     image: CyclesTour,
     prevStep: "work-items",
     nextStep: "modules",
   },
   {
     key: "modules",
-    title: "Break into modules",
-    description: "Modules break your big thing into Projects or Features, to help you organize better.",
+    title: "Chia thành nhóm công việc",
+    description: "Nhóm công việc chia mục tiêu lớn thành các phần nhỏ dễ quản lý.",
     image: ModulesTour,
     prevStep: "cycles",
     nextStep: "views",
   },
   {
     key: "views",
-    title: "Views",
-    description:
-      "Create custom filters to display only the work items that matter to you. Save and share your filters in just a few clicks.",
+    title: "Chế độ xem",
+    description: "Tạo bộ lọc tùy chỉnh để chỉ hiển thị những mục quan trọng. Lưu và chia sẻ chỉ bằng vài cú nhấp.",
     image: ViewsTour,
     prevStep: "modules",
     nextStep: "pages",
   },
   {
     key: "pages",
-    title: "Document with pages",
-    description: "Use Pages to quickly jot down work items when you're in a meeting or starting a day.",
+    title: "Ghi chép bằng trang",
+    description: "Dùng trang để ghi nhanh công việc trong cuộc họp hoặc khi bắt đầu ngày mới.",
     image: PagesTour,
     prevStep: "views",
   },
@@ -112,7 +110,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                     variant="primary"
                     size="sm"
                     stretch="auto"
-                    label="Take a Product Tour"
+                    label="Xem hướng dẫn sản phẩm"
                     onClick={() => {
                       setStep("work-items");
                     }}
@@ -124,7 +122,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       onComplete();
                     }}
                   >
-                    No thanks, I will explore it myself
+                    Không, tôi sẽ tự khám phá
                   </button>
                 </div>
               </div>
@@ -159,7 +157,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       variant="secondary"
                       size="sm"
                       stretch="auto"
-                      label="Back"
+                      label="Quay lại"
                       onClick={() => setStep(currentStep.prevStep ?? "welcome")}
                     />
                   )}
@@ -168,7 +166,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       variant="primary"
                       size="sm"
                       stretch="auto"
-                      label="Next"
+                      label="Tiếp theo"
                       onClick={() => setStep(currentStep.nextStep ?? "work-items")}
                     />
                   )}
@@ -178,7 +176,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                     variant="primary"
                     size="sm"
                     stretch="auto"
-                    label="Create your first project"
+                    label="Tạo dự án đầu tiên"
                     onClick={() => {
                       onComplete();
                       toggleCreateProjectModal(true);

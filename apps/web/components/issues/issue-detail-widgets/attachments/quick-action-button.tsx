@@ -62,8 +62,8 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
           .catch(() => {
             setToast({
               type: "error",
-              title: "Error!",
-              message: "File could not be attached. Try uploading again.",
+              title: "Lỗi!",
+              message: "Không thể đính kèm tệp. Vui lòng tải lên lại.",
             });
           })
           .finally(() => {
@@ -76,7 +76,7 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
 
       setToast({
         type: "error",
-        title: "Error!",
+        title: "Lỗi!",
         message:
           totalAttachedFiles > 1
             ? "Only one file can be uploaded at a time."

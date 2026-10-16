@@ -188,14 +188,14 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
         await deleteModuleLink(workspaceSlug.toString(), projectId.toString(), moduleId.toString(), linkId);
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Module link deleted successfully.",
+          title: "Thành công!",
+          message: "Đã xóa liên kết nhóm công việc.",
         });
       } catch (_error) {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Some error occurred",
+          title: "Lỗi!",
+          message: "Đã xảy ra lỗi",
         });
       }
     },
@@ -209,8 +209,8 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
     });
     setToast({
       type: "success",
-      title: "Success!",
-      message: "Module updated successfully.",
+      title: "Thành công!",
+      message: "Đã cập nhật nhóm công việc.",
     });
   };
 

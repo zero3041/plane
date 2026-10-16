@@ -45,11 +45,11 @@ export const useAttachmentOperations = (
         setPromiseToast(attachmentUploadPromise, {
           loading: "Uploading attachment...",
           success: {
-            title: "Attachment uploaded",
+            title: "Đã tải tệp đính kèm lên",
             message: () => "The attachment has been successfully uploaded",
           },
           error: {
-            title: "Attachment not uploaded",
+            title: "Không thể tải tệp đính kèm lên",
             message: () => "The attachment could not be uploaded",
           },
         });
@@ -61,15 +61,15 @@ export const useAttachmentOperations = (
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing required fields");
           await removeAttachment(workspaceSlug, projectId, issueId, attachmentId);
           setToast({
-            message: "The attachment has been successfully removed",
+            message: "Đã xóa tệp đính kèm",
             type: "success",
-            title: "Attachment removed",
+            title: "Đã xóa tệp đính kèm",
           });
         } catch (_error) {
           setToast({
-            message: "The Attachment could not be removed",
+            message: "Không thể xóa tệp đính kèm",
             type: "error",
-            title: "Attachment not removed",
+            title: "Không thể xóa tệp đính kèm",
           });
         }
       },

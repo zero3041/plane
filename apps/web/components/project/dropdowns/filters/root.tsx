@@ -42,7 +42,7 @@ export const ProjectFiltersSelection = observer(function ProjectFiltersSelection
           <input
             type="text"
             className="w-full bg-surface-2 outline-none placeholder:text-placeholder"
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
             autoFocus={!isMobile}
@@ -63,7 +63,7 @@ export const ProjectFiltersSelection = observer(function ProjectFiltersSelection
                 my_projects: !displayFilters.my_projects,
               })
             }
-            title="My projects"
+            title="Dự án của tôi"
           />
         </div>
 

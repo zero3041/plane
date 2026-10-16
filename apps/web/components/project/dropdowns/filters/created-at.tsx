@@ -50,7 +50,7 @@ export const FilterCreatedDate = observer(function FilterCreatedDate(props: Prop
           handleClose={() => setIsDateFilterModalOpen(false)}
           isOpen={isDateFilterModalOpen}
           onSelect={(val) => handleUpdate(val)}
-          title="Created date"
+          title="Ngày tạo"
         />
       )}
       <FilterHeader
@@ -74,12 +74,12 @@ export const FilterCreatedDate = observer(function FilterCreatedDate(props: Prop
               <FilterOption
                 isChecked={isCustomDateSelected()}
                 onClick={handleCustomDate}
-                title="Custom"
+                title="Tùy chỉnh"
                 multiple={false}
               />
             </>
           ) : (
-            <p className="text-11 text-placeholder italic">No matches found</p>
+            <p className="text-11 text-placeholder italic">Không tìm thấy kết quả</p>
           )}
         </div>
       )}

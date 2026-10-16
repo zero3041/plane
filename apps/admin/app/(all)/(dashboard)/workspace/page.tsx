@@ -54,14 +54,14 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving configuration",
+      loading: "Đang lưu cấu hình",
       success: {
-        title: "Success",
-        message: () => "Configuration saved successfully",
+        title: "Thành công",
+        message: () => "Đã lưu cấu hình thành công",
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Lỗi",
+        message: () => "Không thể lưu cấu hình",
       },
     });
 
@@ -78,8 +78,8 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
   return (
     <PageWrapper
       header={{
-        title: "Workspaces on this instance",
-        description: "See all workspaces and control who can create them.",
+        title: "Không gian làm việc trên máy chủ này",
+        description: "Xem mọi không gian làm việc và kiểm soát quyền tạo.",
       }}
     >
       <div className="space-y-3">
@@ -87,9 +87,10 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
           <div className={cn("flex w-full items-center gap-14 rounded-sm")}>
             <div className="flex grow items-center gap-4">
               <div className="grow">
-                <div className="pb-1 text-16 font-medium">Prevent anyone else from creating a workspace.</div>
+                <div className="pb-1 text-16 font-medium">Không cho người khác tạo không gian làm việc.</div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
-                  Toggling this on will let only you create workspaces. You will have to invite users to new workspaces.
+                  Khi bật, chỉ bạn có thể tạo không gian làm việc. Bạn cần mời người dùng vào các không gian làm việc
+                  mới.
                 </div>
               </div>
             </div>
@@ -105,7 +106,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                     }
                   }}
                   size="sm"
-                  aria-label="Prevent anyone else from creating a workspace"
+                  aria-label="Không cho người khác tạo không gian làm việc"
                   disabled={isSubmitting}
                 />
               </div>
@@ -127,8 +128,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                   )}
                 </div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
-                  You can&apos;t yet delete workspaces and you can only go to the workspace if you are an Admin or a
-                  Member.
+                  Hiện chưa thể xóa không gian làm việc. Bạn chỉ có thể truy cập khi là quản trị viên hoặc thành viên.
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -138,7 +138,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                   stretch="auto"
                   nativeButton={false}
                   render={<Link href="/workspace/create" />}
-                  label="Create workspace"
+                  label="Tạo không gian làm việc"
                 />
               </div>
             </div>
@@ -155,7 +155,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                   stretch="auto"
                   onClick={() => fetchNextWorkspaces()}
                   loading={workspaceLoader === "pagination"}
-                  label="Load more"
+                  label="Tải thêm"
                 />
               </div>
             )}

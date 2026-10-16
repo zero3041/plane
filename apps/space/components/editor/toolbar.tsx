@@ -103,7 +103,7 @@ export function IssueCommentToolbar(props: Props) {
               variant="primary"
               size="sm"
               stretch="auto"
-              label="Comment"
+              label="Bình luận"
               onClick={handleSubmit}
               disabled={isCommentEmpty}
               loading={isSubmitting}

@@ -60,7 +60,7 @@ export const TopNavigationRoot = observer(function TopNavigationRoot() {
       </div>
       {/* Additional Actions */}
       <div className="flex flex-1 shrink-0 items-center justify-end gap-1">
-        <Tooltip label="Inbox" side="bottom">
+        <Tooltip label="Hộp thư đến" side="bottom">
           <AppSidebarItem
             variant="link"
             item={{

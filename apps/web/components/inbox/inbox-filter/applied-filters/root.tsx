@@ -30,15 +30,15 @@ export const InboxIssueAppliedFilters = observer(function InboxIssueAppliedFilte
       {/* priority */}
       <InboxIssueAppliedFiltersPriority />
       {/* assignees */}
-      <InboxIssueAppliedFiltersMember filterKey="assignees" label="Assignees" />
+      <InboxIssueAppliedFiltersMember filterKey="assignees" label="Người được giao" />
       {/* created_by */}
-      <InboxIssueAppliedFiltersMember filterKey="created_by" label="Created By" />
+      <InboxIssueAppliedFiltersMember filterKey="created_by" label="Người tạo" />
       {/* label */}
       <InboxIssueAppliedFiltersLabel />
       {/* created_at */}
-      <InboxIssueAppliedFiltersDate filterKey="created_at" label="Created date" />
+      <InboxIssueAppliedFiltersDate filterKey="created_at" label="Ngày tạo" />
       {/* updated_at */}
-      <InboxIssueAppliedFiltersDate filterKey="updated_at" label="Updated date" />
+      <InboxIssueAppliedFiltersDate filterKey="updated_at" label="Ngày cập nhật" />
     </Header>
   );
 });

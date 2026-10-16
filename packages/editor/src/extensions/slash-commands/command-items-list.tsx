@@ -64,8 +64,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "text",
             key: "text",
-            title: "Text",
-            description: "Just start typing with plain text.",
+            title: "Văn bản",
+            description: "Bắt đầu nhập văn bản thuần.",
             searchTerms: ["p", "paragraph"],
             icon: <TextOutline className="size-3.5" />,
             command: ({ editor, range }) => setText(editor, range),
@@ -73,8 +73,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h1",
             key: "h1",
-            title: "Heading 1",
-            description: "Big section heading.",
+            title: "Tiêu đề 1",
+            description: "Tiêu đề mục lớn.",
             searchTerms: ["title", "big", "large"],
             icon: <H1Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 1, range),
@@ -82,8 +82,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h2",
             key: "h2",
-            title: "Heading 2",
-            description: "Medium section heading.",
+            title: "Tiêu đề 2",
+            description: "Tiêu đề mục vừa.",
             searchTerms: ["subtitle", "medium"],
             icon: <H2Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 2, range),
@@ -91,8 +91,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h3",
             key: "h3",
-            title: "Heading 3",
-            description: "Small section heading.",
+            title: "Tiêu đề 3",
+            description: "Tiêu đề mục nhỏ.",
             searchTerms: ["subtitle", "small"],
             icon: <H3Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 3, range),
@@ -100,8 +100,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h4",
             key: "h4",
-            title: "Heading 4",
-            description: "Small section heading.",
+            title: "Tiêu đề 4",
+            description: "Tiêu đề mục nhỏ.",
             searchTerms: ["subtitle", "small"],
             icon: <H4Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 4, range),
@@ -109,8 +109,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h5",
             key: "h5",
-            title: "Heading 5",
-            description: "Small section heading.",
+            title: "Tiêu đề 5",
+            description: "Tiêu đề mục nhỏ.",
             searchTerms: ["subtitle", "small"],
             icon: <H5Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 5, range),
@@ -118,8 +118,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "h6",
             key: "h6",
-            title: "Heading 6",
-            description: "Small section heading.",
+            title: "Tiêu đề 6",
+            description: "Tiêu đề mục nhỏ.",
             searchTerms: ["subtitle", "small"],
             icon: <H6Outline className="size-3.5" />,
             command: ({ editor, range }) => toggleHeading(editor, 6, range),
@@ -128,8 +128,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "numbered-list",
             key: "numbered-list",
-            title: "Numbered list",
-            description: "Create a numbered list.",
+            title: "Danh sách đánh số",
+            description: "Tạo danh sách đánh số.",
             searchTerms: ["ordered"],
             icon: <NumberedListOutline className="size-3.5" />,
             command: ({ editor, range }) => toggleOrderedList(editor, range),
@@ -137,8 +137,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "bulleted-list",
             key: "bulleted-list",
-            title: "Bulleted list",
-            description: "Create a bulleted list.",
+            title: "Danh sách dấu đầu dòng",
+            description: "Tạo danh sách dấu đầu dòng.",
             searchTerms: ["unordered", "point"],
             icon: <ListOutline className="size-3.5" />,
             command: ({ editor, range }) => toggleBulletList(editor, range),
@@ -146,8 +146,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "to-do-list",
             key: "to-do-list",
-            title: "To-do list",
-            description: "Create a to-do list.",
+            title: "Danh sách việc cần làm",
+            description: "Tạo danh sách việc cần làm.",
             searchTerms: ["todo", "task", "list", "check", "checkbox"],
             icon: <ToDoOutline className="size-3.5" />,
             command: ({ editor, range }) => toggleTaskList(editor, range),
@@ -155,8 +155,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "table",
             key: "table",
-            title: "Table",
-            description: "Create a table",
+            title: "Bảng",
+            description: "Tạo bảng",
             searchTerms: ["table", "cell", "db", "data", "tabular"],
             icon: <TableEditorOutline className="size-3.5" />,
             command: ({ editor, range }) => insertTableCommand(editor, range),
@@ -164,8 +164,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "quote",
             key: "quote",
-            title: "Quote",
-            description: "Capture a quote.",
+            title: "Trích dẫn",
+            description: "Thêm trích dẫn.",
             searchTerms: ["blockquote"],
             icon: <QuoteOutline className="size-3.5" />,
             command: ({ editor, range }) => toggleBlockquote(editor, range),
@@ -173,8 +173,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "code",
             key: "code",
-            title: "Code",
-            description: "Capture a code snippet.",
+            title: "Mã",
+            description: "Thêm đoạn mã.",
             searchTerms: ["codeblock"],
             icon: <CodeOutline className="size-3.5" />,
             command: ({ editor, range }) => editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
@@ -182,17 +182,17 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "callout",
             key: "callout",
-            title: "Callout",
+            title: "Khung chú ý",
             icon: <ChatOutline className="size-3.5" />,
-            description: "Insert callout",
+            description: "Chèn khung chú ý",
             searchTerms: ["callout", "comment", "message", "info", "alert"],
             command: ({ editor, range }: CommandProps) => insertCallout(editor, range),
           },
           {
             commandKey: "divider",
             key: "divider",
-            title: "Divider",
-            description: "Visually divide blocks.",
+            title: "Đường phân cách",
+            description: "Phân tách các khối nội dung.",
             searchTerms: ["line", "divider", "horizontal", "rule", "separate"],
             icon: <MinusSquareOutline className="size-3.5" />,
             command: ({ editor, range }) => editor.chain().focus().deleteRange(range).setHorizontalRule().run(),
@@ -200,8 +200,8 @@ export const getSlashCommandFilteredSections =
           {
             commandKey: "emoji",
             key: "emoji",
-            title: "Emoji",
-            description: "Insert an emoji",
+            title: "Biểu tượng cảm xúc",
+            description: "Chèn biểu tượng cảm xúc",
             searchTerms: ["emoji", "icons", "reaction", "emoticon", "emotags"],
             icon: <Smile className="size-3.5" />,
             command: ({ editor, range }) => {
@@ -212,13 +212,13 @@ export const getSlashCommandFilteredSections =
       },
       {
         key: "text-colors",
-        title: "Colors",
+        title: "Màu sắc",
         items: [
           {
             commandKey: "text-color",
             key: "text-color-default",
-            title: "Default",
-            description: "Change text color",
+            title: "Mặc định",
+            description: "Đổi màu chữ",
             searchTerms: ["color", "text", "default"],
             icon: <TextOutline className="size-3.5 text-primary" />,
             command: ({ editor, range }) => toggleTextColor(undefined, editor, range),
@@ -229,7 +229,7 @@ export const getSlashCommandFilteredSections =
                 commandKey: "text-color",
                 key: `text-color-${color.key}`,
                 title: color.label,
-                description: "Change text color",
+                description: "Đổi màu chữ",
                 searchTerms: ["color", "text", color.label],
 
                 icon: (
@@ -248,13 +248,13 @@ export const getSlashCommandFilteredSections =
       },
       {
         key: "background-colors",
-        title: "Background colors",
+        title: "Màu nền",
         items: [
           {
             commandKey: "background-color",
             key: "background-color-default",
-            title: "Default background",
-            description: "Change background color",
+            title: "Nền mặc định",
+            description: "Đổi màu nền",
             searchTerms: ["color", "bg", "background", "default"],
             icon: <TextOutline className="size-3.5" />,
             iconContainerStyle: {
@@ -270,7 +270,7 @@ export const getSlashCommandFilteredSections =
                 commandKey: "background-color",
                 key: `background-color-${color.key}`,
                 title: color.label,
-                description: "Change background color",
+                description: "Đổi màu nền",
                 searchTerms: ["color", "bg", "background", color.label],
                 icon: <TextOutline className="size-3.5" />,
 
@@ -291,9 +291,9 @@ export const getSlashCommandFilteredSections =
       internalAdditionalOptions.push({
         commandKey: "image",
         key: "image",
-        title: "Image",
+        title: "Hình ảnh",
         icon: <ImageOutline className="size-3.5" />,
-        description: "Insert an image",
+        description: "Chèn hình ảnh",
         searchTerms: ["img", "photo", "picture", "media", "upload"],
         command: ({ editor, range }: CommandProps) => insertImage({ editor, event: "insert", range }),
         section: "general",

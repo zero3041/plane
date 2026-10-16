@@ -99,7 +99,7 @@ export function StateForm(props: TStateForm) {
               id="name"
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder="Tên"
               value={formData?.name}
               onChange={(e) => handleFormData("name", e.target.value)}
               maxLength={100}
@@ -118,7 +118,7 @@ export function StateForm(props: TStateForm) {
               maxRows={8}
               id="description"
               name="description"
-              placeholder="Describe this state for your members."
+              placeholder="Mô tả trạng thái này cho thành viên."
               value={formData?.description ?? ""}
               onChange={(e) => handleFormData("description", e.target.value)}
             />
@@ -139,7 +139,7 @@ export function StateForm(props: TStateForm) {
             variant="secondary"
             size="md"
             stretch="auto"
-            label="Cancel"
+            label="Hủy"
             disabled={buttonDisabled}
             onClick={onCancel}
           />

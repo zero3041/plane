@@ -83,7 +83,7 @@ export const AuthEmailForm = observer(function AuthEmailForm(props: TAuthEmailFo
           {email.length > 0 && (
             <button
               type="button"
-              aria-label="Clear email"
+              aria-label="Xóa email"
               onClick={() => {
                 setEmail("");
                 inputRef.current?.focus();
@@ -108,7 +108,7 @@ export const AuthEmailForm = observer(function AuthEmailForm(props: TAuthEmailFo
         stretch="full"
         disabled={isButtonDisabled}
         loading={isSubmitting}
-        label="Continue"
+        label="Tiếp tục"
       />
     </form>
   );

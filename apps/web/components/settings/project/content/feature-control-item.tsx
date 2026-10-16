@@ -43,11 +43,11 @@ export const ProjectSettingsFeatureControlItem = observer(function ProjectSettin
     setPromiseToast(updateProjectPromise, {
       loading: "Updating project feature...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Project feature updated successfully.",
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Something went wrong while updating project feature. Please try again.",
       },
     });

@@ -53,8 +53,8 @@ export function IssueLinkDetail(props: TIssueLinkDetail) {
             copyTextToClipboard(linkDetail.url);
             setToast({
               type: "success",
-              title: "Link copied!",
-              message: "Link copied to clipboard",
+              title: "Đã sao chép liên kết!",
+              message: "Đã sao chép liên kết vào bộ nhớ tạm",
             });
           }}
         >

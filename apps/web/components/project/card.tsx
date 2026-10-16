@@ -96,7 +96,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
     setPromiseToast(addToFavoritePromise, {
       loading: "Adding project to favorites...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Project added to favorites.",
         // propel: the callback exists for its side effect; a toast action is data, and there is
         // none here, so it returns an empty list rather than an empty fragment.
@@ -106,7 +106,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
         },
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Couldn't add the project to favorites. Please try again.",
       },
     });
@@ -119,11 +119,11 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
     setPromiseToast(removeFromFavoritePromise, {
       loading: "Removing project from favorites...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Project removed from favorites.",
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Couldn't remove the project from favorites. Please try again.",
       },
     });
@@ -134,8 +134,8 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
     copyUrlToClipboard(projectLink).then(() =>
       setToast({
         type: "info",
-        title: "Link Copied!",
-        message: "Project link copied to clipboard.",
+        title: "Đã sao chép liên kết!",
+        message: "Đã sao chép liên kết dự án vào bộ nhớ tạm.",
       })
     );
   const handleOpenInNewTab = () => window.open(`/${projectLink}`, "_blank");
@@ -144,42 +144,42 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
     {
       key: "settings",
       action: () => router.push(`/${workspaceSlug}/settings/projects/${project.id}`),
-      title: "Settings",
+      title: "Cài đặt",
       icon: SettingsOutline,
       shouldRender: !isArchived && (hasAdminRole || hasMemberRole),
     },
     {
       key: "join",
       action: () => setJoinProjectModal(true),
-      title: "Join",
+      title: "Tham gia",
       icon: UserPlusOutline,
       shouldRender: !isMemberOfProject && !isArchived,
     },
     {
       key: "open-new-tab",
       action: handleOpenInNewTab,
-      title: "Open in new tab",
+      title: "Mở trong tab mới",
       icon: NewTabOutline,
       shouldRender: !isMemberOfProject && !isArchived,
     },
     {
       key: "copy-link",
       action: () => void handleCopyText(),
-      title: "Copy link",
+      title: "Sao chép liên kết",
       icon: LinkOutline,
       shouldRender: !isArchived,
     },
     {
       key: "restore",
       action: () => setRestoreProject(true),
-      title: "Restore",
+      title: "Khôi phục",
       icon: RestoreOutline,
       shouldRender: isArchived && hasAdminRole,
     },
     {
       key: "delete",
       action: () => setDeleteProjectModal(true),
-      title: "Delete",
+      title: "Xóa",
       icon: DeleteOutline,
       shouldRender: isArchived && hasAdminRole,
     },
@@ -256,7 +256,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
               <div data-prevent-progress className="flex h-full flex-shrink-0 items-center gap-2">
                 <button
                   type="button"
-                  aria-label="Copy link"
+                  aria-label="Sao chép liên kết"
                   className="flex h-6 w-6 items-center justify-center rounded-sm bg-white/10"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -317,10 +317,10 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
                     </AvatarGroup>
                   </div>
                 ) : (
-                  <span className="text-13 text-placeholder italic">No Member Yet</span>
+                  <span className="text-13 text-placeholder italic">Chưa có thành viên</span>
                 )}
               </Tooltip>
-              {isArchived && <div className="text-11 font-medium text-placeholder">Archived</div>}
+              {isArchived && <div className="text-11 font-medium text-placeholder">Đã lưu trữ</div>}
             </div>
             {isArchived ? (
               hasAdminRole && (
@@ -329,7 +329,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
                     variant="ghost"
                     size="xs"
                     stretch="auto"
-                    label="Restore"
+                    label="Khôi phục"
                     icon={<Icon icon={RestoreOutline} />}
                     onClick={(e) => {
                       e.preventDefault();
@@ -340,7 +340,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
                   <IconButton
                     variant="ghost"
                     size="xs"
-                    aria-label="Delete"
+                    aria-label="Xóa"
                     icon={<Icon icon={DeleteOutline} />}
                     onClick={(e) => {
                       e.preventDefault();
@@ -366,7 +366,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
                   ) : (
                     <span className="flex items-center gap-1 text-13 text-placeholder">
                       <TickOutline className="h-3.5 w-3.5" />
-                      Joined
+                      Đã tham gia
                     </span>
                   ))}
                 {!isMemberOfProject && (
@@ -375,7 +375,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
                       variant="ghost"
                       size="sm"
                       stretch="auto"
-                      label="Join"
+                      label="Tham gia"
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();

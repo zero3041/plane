@@ -37,7 +37,7 @@ export function ImageAlignmentAction(props: Props) {
 
   return (
     <div ref={dropdownRef} className="relative h-full">
-      <Tooltip disabled={isTouchDevice} label="Align">
+      <Tooltip disabled={isTouchDevice} label="Căn chỉnh">
         <button
           type="button"
           className="flex h-full items-center gap-1 text-white/60 transition-colors hover:text-white"

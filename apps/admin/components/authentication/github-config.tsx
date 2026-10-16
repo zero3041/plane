@@ -33,7 +33,7 @@ export const GithubConfiguration = observer(function GithubConfiguration(props: 
     <>
       {isGithubConfigured ? (
         <div className="flex items-center gap-4">
-          <AnchorButton variant="primary" size="sm" render={<Link href="/authentication/github" />} label="Edit" />
+          <AnchorButton variant="primary" size="sm" render={<Link href="/authentication/github" />} label="Chỉnh sửa" />
           <Switch
             checked={Boolean(parseInt(enableGithubConfig))}
             onCheckedChange={() => {
@@ -41,7 +41,7 @@ export const GithubConfiguration = observer(function GithubConfiguration(props: 
               updateConfig("IS_GITHUB_ENABLED", newEnableGithubConfig);
             }}
             size="sm"
-            aria-label="Enable GitHub"
+            aria-label="Bật GitHub"
             disabled={disabled}
           />
         </div>
@@ -53,7 +53,7 @@ export const GithubConfiguration = observer(function GithubConfiguration(props: 
           nativeButton={false}
           render={<Link href="/authentication/github" />}
           icon={<SettingsOutline className="h-4 w-4 p-0.5 text-tertiary" />}
-          label="Configure"
+          label="Cấu hình"
         />
       )}
     </>

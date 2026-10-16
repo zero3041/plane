@@ -33,7 +33,7 @@ export const GoogleConfiguration = observer(function GoogleConfiguration(props: 
     <>
       {isGoogleConfigured ? (
         <div className="flex items-center gap-4">
-          <AnchorButton variant="primary" size="sm" render={<Link href="/authentication/google" />} label="Edit" />
+          <AnchorButton variant="primary" size="sm" render={<Link href="/authentication/google" />} label="Chỉnh sửa" />
           <Switch
             checked={Boolean(parseInt(enableGoogleConfig))}
             onCheckedChange={() => {
@@ -41,7 +41,7 @@ export const GoogleConfiguration = observer(function GoogleConfiguration(props: 
               updateConfig("IS_GOOGLE_ENABLED", newEnableGoogleConfig);
             }}
             size="sm"
-            aria-label="Enable Google"
+            aria-label="Bật Google"
             disabled={disabled}
           />
         </div>
@@ -53,7 +53,7 @@ export const GoogleConfiguration = observer(function GoogleConfiguration(props: 
           nativeButton={false}
           render={<Link href="/authentication/google" />}
           icon={<SettingsOutline className="h-4 w-4 p-0.5 text-tertiary" />}
-          label="Configure"
+          label="Cấu hình"
         />
       )}
     </>

@@ -79,14 +79,14 @@ export const HeaderGroupByCard = observer(function HeaderGroupByCard(props: IHea
 
       setToast({
         type: "success",
-        title: "Success!",
-        message: "Work items added to the cycle successfully.",
+        title: "Thành công!",
+        message: "Đã thêm mục công việc vào chu kỳ.",
       });
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Selected work items could not be added to the cycle. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể thêm các mục công việc đã chọn vào chu kỳ. Vui lòng thử lại.",
       });
     }
   };
@@ -139,13 +139,13 @@ export const HeaderGroupByCard = observer(function HeaderGroupByCard(props: IHea
               />
               <MenuContent side="bottom" align="start">
                 <MenuItem
-                  label="Create work item"
+                  label="Tạo mục công việc"
                   onClick={() => {
                     setIsOpen(true);
                   }}
                 />
                 <MenuItem
-                  label="Add an existing work item"
+                  label="Thêm mục công việc đã có"
                   onClick={() => {
                     setOpenExistingIssueListModal(true);
                   }}

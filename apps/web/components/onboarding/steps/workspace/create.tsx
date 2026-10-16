@@ -133,7 +133,7 @@ export const WorkspaceCreateStep = observer(function WorkspaceCreateStep({
         void handleSubmit(handleCreateWorkspace)(e);
       }}
     >
-      <CommonOnboardingHeader title="Create your workspace" description="All your work — unified." />
+      <CommonOnboardingHeader title="Tạo không gian làm việc" description="Tất cả công việc của bạn ở cùng một nơi." />
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
           <label
@@ -167,7 +167,7 @@ export const WorkspaceCreateStep = observer(function WorkspaceCreateStep({
                       shouldValidate: true,
                     });
                   }}
-                  placeholder="Enter workspace name"
+                  placeholder="Nhập tên không gian làm việc"
                   ref={ref}
                   className={cn(
                     "w-full rounded-md border border-strong bg-surface-1 px-3 py-2 text-secondary transition-all duration-200 placeholder:text-placeholder focus:border-transparent focus:ring-2 focus:ring-accent-strong focus:outline-none",
@@ -300,7 +300,7 @@ export const WorkspaceCreateStep = observer(function WorkspaceCreateStep({
             size="lg"
             stretch="full"
             onClick={handleCurrentViewChange}
-            label="Join existing workspace"
+            label="Tham gia không gian làm việc hiện có"
           />
         )}
       </div>

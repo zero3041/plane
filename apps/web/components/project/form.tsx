@@ -284,7 +284,7 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
               required: t("name_is_required"),
               maxLength: {
                 value: 255,
-                message: "Project name should be less than 255 characters",
+                message: "Tên dự án phải dưới 255 ký tự",
               },
             }}
             render={({ field: { value, onChange, ref } }) => (
@@ -333,7 +333,7 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-1">
-            <h4 className="text-13">Project ID</h4>
+            <h4 className="text-13">ID dự án</h4>
             <div className="relative">
               <Controller
                 control={control}

@@ -32,7 +32,7 @@ export const HamburgerToggle = observer(function HamburgerToggle() {
   return (
     <button
       type="button"
-      aria-label="Toggle sidebar"
+      aria-label="Thu gọn hoặc mở rộng thanh bên"
       className="group flex size-7 cursor-pointer items-center justify-center rounded-sm bg-layer-1 transition-all hover:bg-layer-1-hover md:hidden"
       onClick={() => toggleSidebar(!isSidebarCollapsed)}
     >
@@ -76,7 +76,7 @@ export const AdminHeader = observer(function AdminHeader() {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink
-                  label="Settings"
+                  label="Cài đặt"
                   icon={<Icon icon={SettingsOutline} tint="tertiary" />}
                   render={<Link href="/general/" />}
                 />

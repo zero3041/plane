@@ -172,7 +172,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                       trigger={<span className="truncate text-13 font-medium break-words">{projectDetails.name}</span>}
                       trailing={
                         project.assigned_issues > 0 ? (
-                          <Tooltip label="Completion percentage" side="left" disabled={isMobile}>
+                          <Tooltip label="Tỷ lệ hoàn thành" side="left" disabled={isMobile}>
                             <div
                               className={`rounded-sm px-1 py-0.5 text-11 font-medium ${
                                 completedIssuePercentage <= 35
@@ -225,7 +225,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
                               <div className="h-2.5 w-2.5 rounded-xs bg-[#203b80]" />
-                              Created
+                              Đã tạo
                             </div>
                             <div className="font-medium">
                               {project.created_issues} {t("issues")}
@@ -234,7 +234,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
                               <div className="h-2.5 w-2.5 rounded-xs bg-[#3f76ff]" />
-                              Assigned
+                              Đã giao
                             </div>
                             <div className="font-medium">
                               {project.assigned_issues} {t("issues")}
@@ -243,7 +243,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
                               <div className="h-2.5 w-2.5 rounded-xs bg-[#f59e0b]" />
-                              Due
+                              Đến hạn
                             </div>
                             <div className="font-medium">
                               {project.pending_issues} {t("issues")}
@@ -252,7 +252,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
                               <div className="h-2.5 w-2.5 rounded-xs bg-[#16a34a]" />
-                              Completed
+                              Đã hoàn thành
                             </div>
                             <div className="font-medium">
                               {project.completed_issues} {t("issues")}

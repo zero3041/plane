@@ -42,14 +42,14 @@ const InstanceGiteaAuthenticationPage = observer(function InstanceGiteaAuthentic
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Đang lưu cấu hình",
       success: {
-        title: "Configuration saved",
-        message: () => `Gitea authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Đã lưu cấu hình",
+        message: () => `Xác thực Gitea hiện ${value === "1" ? "đang bật" : "đã tắt"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Lỗi",
+        message: () => "Không thể lưu cấu hình",
       },
     });
 
@@ -70,11 +70,11 @@ const InstanceGiteaAuthenticationPage = observer(function InstanceGiteaAuthentic
       customHeader={
         <AuthenticationMethodCard
           name="Gitea"
-          description="Allow members to login or sign up to plane with their Gitea accounts."
+          description="Cho phép thành viên đăng nhập hoặc đăng ký Plane bằng tài khoản Gitea."
           icon={<img src={giteaLogo} height={24} width={24} alt="Gitea Logo" />}
           config={
             <Switch
-              aria-label="Enable Gitea authentication"
+              aria-label="Bật xác thực Gitea"
               checked={isGiteaEnabled}
               onCheckedChange={() => {
                 updateConfig("IS_GITEA_ENABLED", isGiteaEnabled ? "0" : "1");

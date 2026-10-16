@@ -47,8 +47,8 @@ export const usePowerKModuleContextBasedActions = (): TPowerKCommandConfig[] => 
         () => {
           setToast({
             type: "error",
-            title: "Error!",
-            message: "Module could not be updated. Please try again.",
+            title: "Lỗi!",
+            message: "Không thể cập nhật nhóm công việc. Vui lòng thử lại.",
           });
         }
       );
@@ -77,7 +77,7 @@ export const usePowerKModuleContextBasedActions = (): TPowerKCommandConfig[] => 
     } catch {
       setToast({
         type: "error",
-        title: "Some error occurred",
+        title: "Đã xảy ra lỗi",
       });
     }
   }, [addModuleToFavorites, removeModuleFromFavorites, workspaceSlug, moduleDetails, isFavorite]);

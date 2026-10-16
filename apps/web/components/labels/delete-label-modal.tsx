@@ -51,7 +51,7 @@ export const DeleteLabelModal = observer(function DeleteLabelModal(props: Props)
           : "Label could not be deleted. Please try again.";
       setToast({
         type: "error",
-        title: "Error!",
+        title: "Lỗi!",
         message: error,
       });
     }
@@ -63,7 +63,7 @@ export const DeleteLabelModal = observer(function DeleteLabelModal(props: Props)
       handleSubmit={handleDeletion}
       isSubmitting={isDeleteLoading}
       isOpen={isOpen}
-      title="Delete Label"
+      title="Xóa nhãn"
       content={
         <>
           Are you sure you want to delete <span className="font-medium text-primary">{data?.name}</span>? This will

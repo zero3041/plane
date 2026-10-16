@@ -58,14 +58,14 @@ export class ProfileStore implements IUserProfileStore {
     is_onboarded: false,
     is_tour_completed: false,
     use_case: undefined,
-    billing_address_country: undefined,
+    billing_address_country: "VIETNAM",
     billing_address: undefined,
     has_billing_address: false,
     has_marketing_email_consent: false,
     created_at: "",
     updated_at: "",
-    language: "",
-    start_of_the_week: EStartOfTheWeek.SUNDAY,
+    language: "vi-VN",
+    start_of_the_week: EStartOfTheWeek.MONDAY,
   };
 
   // services

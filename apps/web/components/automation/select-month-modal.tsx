@@ -72,10 +72,10 @@ export function SelectMonthModal({ type, initialValues, isOpen, handleClose, han
           ref={ref}
           size="2xl"
           orientation="vertical"
-          placeholder="Enter Months"
+          placeholder="Nhập số tháng"
           min={1}
           max={12}
-          endIcon={<span className="text-13 text-secondary">Months</span>}
+          endIcon={<span className="text-13 text-secondary">Tháng</span>}
           error={errors[name] ? "Select a month between 1 and 12." : undefined}
         />
       )}
@@ -94,7 +94,7 @@ export function SelectMonthModal({ type, initialValues, isOpen, handleClose, han
           <DialogMain>
             <DialogHeader>
               <DialogHeading>
-                <DialogTitle>Customize time range</DialogTitle>
+                <DialogTitle>Tùy chỉnh khoảng thời gian</DialogTitle>
               </DialogHeading>
             </DialogHeader>
             <DialogBody>
@@ -104,7 +104,7 @@ export function SelectMonthModal({ type, initialValues, isOpen, handleClose, han
             </DialogBody>
           </DialogMain>
           <DialogActions>
-            <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={onClose} />
+            <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={onClose} />
             <Button
               variant="primary"
               size="md"

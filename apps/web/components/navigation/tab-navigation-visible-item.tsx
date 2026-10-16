@@ -64,7 +64,7 @@ export function TabNavigationVisibleItem({
                 onHide(item.key);
               }}
               icon={<Icon icon={UnpinOutline} />}
-              label="Hide in more menu"
+              label="Ẩn trong menu Thêm"
             />
           </ContextMenuContent>
         </ContextMenu>

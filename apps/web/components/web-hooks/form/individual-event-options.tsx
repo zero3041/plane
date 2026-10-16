@@ -7,37 +7,37 @@
 import type { Control } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CheckboxField } from "@makeplane/propel/components/checkbox-field";
+import { useTranslation } from "@plane/i18n";
 import type { IWebhook } from "@plane/types";
 
-export const INDIVIDUAL_WEBHOOK_OPTIONS: {
+export const INDIVIDUAL_WEBHOOK_OPTIONS: ({
   key: keyof IWebhook;
-  label: string;
   description: string;
-}[] = [
+} & ({ labelKey: string } | { label: string }))[] = [
   {
     key: "project",
-    label: "Projects",
-    description: "Project created, updated, or deleted",
+    labelKey: "projects",
+    description: "Dự án được tạo, cập nhật hoặc xóa",
   },
   {
     key: "cycle",
-    label: "Cycles",
-    description: "Cycle created, updated, or deleted",
+    labelKey: "cycles",
+    description: "Chu kỳ được tạo, cập nhật hoặc xóa",
   },
   {
     key: "issue",
-    label: "Work items",
-    description: "Work item created, updated, deleted, added to a cycle or module",
+    labelKey: "work_items",
+    description: "Mục công việc được tạo, cập nhật, xóa hoặc thêm vào chu kỳ hay mô-đun",
   },
   {
     key: "module",
-    label: "Modules",
-    description: "Module created, updated, or deleted",
+    labelKey: "modules",
+    description: "Mô-đun được tạo, cập nhật hoặc xóa",
   },
   {
     key: "issue_comment",
-    label: "Work item comments",
-    description: "Comment posted, updated, or deleted",
+    label: "Bình luận mục công việc",
+    description: "Bình luận được đăng, cập nhật hoặc xóa",
   },
 ];
 
@@ -46,6 +46,7 @@ type Props = {
 };
 
 export function WebhookIndividualEventOptions({ control }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 gap-x-4 gap-y-8 px-6 lg:grid-cols-2">
       {INDIVIDUAL_WEBHOOK_OPTIONS.map((option) => (
@@ -56,7 +57,7 @@ export function WebhookIndividualEventOptions({ control }: Props) {
           render={({ field: { onChange, value } }) => (
             <CheckboxField
               name={option.key}
-              label={option.label}
+              label={"labelKey" in option ? t(option.labelKey) : option.label}
               size="lg"
               description={option.description}
               stretch="full"

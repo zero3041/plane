@@ -244,7 +244,7 @@ export function FavoriteFolder(props: Props) {
                   />
                   <MenuItem
                     icon={<Icon icon={DraftsOutline} tint="tertiary" />}
-                    label="Rename Folder"
+                    label="Đổi tên thư mục"
                     onClick={() => setFolderToRename(favorite.id)}
                   />
                 </MenuContent>

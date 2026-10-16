@@ -81,7 +81,7 @@ export const DescriptionVersionsModal = observer(function DescriptionVersionsMod
     setToast({
       type: "success",
       title: t("toast.success"),
-      message: "Markdown copied to clipboard.",
+      message: "Đã sao chép Markdown vào bộ nhớ tạm.",
     });
   }, [t]);
 

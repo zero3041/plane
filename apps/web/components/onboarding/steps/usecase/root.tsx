@@ -53,14 +53,14 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
       [await updateUserProfile(profileUpdatePayload)];
       setToast({
         type: "success",
-        title: "Success",
-        message: "Profile setup completed!",
+        title: "Thành công",
+        message: "Đã thiết lập hồ sơ!",
       });
     } catch {
       setToast({
         type: "error",
-        title: "Error",
-        message: "Profile setup failed. Please try again!",
+        title: "Lỗi",
+        message: "Không thể thiết lập hồ sơ. Vui lòng thử lại!",
       });
     }
   };
@@ -83,11 +83,14 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
       {/* Header */}
-      <CommonOnboardingHeader title="What brings you to Plane?" description="Tell us your goals and team size." />
+      <CommonOnboardingHeader
+        title="Bạn dùng Plane để làm gì?"
+        description="Cho chúng tôi biết mục tiêu và quy mô nhóm."
+      />
 
       {/* Use Case Selection */}
       <div className="flex flex-col gap-3">
-        <p className="text-body-sm-semibold text-placeholder">Select one or more</p>
+        <p className="text-body-sm-semibold text-placeholder">Chọn một hoặc nhiều</p>
 
         <Controller
           control={control}
@@ -147,8 +150,8 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
 
       {/* Action Buttons */}
       <div className="space-y-3">
-        <Button variant="primary" type="submit" stretch="full" size="lg" disabled={isButtonDisabled} label="Continue" />
-        <Button variant="ghost" onClick={handleSkip} stretch="full" size="lg" label="Skip" />
+        <Button variant="primary" type="submit" stretch="full" size="lg" disabled={isButtonDisabled} label="Tiếp tục" />
+        <Button variant="ghost" onClick={handleSkip} stretch="full" size="lg" label="Bỏ qua" />
       </div>
     </form>
   );

@@ -67,7 +67,7 @@ export function StickyEditorToolbar(props: Props) {
       <div className="my-auto flex gap-4" ref={colorPaletteRef}>
         {/* color palette */}
         {showColorPalette && <ColorPalette handleUpdate={handleColorChange} />}
-        <Tooltip label="Background color">
+        <Tooltip label="Màu nền">
           <button type="button" onClick={() => setShowColorPalette(!showColorPalette)} className="flex text-primary/50">
             <PaletteOutline className="my-auto size-4" />
           </button>
@@ -103,7 +103,7 @@ export function StickyEditorToolbar(props: Props) {
         </div>
       </div>
       {/* delete action */}
-      <Tooltip label="Delete">
+      <Tooltip label="Xóa">
         <button type="button" onClick={handleDelete} className="my-auto text-primary/50">
           <DeleteOutline className="size-4" />
         </button>

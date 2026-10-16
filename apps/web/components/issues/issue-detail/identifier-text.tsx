@@ -35,7 +35,7 @@ export function IdentifierText(props: TIdentifierTextProps) {
         .then(() => {
           setToast({
             type: "success",
-            title: "Work item ID copied to clipboard",
+            title: "Đã sao chép ID mục công việc vào bộ nhớ tạm",
           });
           return;
         })
@@ -49,7 +49,7 @@ export function IdentifierText(props: TIdentifierTextProps) {
   const variantClassName = VARIANT_MAP[variant];
 
   return (
-    <Tooltip label="Click to copy" disabled={!enableClickToCopyIdentifier}>
+    <Tooltip label="Nhấp để sao chép" disabled={!enableClickToCopyIdentifier}>
       <button
         type="button"
         className={cn("text-12 font-medium whitespace-nowrap text-tertiary", textSizeClassName, variantClassName, {

@@ -113,10 +113,7 @@ export function InstanceSignInForm() {
       <AuthHeader />
       <div className="mt-10 flex w-full flex-grow flex-col items-center justify-center py-6">
         <div className="relative flex w-full max-w-[22.5rem] flex-col gap-6">
-          <FormHeader
-            heading="Manage your Plane instance"
-            subHeading="Configure instance-wide settings to secure your instance"
-          />
+          <FormHeader heading="Quản lý máy chủ Plane" subHeading="Cấu hình cài đặt chung để bảo vệ máy chủ" />
           <form
             className="space-y-4"
             method="POST"
@@ -152,7 +149,7 @@ export function InstanceSignInForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
-                Password <span className="text-danger-primary">*</span>
+                Mật khẩu <span className="text-danger-primary">*</span>
               </label>
               <InputGroup size="lg">
                 <Input
@@ -160,7 +157,7 @@ export function InstanceSignInForm() {
                   id="password"
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="Nhập mật khẩu"
                   value={formData.password}
                   onChange={(e) => handleFormChange("password", e.target.value)}
                   autoComplete="off"
@@ -168,7 +165,7 @@ export function InstanceSignInForm() {
                 {showPassword ? (
                   <button
                     type="button"
-                    aria-label="Hide password"
+                    aria-label="Ẩn mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => setShowPassword(false)}
                   >
@@ -177,7 +174,7 @@ export function InstanceSignInForm() {
                 ) : (
                   <button
                     type="button"
-                    aria-label="Show password"
+                    aria-label="Hiện mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => setShowPassword(true)}
                   >
@@ -194,7 +191,7 @@ export function InstanceSignInForm() {
                 stretch="full"
                 disabled={isButtonDisabled}
                 loading={isSubmitting}
-                label="Sign in"
+                label="Đăng nhập"
               />
             </div>
           </form>

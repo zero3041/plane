@@ -287,8 +287,8 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
     } catch {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Failed to move work item to project. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể chuyển mục công việc sang dự án. Vui lòng thử lại.",
       });
     } finally {
       setIsMoving(false);
@@ -452,8 +452,8 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
                     } else {
                       setToast({
                         type: "error",
-                        title: "Error!",
-                        message: "Editor is still processing changes. Please wait before proceeding.",
+                        title: "Lỗi!",
+                        message: "Trình soạn thảo đang xử lý thay đổi. Vui lòng đợi trước khi tiếp tục.",
                       });
                     }
                   }}

@@ -49,7 +49,7 @@ export const IssueAttachmentsUploadDetails = observer(function IssueAttachmentsU
       </div>
       <div className="flex flex-shrink-0 items-center gap-2">
         <span className="flex-shrink-0">
-          <CircularProgress value={uploadStatus.progress} size="md" variant="brand" aria-label="Upload progress" />
+          <CircularProgress value={uploadStatus.progress} size="md" variant="brand" aria-label="Tiến độ tải lên" />
         </span>
         <div className="flex-shrink-0 text-13 font-medium">{uploadStatus.progress}% done</div>
       </div>

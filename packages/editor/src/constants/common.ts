@@ -201,49 +201,49 @@ export const COLORS_LIST: {
 }[] = [
   {
     key: "gray",
-    label: "Gray",
+    label: "Xám",
     textColor: "var(--editor-colors-gray-text)",
     backgroundColor: "var(--editor-colors-gray-background)",
   },
   {
     key: "peach",
-    label: "Peach",
+    label: "Màu đào",
     textColor: "var(--editor-colors-peach-text)",
     backgroundColor: "var(--editor-colors-peach-background)",
   },
   {
     key: "pink",
-    label: "Pink",
+    label: "Hồng",
     textColor: "var(--editor-colors-pink-text)",
     backgroundColor: "var(--editor-colors-pink-background)",
   },
   {
     key: "orange",
-    label: "Orange",
+    label: "Cam",
     textColor: "var(--editor-colors-orange-text)",
     backgroundColor: "var(--editor-colors-orange-background)",
   },
   {
     key: "green",
-    label: "Green",
+    label: "Xanh lá",
     textColor: "var(--editor-colors-green-text)",
     backgroundColor: "var(--editor-colors-green-background)",
   },
   {
     key: "light-blue",
-    label: "Light blue",
+    label: "Xanh dương nhạt",
     textColor: "var(--editor-colors-light-blue-text)",
     backgroundColor: "var(--editor-colors-light-blue-background)",
   },
   {
     key: "dark-blue",
-    label: "Dark blue",
+    label: "Xanh dương đậm",
     textColor: "var(--editor-colors-dark-blue-text)",
     backgroundColor: "var(--editor-colors-dark-blue-background)",
   },
   {
     key: "purple",
-    label: "Purple",
+    label: "Tím",
     textColor: "var(--editor-colors-purple-text)",
     backgroundColor: "var(--editor-colors-purple-background)",
   },
@@ -260,7 +260,7 @@ export const EDITOR_FONT_STYLES: {
   label: string;
   icon: React.FC;
 }[] = [
-  { key: "sans-serif", label: "Sans serif", icon: SansSerifIcon },
-  { key: "serif", label: "Serif", icon: SerifIcon },
-  { key: "monospace", label: "Mono", icon: MonospaceIcon },
+  { key: "sans-serif", label: "Không chân", icon: SansSerifIcon },
+  { key: "serif", label: "Có chân", icon: SerifIcon },
+  { key: "monospace", label: "Đơn cách", icon: MonospaceIcon },
 ];

@@ -21,7 +21,7 @@ export function TransferIssues(props: Props) {
     <div className="-mt-2 mb-4 flex items-center justify-between px-4 pt-6">
       <div className="flex items-center gap-2 text-13 text-secondary">
         <WarningCircleOutline className="h-3.5 w-3.5 text-secondary" />
-        <span>Completed cycles are not editable.</span>
+        <span>Không thể chỉnh sửa chu kỳ đã hoàn thành.</span>
       </div>
 
       {canTransferIssues && (
@@ -34,7 +34,7 @@ export function TransferIssues(props: Props) {
             iconPosition="start"
             onClick={handleClick}
             disabled={disabled}
-            label="Transfer work items"
+            label="Chuyển mục công việc"
           />
         </div>
       )}

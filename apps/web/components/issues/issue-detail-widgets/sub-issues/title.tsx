@@ -45,7 +45,7 @@ export const SubIssuesCollapsibleTitle = observer(function SubIssuesCollapsibleT
           value={percentage}
           size="md"
           variant={percentage === 100 ? "success" : "brand"}
-          aria-label="Sub-work-item progress"
+          aria-label="Tiến độ mục công việc con"
         />
         <span>
           {completedCount}/{totalCount} {t("common.done")}

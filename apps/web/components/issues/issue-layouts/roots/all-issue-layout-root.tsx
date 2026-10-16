@@ -115,8 +115,8 @@ export const AllIssueLayoutRoot = observer(function AllIssueLayoutRoot(props: Pr
   if (!isLoading && !globalViewsLoading && !issuesLoading && !viewDetails && !isDefaultView) {
     return (
       <EmptyStateDetailed
-        title="View does not exist"
-        description="The view you are looking for does not exist or you don't have permission to view it."
+        title="Chế độ xem không tồn tại"
+        description="Chế độ xem này không tồn tại hoặc bạn không có quyền truy cập."
         assetKey="view"
         actions={[
           {

@@ -16,12 +16,12 @@ import DefaultLayout from "@/layouts/default-layout";
 const linkMap = [
   {
     key: "mail_to",
-    label: "Contact Support",
+    label: "Liên hệ hỗ trợ",
     value: "mailto:support@plane.so",
   },
   {
     key: "status",
-    label: "Status Page",
+    label: "Trang trạng thái",
     value: "https://status.plane.so/",
   },
   {
@@ -51,16 +51,16 @@ export function ProdErrorComponent({ onGoHome }: ProdErrorComponentProps) {
             src={maintenanceModeImage}
             height="176"
             width="288"
-            alt="ProjectSettingImg"
+            alt="Hình minh họa lỗi hệ thống"
             className="h-full w-full object-fill object-center"
           />
         </div>
         <div className="relative mt-4 flex w-full flex-col gap-4">
           <div className="flex flex-col gap-2.5">
-            <h1 className="text-left text-18 font-semibold text-primary">&#x1F6A7; Looks like something went wrong!</h1>
+            <h1 className="text-left text-18 font-semibold text-primary">&#x1F6A7; Đã xảy ra lỗi!</h1>
             <span className="text-left text-14 font-medium text-secondary">
-              We track these errors automatically and working on getting things back up and running. If the problem
-              persists feel free to contact us. In the meantime, try refreshing.
+              Chúng tôi đang ghi nhận và khắc phục lỗi. Nếu sự cố tiếp diễn, hãy liên hệ hỗ trợ. Trước mắt, bạn có thể
+              thử tải lại trang.
             </span>
           </div>
 
@@ -80,7 +80,7 @@ export function ProdErrorComponent({ onGoHome }: ProdErrorComponentProps) {
           </div>
 
           <div className="flex items-center justify-start gap-6">
-            <Button variant="primary" size="md" stretch="auto" label="Go to home" onClick={onGoHome} />
+            <Button variant="primary" size="md" stretch="auto" label="Về trang chủ" onClick={onGoHome} />
           </div>
         </div>
       </div>

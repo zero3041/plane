@@ -26,7 +26,7 @@ export const InboxIssueAppliedFiltersStatus = observer(function InboxIssueApplie
   if (filteredValues.length === 0) return <></>;
   return (
     <div className="my-auto flex min-h-9 cursor-pointer flex-wrap items-center gap-1.5 rounded-md border border-subtle p-1.5 text-11 text-tertiary capitalize hover:text-secondary">
-      <div className="text-11 text-secondary">Status</div>
+      <div className="text-11 text-secondary">Trạng thái</div>
       {filteredValues.map((value) => {
         const optionDetail = currentOptionDetail(value);
         if (!optionDetail) return <></>;

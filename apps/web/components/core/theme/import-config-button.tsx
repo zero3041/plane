@@ -73,7 +73,7 @@ export const CustomThemeImportConfigButton = observer(function CustomThemeImport
       setToast({
         type: "success",
         title: t("success"),
-        message: "Theme configuration imported successfully",
+        message: "Đã nhập cấu hình giao diện",
       });
     } catch (error) {
       console.error("Failed to upload config:", error);
@@ -98,7 +98,7 @@ export const CustomThemeImportConfigButton = observer(function CustomThemeImport
         size="md"
         stretch="auto"
         type="button"
-        label="Import config"
+        label="Nhập cấu hình"
         onClick={() => fileInputRef.current?.click()}
       />
     </>

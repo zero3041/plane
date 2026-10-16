@@ -105,9 +105,9 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
         if (onSuccess) onSuccess();
         onClose();
         setToast({
-          title: "Success!",
+          title: "Thành công!",
           type: "success",
-          message: "Members added successfully.",
+          message: "Đã thêm thành viên.",
         });
       })
       .catch((error) => {
@@ -203,7 +203,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
                             onChange={(val: string) => handleMemberChange(index, val, onChange)}
                             variant="select-lg"
                             memberIds={uninvitedPeople}
-                            placeholder="Select co-worker"
+                            placeholder="Chọn đồng nghiệp"
                           />
                         )}
                       />
@@ -230,7 +230,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
                                   onChange={(key) => onChange(parseInt(key))}
                                   getOptionValue={(role) => String(role.key)}
                                   getOptionLabel={(role) => role.label}
-                                  placeholder="Select role"
+                                  placeholder="Chọn vai trò"
                                   showSearch={false}
                                   pinSelected={false}
                                 >

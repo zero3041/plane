@@ -100,7 +100,7 @@ export const ArchivedCyclesHeader = observer(function ArchivedCyclesHeader() {
           <input
             ref={inputRef}
             className="w-full max-w-[234px] border-none bg-transparent text-13 text-primary placeholder:text-placeholder focus:outline-none"
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             value={archivedCyclesSearchQuery}
             onChange={(e) => updateArchivedCyclesSearchQuery(e.target.value)}
             onKeyDown={handleInputKeyDown}
@@ -120,7 +120,7 @@ export const ArchivedCyclesHeader = observer(function ArchivedCyclesHeader() {
         </div>
         <FiltersDropdown
           icon={<FilterOutline className="h-3 w-3" />}
-          title="Filters"
+          title="Bộ lọc"
           placement="bottom-end"
           isFiltersApplied={isFiltersApplied}
         >

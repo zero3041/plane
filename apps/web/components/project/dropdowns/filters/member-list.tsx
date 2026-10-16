@@ -20,10 +20,7 @@ import { ChevronDownOutline } from "@makeplane/propel/icons";
 import { useTranslation } from "@plane/i18n";
 import { EUserProjectRoles, EUserWorkspaceRoles } from "@plane/types";
 
-interface IRoleOption {
-  value: string;
-  label: string;
-}
+type TRoleOption = { value: string } & ({ labelKey: string } | { label: string });
 
 type Props = {
   appliedFilters: string[] | null;
@@ -31,17 +28,17 @@ type Props = {
   memberType: "project" | "workspace";
 };
 
-const PROJECT_ROLE_OPTIONS: IRoleOption[] = [
-  { value: String(EUserProjectRoles.ADMIN), label: "Admin" },
-  { value: String(EUserProjectRoles.MEMBER), label: "Member" },
-  { value: String(EUserProjectRoles.GUEST), label: "Guest" },
+const PROJECT_ROLE_OPTIONS: TRoleOption[] = [
+  { value: String(EUserProjectRoles.ADMIN), labelKey: "role_details.admin.title" },
+  { value: String(EUserProjectRoles.MEMBER), labelKey: "role_details.member.title" },
+  { value: String(EUserProjectRoles.GUEST), labelKey: "role_details.guest.title" },
 ];
 
-const WORKSPACE_ROLE_OPTIONS: IRoleOption[] = [
-  { value: String(EUserWorkspaceRoles.ADMIN), label: "Admin" },
-  { value: String(EUserWorkspaceRoles.MEMBER), label: "Member" },
-  { value: String(EUserWorkspaceRoles.GUEST), label: "Guest" },
-  { value: "suspended", label: "Suspended" },
+const WORKSPACE_ROLE_OPTIONS: TRoleOption[] = [
+  { value: String(EUserWorkspaceRoles.ADMIN), labelKey: "role_details.admin.title" },
+  { value: String(EUserWorkspaceRoles.MEMBER), labelKey: "role_details.member.title" },
+  { value: String(EUserWorkspaceRoles.GUEST), labelKey: "role_details.guest.title" },
+  { value: "suspended", label: "Tạm đình chỉ" },
 ];
 
 // Dropdown component for member list filters
@@ -73,11 +70,11 @@ export const MemberListFiltersDropdown = observer(function MemberListFiltersDrop
       </div>
       <MenuContent side="bottom" align="start">
         <MenuGroup>
-          <MenuLabel meta={appliedFiltersCount > 0 ? String(appliedFiltersCount) : undefined}>Roles</MenuLabel>
+          <MenuLabel meta={appliedFiltersCount > 0 ? String(appliedFiltersCount) : undefined}>{t("role")}</MenuLabel>
           {roleOptions.map((role) => (
             <MenuCheckboxItem
               key={`role-${role.value}`}
-              label={role.label}
+              label={"labelKey" in role ? t(role.labelKey) : role.label}
               checked={appliedFilterSet.has(role.value)}
               onCheckedChange={() => handleUpdate(role.value)}
             />

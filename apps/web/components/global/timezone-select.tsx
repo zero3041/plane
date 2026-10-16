@@ -63,18 +63,18 @@ const getTimezoneLabel = (option: { value: string; query: string; content: React
 };
 
 export const TimezoneSelect = observer(function TimezoneSelect(props: TTimezoneSelect) {
+  const { t } = useTranslation();
   // props
   const {
     value,
     onChange,
     error = false,
-    label = "Select a timezone",
+    label = t("automations.trigger.schedule.timezone_placeholder"),
     size = "lg",
     className = "",
     disabled = false,
   } = props;
   // hooks
-  const { t } = useTranslation();
   const { contains } = useFilter();
   const { disabled: isDisabled, timezones } = useTimezone();
   // derived values

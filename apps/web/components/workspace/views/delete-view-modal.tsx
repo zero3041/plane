@@ -41,8 +41,8 @@ export const DeleteGlobalViewModal = observer(function DeleteGlobalViewModal(pro
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Failed to delete the view. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể xóa chế độ xem. Vui lòng thử lại.",
       });
     }
 

@@ -104,7 +104,7 @@ export function AuthUniqueCodeForm(props: TAuthUniqueCodeForm) {
           {uniqueCodeFormData.email.length > 0 && (
             <button
               type="button"
-              aria-label="Clear email"
+              aria-label="Xóa email"
               className="absolute right-3 hover:cursor-pointer"
               onClick={handleEmailClear}
               tabIndex={-1}

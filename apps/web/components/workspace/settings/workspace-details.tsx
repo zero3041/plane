@@ -32,7 +32,7 @@ const defaultValues: Partial<IWorkspace> = {
   url: "",
   organization_size: "2-10",
   logo_url: null,
-  timezone: "UTC",
+  timezone: "Asia/Ho_Chi_Minh",
 };
 
 export const WorkspaceDetails = observer(function WorkspaceDetails() {
@@ -71,9 +71,9 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
     try {
       await updateWorkspace(currentWorkspace.slug, payload);
       setToast({
-        title: "Success!",
+        title: "Thành công!",
         type: "success",
-        message: "Workspace updated successfully",
+        message: "Đã cập nhật không gian làm việc",
       });
     } catch (err: unknown) {
       console.error(err);
@@ -93,14 +93,14 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
       });
       setToast({
         type: "success",
-        title: "Success!",
-        message: "Workspace picture removed successfully.",
+        title: "Thành công!",
+        message: "Đã xóa ảnh không gian làm việc.",
       });
     } catch {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "There was some error in deleting your profile picture. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể xóa ảnh hồ sơ. Vui lòng thử lại.",
       });
     }
   };
@@ -112,7 +112,7 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
       .then(() => {
         setToast({
           type: "success",
-          title: "Workspace URL copied to the clipboard.",
+          title: "Đã sao chép URL không gian làm việc vào bộ nhớ tạm.",
         });
         return undefined;
       })

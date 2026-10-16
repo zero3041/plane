@@ -140,7 +140,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           {passwordFormData.email.length > 0 && (
             <button
               type="button"
-              aria-label="Clear email"
+              aria-label="Xóa email"
               className="absolute right-3 hover:cursor-pointer"
               onClick={handleEmailClear}
               tabIndex={-1}
@@ -163,7 +163,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
             size="xl"
             value={passwordFormData.password}
             onChange={(e) => handleFormChange("password", e.target.value)}
-            placeholder="Enter password"
+            placeholder="Nhập mật khẩu"
             onFocus={() => setIsPasswordInputFocused(true)}
             onBlur={() => setIsPasswordInputFocused(false)}
             autoComplete="off"
@@ -173,7 +173,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           {showPassword?.password ? (
             <button
               type="button"
-              aria-label="Hide password"
+              aria-label="Ẩn mật khẩu"
               className="absolute right-3 hover:cursor-pointer"
               onClick={() => handleShowPassword("password")}
             >
@@ -182,7 +182,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           ) : (
             <button
               type="button"
-              aria-label="Show password"
+              aria-label="Hiện mật khẩu"
               className="absolute right-3 hover:cursor-pointer"
               onClick={() => handleShowPassword("password")}
             >
@@ -206,7 +206,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
               size="xl"
               value={passwordFormData.confirm_password}
               onChange={(e) => handleFormChange("confirm_password", e.target.value)}
-              placeholder="Confirm password"
+              placeholder="Xác nhận mật khẩu"
               onFocus={() => setIsRetryPasswordInputFocused(true)}
               onBlur={() => setIsRetryPasswordInputFocused(false)}
               autoComplete="off"
@@ -214,7 +214,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
             {showPassword?.retypePassword ? (
               <button
                 type="button"
-                aria-label="Hide password"
+                aria-label="Ẩn mật khẩu"
                 className="absolute right-3 hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               >
@@ -223,7 +223,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
             ) : (
               <button
                 type="button"
-                aria-label="Show password"
+                aria-label="Hiện mật khẩu"
                 className="absolute right-3 hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               >
@@ -255,7 +255,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
                 variant="secondary"
                 size="lg"
                 stretch="full"
-                label="Sign in with unique code"
+                label="Đăng nhập bằng mã dùng một lần"
                 onClick={redirectToUniqueCodeSignIn}
               />
             )}
@@ -268,7 +268,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
             stretch="full"
             disabled={isButtonDisabled}
             loading={isSubmitting}
-            label="Create account"
+            label="Tạo tài khoản"
           />
         )}
       </div>

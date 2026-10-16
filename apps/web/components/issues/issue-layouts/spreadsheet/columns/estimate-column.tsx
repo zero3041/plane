@@ -27,7 +27,7 @@ export const SpreadsheetEstimateColumn = observer(function SpreadsheetEstimateCo
         onChange={(data) =>
           onChange(issue, { estimate_point: data }, { changed_property: "estimate_point", change_details: data })
         }
-        placeholder="Estimate"
+        placeholder="Ước tính"
         projectId={issue.project_id ?? undefined}
         disabled={disabled}
         onClose={onClose}

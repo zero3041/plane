@@ -29,7 +29,7 @@ export function MultipleSelectGroupAction(props: Props) {
         checked={groupSelectionStatus === "complete"}
         indeterminate={groupSelectionStatus === "partial"}
         disabled={disabled}
-        aria-label="Select all in group"
+        aria-label="Chọn tất cả trong nhóm"
         onCheckedChange={() => selectionHelpers.handleGroupClick(groupID)}
       />
     </span>

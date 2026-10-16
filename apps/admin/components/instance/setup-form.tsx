@@ -144,8 +144,8 @@ export function InstanceSetupForm() {
       <div className="mt-10 flex w-full flex-grow flex-col items-center justify-center py-6">
         <div className="relative flex w-full max-w-[22.5rem] flex-col gap-6">
           <FormHeader
-            heading="Setup your Plane Instance"
-            subHeading="Post setup you will be able to manage this Plane instance."
+            heading="Thiết lập máy chủ Plane"
+            subHeading="Sau khi thiết lập, bạn có thể quản lý máy chủ Plane này."
           />
           {errorData.type &&
             errorData?.message &&
@@ -165,7 +165,7 @@ export function InstanceSetupForm() {
             <div className="flex flex-col items-center gap-4 sm:flex-row">
               <div className="w-full space-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="first_name">
-                  First name <span className="text-danger-primary">*</span>
+                  Tên <span className="text-danger-primary">*</span>
                 </label>
                 <InputGroup size="lg">
                   <Input
@@ -189,7 +189,7 @@ export function InstanceSetupForm() {
               </div>
               <div className="w-full space-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="last_name">
-                  Last name <span className="text-danger-primary">*</span>
+                  Họ <span className="text-danger-primary">*</span>
                 </label>
                 <InputGroup size="lg">
                   <Input
@@ -236,7 +236,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="company_name">
-                Company name <span className="text-danger-primary">*</span>
+                Tên công ty <span className="text-danger-primary">*</span>
               </label>
               <InputGroup size="lg">
                 <Input
@@ -244,7 +244,7 @@ export function InstanceSetupForm() {
                   id="company_name"
                   name="company_name"
                   type="text"
-                  placeholder="Company name"
+                  placeholder="Tên công ty"
                   value={formData.company_name}
                   onChange={(e) => {
                     const validation = validateCompanyName(e.target.value, false);
@@ -259,7 +259,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
-                Set a password <span className="text-danger-primary">*</span>
+                Đặt mật khẩu <span className="text-danger-primary">*</span>
               </label>
               <InputGroup size="lg">
                 <Input
@@ -267,7 +267,7 @@ export function InstanceSetupForm() {
                   id="password"
                   name="password"
                   type={showPassword.password ? "text" : "password"}
-                  placeholder="New password"
+                  placeholder="Mật khẩu mới"
                   value={formData.password}
                   onChange={(e) => handleFormChange("password", e.target.value)}
                   aria-invalid={errorData.type && errorData.type === EErrorCodes.INVALID_PASSWORD ? true : false}
@@ -278,7 +278,7 @@ export function InstanceSetupForm() {
                 {showPassword.password ? (
                   <button
                     type="button"
-                    aria-label="Hide password"
+                    aria-label="Ẩn mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("password")}
                   >
@@ -287,7 +287,7 @@ export function InstanceSetupForm() {
                 ) : (
                   <button
                     type="button"
-                    aria-label="Show password"
+                    aria-label="Hiện mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("password")}
                   >
@@ -303,7 +303,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
-                Confirm password <span className="text-danger-primary">*</span>
+                Xác nhận mật khẩu <span className="text-danger-primary">*</span>
               </label>
               <InputGroup size="lg">
                 <Input
@@ -313,7 +313,7 @@ export function InstanceSetupForm() {
                   name="confirm_password"
                   value={formData.confirm_password}
                   onChange={(e) => handleFormChange("confirm_password", e.target.value)}
-                  placeholder="Confirm password"
+                  placeholder="Xác nhận mật khẩu"
                   onFocus={() => setIsRetryPasswordInputFocused(true)}
                   onBlur={() => setIsRetryPasswordInputFocused(false)}
                   autoComplete="new-password"
@@ -321,7 +321,7 @@ export function InstanceSetupForm() {
                 {showPassword.retypePassword ? (
                   <button
                     type="button"
-                    aria-label="Hide password"
+                    aria-label="Ẩn mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("retypePassword")}
                   >
@@ -330,7 +330,7 @@ export function InstanceSetupForm() {
                 ) : (
                   <button
                     type="button"
-                    aria-label="Show password"
+                    aria-label="Hiện mật khẩu"
                     className="flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("retypePassword")}
                   >
@@ -340,29 +340,27 @@ export function InstanceSetupForm() {
               </InputGroup>
               {!!formData.confirm_password &&
                 formData.password !== formData.confirm_password &&
-                renderPasswordMatchError && (
-                  <span className="text-13 text-danger-primary">Passwords don{"'"}t match</span>
-                )}
+                renderPasswordMatchError && <span className="text-13 text-danger-primary">Mật khẩu không khớp</span>}
             </div>
 
             <div className="relative flex gap-2">
               <div>
                 <Checkbox
                   id="is_telemetry_enabled"
-                  aria-label="Allow Plane to anonymously collect usage events"
+                  aria-label="Cho phép Plane thu thập dữ liệu sử dụng ẩn danh"
                   onCheckedChange={(checked) => handleFormChange("is_telemetry_enabled", checked)}
                   checked={formData.is_telemetry_enabled}
                 />
               </div>
               <label className="cursor-pointer text-13 font-medium text-tertiary" htmlFor="is_telemetry_enabled">
-                Allow Plane to anonymously collect usage events.{" "}
+                Cho phép Plane thu thập dữ liệu sử dụng ẩn danh.{" "}
                 <a
                   href="https://developers.plane.so/self-hosting/telemetry"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:text-blue-600 flex-shrink-0 text-13 font-medium"
                 >
-                  See More
+                  Xem thêm
                 </a>
               </label>
             </div>
@@ -375,7 +373,7 @@ export function InstanceSetupForm() {
                 stretch="full"
                 disabled={isButtonDisabled}
                 loading={isSubmitting}
-                label="Continue"
+                label="Tiếp tục"
               />
             </div>
           </form>

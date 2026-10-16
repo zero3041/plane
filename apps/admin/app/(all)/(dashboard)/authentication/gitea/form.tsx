@@ -63,9 +63,9 @@ export function InstanceGiteaConfigForm(props: Props) {
     {
       key: "GITEA_HOST",
       type: "text",
-      label: "Gitea Host",
+      label: "Máy chủ Gitea",
       description: (
-        <>Use the URL of your Gitea instance. For the official Gitea instance, use &quot;https://gitea.com&quot;.</>
+        <>Dùng URL máy chủ Gitea của bạn. Với máy chủ Gitea chính thức, dùng &quot;https://gitea.com&quot;.</>
       ),
       placeholder: "https://gitea.com",
       error: Boolean(errors.GITEA_HOST),
@@ -74,17 +74,17 @@ export function InstanceGiteaConfigForm(props: Props) {
     {
       key: "GITEA_CLIENT_ID",
       type: "text",
-      label: "Client ID",
+      label: "ID ứng dụng khách",
       description: (
         <>
-          You will get this from your{" "}
+          Bạn có thể lấy mục này trong{" "}
           <a
             href="https://gitea.com/user/settings/applications"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            Gitea OAuth application settings.
+            Cài đặt ứng dụng Gitea OAuth.
           </a>
         </>
       ),
@@ -95,17 +95,17 @@ export function InstanceGiteaConfigForm(props: Props) {
     {
       key: "GITEA_CLIENT_SECRET",
       type: "password",
-      label: "Client secret",
+      label: "Mã bí mật ứng dụng khách",
       description: (
         <>
-          Your client secret is also found in your{" "}
+          Mã bí mật ứng dụng khách cũng có trong{" "}
           <a
             href="https://gitea.com/user/settings/applications"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            Gitea OAuth application settings.
+            Cài đặt ứng dụng Gitea OAuth.
           </a>
         </>
       ),
@@ -118,20 +118,19 @@ export function InstanceGiteaConfigForm(props: Props) {
   const GITEA_SERVICE_FIELD: TCopyField[] = [
     {
       key: "Callback_URI",
-      label: "Callback URI",
+      label: "URI chuyển hướng",
       url: `${originURL}/auth/gitea/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into your <CodeBlock darkerShade>Authorized Callback URI</CodeBlock>{" "}
-          field{" "}
+          Plane sẽ tự tạo giá trị này. Hãy dán vào trường <CodeBlock darkerShade>Authorized Callback URI</CodeBlock> tại{" "}
           <a
             href={`${control._formValues.GITEA_HOST || "https://gitea.com"}/user/settings/applications`}
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
-            aria-label="Gitea OAuth application settings"
+            aria-label="Cài đặt ứng dụng Gitea OAuth"
           >
-            here.
+            đây.
           </a>
         </>
       ),
@@ -145,8 +144,8 @@ export function InstanceGiteaConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: "success",
-        title: "Done!",
-        message: "Your Gitea authentication is configured. You should test it now.",
+        title: "Hoàn tất!",
+        message: "Đã cấu hình xác thực Gitea. Hãy kiểm tra ngay.",
       });
       reset({
         GITEA_HOST: response.find((item) => item.key === "GITEA_HOST")?.value,
@@ -176,7 +175,7 @@ export function InstanceGiteaConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">Gitea-provided details for Plane</div>
+            <div className="pt-2.5 text-18 font-medium">Thông tin Gitea cung cấp cho Plane</div>
             {GITEA_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -200,7 +199,7 @@ export function InstanceGiteaConfigForm(props: Props) {
                   onClick={(e) => void handleSubmit(onSubmit)(e)}
                   loading={isSubmitting}
                   disabled={!isDirty}
-                  label={isSubmitting ? "Saving" : "Save changes"}
+                  label={isSubmitting ? "Đang lưu" : "Lưu thay đổi"}
                 />
                 <Button
                   variant="secondary"
@@ -208,14 +207,14 @@ export function InstanceGiteaConfigForm(props: Props) {
                   stretch="auto"
                   nativeButton={false}
                   render={<Link href="/authentication" onClick={handleGoBack} />}
-                  label="Go back"
+                  label="Quay lại"
                 />
               </div>
             </div>
           </div>
           <div className="col-span-2 md:col-span-1">
             <div className="flex flex-col gap-y-4 rounded-lg bg-layer-1 px-6 pt-1.5 pb-4">
-              <div className="pt-2 text-18 font-medium">Plane-provided details for Gitea</div>
+              <div className="pt-2 text-18 font-medium">Thông tin Plane cung cấp cho Gitea</div>
               {GITEA_SERVICE_FIELD.map((field) => (
                 <CopyField key={field.key} label={field.label} url={field.url} description={field.description} />
               ))}

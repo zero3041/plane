@@ -130,8 +130,8 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
     await signOut().catch(() =>
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Failed to sign out. Please try again.",
+        title: "Lỗi!",
+        message: "Đăng xuất thất bại. Vui lòng thử lại.",
       })
     );
   };
@@ -158,10 +158,10 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
             </div>
             <div className="relative flex items-center gap-2">
               <div className="text-13 font-medium">{currentUser?.email}</div>
-              <Tooltip label="Sign out" alignOffset={8} disabled={isMobile}>
+              <Tooltip label="Đăng xuất" alignOffset={8} disabled={isMobile}>
                 <button
                   type="button"
-                  aria-label="Sign out"
+                  aria-label="Đăng xuất"
                   className="relative flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm hover:bg-layer-1"
                   onClick={() => void handleSignOut()}
                 >
@@ -174,14 +174,15 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
             <div className="relative flex-shrink-0">
               <img src={WorkSpaceNotAvailable} className="h-[220px] object-contain object-center" alt="Plane logo" />
             </div>
-            <h3 className="text-center text-16 font-semibold">Workspace not found</h3>
+            <h3 className="text-center text-16 font-semibold">Không tìm thấy không gian làm việc</h3>
             <p className="text-center text-13 text-secondary">
-              No workspace found with the URL. It may not exist or you lack authorization to view it.
+              Không tìm thấy không gian làm việc tại URL này. Không gian làm việc có thể không tồn tại hoặc bạn không có
+              quyền xem.
             </p>
             <div className="flex items-center justify-center gap-2 pt-4">
               {allWorkspaces && allWorkspaces.length > 0 && (
                 <ButtonElement variant="primary" size="sm" stretch="auto" render={<Link href="/" />}>
-                  Go Home
+                  Về trang chủ
                 </ButtonElement>
               )}
               {allWorkspaces?.length > 0 && (
@@ -191,7 +192,7 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
                   stretch="auto"
                   render={<Link href="/settings/profile/general/" />}
                 >
-                  Visit Profile
+                  Xem hồ sơ
                 </ButtonElement>
               )}
               {allWorkspaces && allWorkspaces.length === 0 && (
@@ -215,18 +216,18 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
         <div className="grid h-full place-items-center p-4">
           <div className="space-y-8 text-center">
             <div className="space-y-2">
-              <h3 className="text-16 font-semibold">Not Authorized!</h3>
+              <h3 className="text-16 font-semibold">Bạn không có quyền truy cập!</h3>
               <p className="mx-auto w-1/2 text-13 text-secondary">
-                You{"'"}re not a member of this workspace. Please contact the workspace admin to get an invitation or
-                check your pending invitations.
+                Bạn chưa là thành viên của không gian làm việc này. Hãy liên hệ quản trị viên để được mời hoặc kiểm tra
+                các lời mời đang chờ.
               </p>
             </div>
             <div className="flex items-center justify-center gap-2">
               <ButtonElement variant="secondary" size="sm" stretch="auto" render={<Link href="/invitations" />}>
-                Check pending invites
+                Xem lời mời đang chờ
               </ButtonElement>
               <ButtonElement variant="primary" size="sm" stretch="auto" render={<Link href="/create-workspace" />}>
-                Create new workspace
+                Tạo không gian làm việc mới
               </ButtonElement>
             </div>
           </div>

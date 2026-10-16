@@ -70,12 +70,12 @@ export const AppRailRoot = observer(() => {
         <ContextMenuContent>
           <ContextMenuItem
             onClick={() => updateDisplayMode("icon_only")}
-            label="Icon only"
+            label="Chỉ biểu tượng"
             selected={preferences.displayMode === "icon_only"}
           />
           <ContextMenuItem
             onClick={() => updateDisplayMode("icon_with_label")}
-            label="Icon with name"
+            label="Biểu tượng và tên"
             selected={preferences.displayMode === "icon_with_label"}
           />
           <ContextMenuSeparator />

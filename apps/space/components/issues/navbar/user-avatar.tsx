@@ -97,7 +97,7 @@ export const UserAvatar = observer(function UserAvatar() {
               {csrfToken && (
                 <MenuItem
                   icon={<Icon icon={LogOutOutline} tint="danger" />}
-                  label="Sign out"
+                  label="Đăng xuất"
                   onClick={() => signOutFormRef.current?.requestSubmit()}
                 />
               )}
@@ -112,7 +112,7 @@ export const UserAvatar = observer(function UserAvatar() {
             stretch="auto"
             nativeButton={false}
             render={<Link to={`/?next_path=${pathName}?${queryParam}`} />}
-            label="Sign in"
+            label="Đăng nhập"
           />
         </div>
       )}

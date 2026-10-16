@@ -116,8 +116,8 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
     await updatePublishSettings(workspaceSlug.toString(), projectId, payload.id, payload).then((res) => {
       setToast({
         type: "success",
-        title: "Success!",
-        message: "Publish settings updated successfully!",
+        title: "Thành công!",
+        message: "Đã cập nhật cài đặt xuất bản!",
       });
 
       handleClose();
@@ -134,8 +134,8 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Something went wrong while unpublishing the project.",
+          title: "Lỗi!",
+          message: "Đã xảy ra lỗi khi hủy xuất bản dự án.",
         })
       )
       .finally(() => setIsUnPublishing(false));
@@ -152,8 +152,8 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
     if (!selectedLayouts || selectedLayouts.length === 0) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Please select at least one view layout to publish the project.",
+        title: "Lỗi!",
+        message: "Vui lòng chọn ít nhất một bố cục để xuất bản dự án.",
       });
       return;
     }
@@ -190,7 +190,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
       setToast({
         type: "success",
         title: "",
-        message: "Published page link copied successfully.",
+        message: "Đã sao chép liên kết trang đã xuất bản.",
       })
     );
 
@@ -207,7 +207,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
             <DialogHeader>
               <div className="flex items-center justify-between gap-2">
                 <DialogHeading>
-                  <DialogTitle>Publish project</DialogTitle>
+                  <DialogTitle>Xuất bản dự án</DialogTitle>
                 </DialogHeading>
                 {isProjectPublished && (
                   <Button
@@ -247,7 +247,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
                         <div className="flex flex-shrink-0 items-center gap-1">
                           <a
                             href={publishLink}
-                            aria-label="Open in new tab"
+                            aria-label="Mở trong tab mới"
                             className="grid size-8 place-items-center rounded-sm bg-layer-3 hover:bg-layer-3-hover"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -259,7 +259,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
                             className="h-8 rounded-sm bg-layer-3 px-3 py-2 text-11 font-medium hover:bg-layer-3-hover"
                             onClick={() => void handleCopyLink()}
                           >
-                            Copy link
+                            Sao chép liên kết
                           </button>
                         </div>
                       </div>
@@ -268,13 +268,13 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
                           <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent-primary opacity-75" />
                           <span className="relative inline-flex size-1.5 rounded-full bg-accent-primary" />
                         </span>
-                        This project is now live on web
+                        Dự án này hiện đã được xuất bản trên web
                       </p>
                     </>
                   )}
                   <div className="space-y-4">
                     <div className="relative flex items-center justify-between gap-2">
-                      <div className="text-13">Views</div>
+                      <div className="text-13">Chế độ xem</div>
                       <Controller
                         control={control}
                         name="view_props"
@@ -313,32 +313,47 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
                       />
                     </div>
                     <div className="relative flex items-center justify-between gap-2">
-                      <div className="text-13">Allow comments</div>
+                      <div className="text-13">Cho phép bình luận</div>
                       <Controller
                         control={control}
                         name="is_comments_enabled"
                         render={({ field: { onChange, value } }) => (
-                          <Switch size="sm" checked={!!value} onCheckedChange={onChange} aria-label="Allow comments" />
+                          <Switch
+                            size="sm"
+                            checked={!!value}
+                            onCheckedChange={onChange}
+                            aria-label="Cho phép bình luận"
+                          />
                         )}
                       />
                     </div>
                     <div className="relative flex items-center justify-between gap-2">
-                      <div className="text-13">Allow reactions</div>
+                      <div className="text-13">Cho phép bày tỏ cảm xúc</div>
                       <Controller
                         control={control}
                         name="is_reactions_enabled"
                         render={({ field: { onChange, value } }) => (
-                          <Switch size="sm" checked={!!value} onCheckedChange={onChange} aria-label="Allow reactions" />
+                          <Switch
+                            size="sm"
+                            checked={!!value}
+                            onCheckedChange={onChange}
+                            aria-label="Cho phép bày tỏ cảm xúc"
+                          />
                         )}
                       />
                     </div>
                     <div className="relative flex items-center justify-between gap-2">
-                      <div className="text-13">Allow voting</div>
+                      <div className="text-13">Cho phép bình chọn</div>
                       <Controller
                         control={control}
                         name="is_votes_enabled"
                         render={({ field: { onChange, value } }) => (
-                          <Switch size="sm" checked={!!value} onCheckedChange={onChange} aria-label="Allow voting" />
+                          <Switch
+                            size="sm"
+                            checked={!!value}
+                            onCheckedChange={onChange}
+                            aria-label="Cho phép bình chọn"
+                          />
                         )}
                       />
                     </div>
@@ -354,11 +369,11 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
               <DialogInfoIcon>
                 <GlobeOutline />
               </DialogInfoIcon>
-              Anyone with the link can access
+              Ai có liên kết cũng có thể truy cập
             </DialogInfo>
             {!fetchSettingsLoader && (
               <div className="relative flex items-center gap-2">
-                <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={handleClose} />
+                <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={handleClose} />
                 {isProjectPublished ? (
                   isDirty && (
                     <Button

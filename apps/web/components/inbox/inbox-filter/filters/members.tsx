@@ -108,7 +108,7 @@ export const FilterMember = observer(function FilterMember(props: Props) {
                 )}
               </>
             ) : (
-              <p className="text-11 text-placeholder italic">No matches found</p>
+              <p className="text-11 text-placeholder italic">Không tìm thấy kết quả</p>
             )
           ) : (
             <Loader className="space-y-2">

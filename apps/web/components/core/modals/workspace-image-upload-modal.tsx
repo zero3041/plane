@@ -89,7 +89,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
       console.log("error", error);
       setToast({
         type: "error",
-        title: "Error",
+        title: "Lỗi",
         message: error.error || "Something went wrong",
       });
     } finally {
@@ -127,7 +127,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
         <DialogMain>
           <DialogHeader>
             <DialogHeading>
-              <DialogTitle>Upload image</DialogTitle>
+              <DialogTitle>Tải ảnh lên</DialogTitle>
             </DialogHeading>
           </DialogHeader>
           <DialogBody tabIndex={0}>
@@ -176,7 +176,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
                   </p>
                 )}
               </div>
-              <p className="text-13 text-secondary">File formats supported- .jpeg, .jpg, .png, .webp</p>
+              <p className="text-13 text-secondary">Định dạng hỗ trợ: .jpeg, .jpg, .png, .webp</p>
             </div>
           </DialogBody>
         </DialogMain>
@@ -192,7 +192,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
               loading={isRemoving}
             />
           </DialogInfo>
-          <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={handleClose} />
+          <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={handleClose} />
           <Button
             variant="primary"
             size="md"

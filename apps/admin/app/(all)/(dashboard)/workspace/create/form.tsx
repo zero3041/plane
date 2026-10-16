@@ -63,16 +63,16 @@ export function WorkspaceCreateForm() {
             .then(async () => {
               setToast({
                 type: "success",
-                title: "Success!",
-                message: "Workspace created successfully.",
+                title: "Thành công!",
+                message: "Đã tạo không gian làm việc thành công.",
               });
               router.push(`/workspace`);
             })
             .catch(() => {
               setToast({
                 type: "error",
-                title: "Error!",
-                message: "Workspace could not be created. Please try again.",
+                title: "Lỗi!",
+                message: "Không thể tạo không gian làm việc. Vui lòng thử lại.",
               });
             });
         } else setSlugError(true);
@@ -80,8 +80,8 @@ export function WorkspaceCreateForm() {
       .catch(() => {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Some error occurred while creating workspace. Please try again.",
+          title: "Lỗi!",
+          message: "Đã xảy ra lỗi khi tạo không gian làm việc. Vui lòng thử lại.",
         });
       });
   };
@@ -98,7 +98,7 @@ export function WorkspaceCreateForm() {
     <div className="space-y-8">
       <div className="grid-col grid w-full max-w-4xl grid-cols-1 items-start justify-between gap-x-10 gap-y-6 lg:grid-cols-2">
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">Name your workspace</h4>
+          <h4 className="text-13 text-tertiary">Đặt tên không gian làm việc</h4>
           <div className="flex flex-col gap-1">
             <Controller
               control={control}
@@ -123,7 +123,7 @@ export function WorkspaceCreateForm() {
                     ref={ref}
                     aria-invalid={Boolean(errors.name)}
                     data-invalid={errors.name ? true : undefined}
-                    placeholder="Something familiar and recognizable is always best."
+                    placeholder="Hãy chọn một tên quen thuộc, dễ nhận biết."
                   />
                 </InputGroup>
               )}
@@ -132,7 +132,7 @@ export function WorkspaceCreateForm() {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">Set your workspace&apos;s URL</h4>
+          <h4 className="text-13 text-tertiary">Đặt URL cho không gian làm việc</h4>
           <Controller
             control={control}
             name="slug"
@@ -160,22 +160,22 @@ export function WorkspaceCreateForm() {
               </InputGroup>
             )}
           />
-          {slugError && <p className="text-13 text-danger-primary">This URL is taken. Try something else.</p>}
+          {slugError && <p className="text-13 text-danger-primary">URL này đã được dùng. Hãy chọn URL khác.</p>}
           {invalidSlug && (
             <p className="text-13 text-danger-primary">{`URLs can contain only ( - ), ( _ ) and alphanumeric characters.`}</p>
           )}
           {errors.slug && <span className="text-11 text-danger-primary">{errors.slug.message}</span>}
         </div>
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">How many people will use this workspace?</h4>
+          <h4 className="text-13 text-tertiary">Có bao nhiêu người sẽ dùng không gian làm việc này?</h4>
           <div className="w-full">
             <Controller
               name="organization_size"
               control={control}
-              rules={{ required: "This is a required field." }}
+              rules={{ required: "Trường này là bắt buộc." }}
               render={({ field: { value, onChange } }) => (
                 <Select value={value} onValueChange={onChange}>
-                  <SelectTrigger size="lg" placeholder="Select a range" />
+                  <SelectTrigger size="lg" placeholder="Chọn khoảng số người" />
                   <SelectContent>
                     <SelectList>
                       {ORGANIZATION_SIZE.map((item) => (
@@ -200,7 +200,7 @@ export function WorkspaceCreateForm() {
           onClick={handleSubmit(handleCreateWorkspace)}
           disabled={!isValid}
           loading={isSubmitting}
-          label={isSubmitting ? "Creating workspace" : "Create workspace"}
+          label={isSubmitting ? "Đang tạo không gian làm việc" : "Tạo không gian làm việc"}
         />
         <Button
           variant="secondary"
@@ -208,7 +208,7 @@ export function WorkspaceCreateForm() {
           stretch="auto"
           nativeButton={false}
           render={<Link href="/workspace" />}
-          label="Go back"
+          label="Quay lại"
         />
       </div>
     </div>

@@ -37,8 +37,8 @@ export const StateCreate = observer(function StateCreate(props: TStateCreate) {
 
       setToast({
         type: "success",
-        title: "Success!",
-        message: "State created successfully.",
+        title: "Thành công!",
+        message: "Đã tạo trạng thái.",
       });
       handleClose();
       return { status: "success" };
@@ -47,14 +47,14 @@ export const StateCreate = observer(function StateCreate(props: TStateCreate) {
       if (errorStatus?.status === 400) {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "State with that name already exists. Please try again with another name.",
+          title: "Lỗi!",
+          message: "Tên trạng thái đã tồn tại. Vui lòng chọn tên khác.",
         });
         return { status: "already_exists" };
       } else {
         setToast({
           type: "error",
-          title: "Error!",
+          title: "Lỗi!",
           message: errorStatus.data.error ?? "State could not be created. Please try again.",
         });
         return { status: "error" };

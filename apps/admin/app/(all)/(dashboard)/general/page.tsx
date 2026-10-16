@@ -20,9 +20,8 @@ function GeneralPage() {
   return (
     <PageWrapper
       header={{
-        title: "General settings",
-        description:
-          "Change the name of your instance and instance admin e-mail addresses. Enable or disable telemetry in your instance.",
+        title: "Cài đặt chung",
+        description: "Đổi tên máy chủ và địa chỉ email quản trị. Bật hoặc tắt thu thập dữ liệu sử dụng.",
       }}
     >
       {instance && instanceAdmins && <GeneralConfigurationForm instance={instance} instanceAdmins={instanceAdmins} />}

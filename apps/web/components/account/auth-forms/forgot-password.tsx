@@ -83,7 +83,7 @@ export const ForgotPasswordForm = observer(function ForgotPasswordForm() {
 
   return (
     <FormContainer>
-      <AuthFormHeader title="Reset password" description="Regain access to your account." />
+      <AuthFormHeader title="Đặt lại mật khẩu" description="Khôi phục quyền truy cập tài khoản." />
       <form onSubmit={handleSubmit(handleForgotPassword)} className="space-y-4">
         <div className="space-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="email">

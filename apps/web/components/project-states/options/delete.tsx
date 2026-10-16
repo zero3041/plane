@@ -50,15 +50,14 @@ export const StateDelete = observer(function StateDelete(props: TStateDelete) {
       if (errorStatus.status === 400) {
         setToast({
           type: "error",
-          title: "Error!",
-          message:
-            "This state contains some work items within it, please move them to some other state to delete this state.",
+          title: "Lỗi!",
+          message: "Trạng thái này còn mục công việc. Hãy chuyển chúng sang trạng thái khác trước khi xóa.",
         });
       } else {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "State could not be deleted. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể xóa trạng thái. Vui lòng thử lại.",
         });
       }
       setIsDelete(false);
@@ -72,11 +71,11 @@ export const StateDelete = observer(function StateDelete(props: TStateDelete) {
         handleSubmit={handleDeleteState}
         isSubmitting={isDelete}
         isOpen={isDeleteModal}
-        title="Delete State"
+        title="Xóa trạng thái"
         content={
           <>
-            Are you sure you want to delete state- <span className="font-medium text-primary">{state?.name}</span>? All
-            of the data related to the state will be permanently removed. This action cannot be undone.
+            Bạn có chắc muốn xóa trạng thái - <span className="font-medium text-primary">{state?.name}</span>? Mọi dữ
+            liệu liên quan đến trạng thái sẽ bị xóa vĩnh viễn. Bạn không thể hoàn tác thao tác này.
           </>
         }
       />

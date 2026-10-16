@@ -11,4 +11,4 @@ export default function WorkspaceInvitationsLayout() {
   return <Outlet />;
 }
 
-export const meta: Route.MetaFunction = () => [{ title: "Workspace Invitations" }];
+export const meta: Route.MetaFunction = () => [{ title: "Lời mời vào không gian làm việc" }];

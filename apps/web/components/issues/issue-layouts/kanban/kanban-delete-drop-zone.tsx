@@ -60,7 +60,7 @@ export const KanbanDeleteDropZone = observer(function KanbanDeleteDropZone({ onR
           isDragOverDelete ? "bg-danger-primary blur-2xl" : ""
         } transition duration-300`}
       >
-        Drop here to delete the work item.
+        Thả vào đây để xóa mục công việc.
       </div>
     </div>
   );

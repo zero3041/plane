@@ -58,15 +58,15 @@ export const CycleEmptyState = observer(function CycleEmptyState() {
       .then(() =>
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Work items added to the cycle successfully.",
+          title: "Thành công!",
+          message: "Đã thêm mục công việc vào chu kỳ.",
         })
       )
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Selected work items could not be added to the cycle. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể thêm các mục công việc đã chọn vào chu kỳ. Vui lòng thử lại.",
         })
       );
   };

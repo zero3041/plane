@@ -29,19 +29,19 @@ const DROPDOWN_ITEMS: {
 }[] = [
   {
     key: "insert-above",
-    label: "Insert above",
+    label: "Chèn phía trên",
     icon: TopArrowOutline,
     action: (editor) => editor.chain().focus().addRowBefore().run(),
   },
   {
     key: "insert-below",
-    label: "Insert below",
+    label: "Chèn phía dưới",
     icon: ArrowDownOutline,
     action: (editor) => editor.chain().focus().addRowAfter().run(),
   },
   {
     key: "duplicate",
-    label: "Duplicate",
+    label: "Nhân bản",
     icon: CopyOutline,
     action: (editor) => {
       const table = findTable(editor.state.selection);
@@ -56,13 +56,13 @@ const DROPDOWN_ITEMS: {
   },
   {
     key: "clear-contents",
-    label: "Clear contents",
+    label: "Xóa nội dung",
     icon: CloseOutline,
     action: (editor) => editor.chain().focus().clearSelectedCells().run(),
   },
   {
     key: "delete",
-    label: "Delete",
+    label: "Xóa",
     icon: DeleteOutline,
     action: (editor) => editor.chain().focus().deleteRow().run(),
   },
@@ -88,7 +88,7 @@ export function RowOptionsDropdown(props: Props) {
           onClose();
         }}
       >
-        <div className="flex-grow truncate">Header row</div>
+        <div className="flex-grow truncate">Hàng tiêu đề</div>
         <ToggleFilled className="size-3 shrink-0" />
       </button>
       <hr className="my-2 border-subtle" />

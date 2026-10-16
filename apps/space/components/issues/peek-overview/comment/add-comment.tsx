@@ -66,8 +66,8 @@ export const AddComment = observer(function AddComment(props: Props) {
       .catch(() =>
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Comment could not be posted. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể đăng bình luận. Vui lòng thử lại.",
         })
       );
   };
@@ -96,7 +96,7 @@ export const AddComment = observer(function AddComment(props: Props) {
               }
               onChange={(comment_json, comment_html) => onChange(comment_html)}
               isSubmitting={isSubmitting}
-              placeholder="Add comment..."
+              placeholder="Thêm bình luận..."
               uploadFile={async (blockId, file) => {
                 const { asset_id } = await uploadCommentAsset(file, anchor);
                 setUploadAssetIds((prev) => [...prev, asset_id]);

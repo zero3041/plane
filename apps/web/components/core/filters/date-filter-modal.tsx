@@ -141,9 +141,9 @@ export function DateFilterModal({ title, handleClose, isOpen, onSelect }: Props)
                 </div>
                 {watch("filterType") === "range" && (
                   <h6 className="flex items-center gap-1 text-11">
-                    <span className="text-secondary">After:</span>
+                    <span className="text-secondary">Sau:</span>
                     <span>{renderFormattedDate(watch("date1"))}</span>
-                    <span className="ml-1 text-secondary">Before:</span>
+                    <span className="ml-1 text-secondary">Trước:</span>
                     {!isInvalid && <span>{renderFormattedDate(watch("date2"))}</span>}
                   </h6>
                 )}
@@ -151,13 +151,13 @@ export function DateFilterModal({ title, handleClose, isOpen, onSelect }: Props)
             </DialogBody>
           </DialogMain>
           <DialogActions>
-            <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={handleClose} />
+            <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={handleClose} />
             <Button
               variant="primary"
               size="md"
               stretch="auto"
               type="button"
-              label="Apply"
+              label="Áp dụng"
               onClick={() => {
                 void handleSubmit(handleFormSubmit)();
               }}

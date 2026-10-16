@@ -25,6 +25,7 @@ import { DateSelect } from "@plane/blocks/property-select";
 import { Select } from "@plane/blocks/select";
 import { setToast } from "@plane/blocks/toast";
 import { useTranslation } from "@plane/i18n";
+import type { TTranslationStore } from "@plane/i18n";
 import type { IApiToken } from "@plane/types";
 import { renderFormattedDate, renderFormattedTime } from "@plane/utils";
 // hooks
@@ -40,32 +41,32 @@ type Props = {
 const EXPIRY_DATE_OPTIONS = [
   {
     key: "1_week",
-    label: "1 week",
+    label: (t: TTranslationStore["t"]) => t("notification.snooze.1_week"),
     value: { weeks: 1 },
   },
   {
     key: "1_month",
-    label: "1 month",
+    label: (t: TTranslationStore["t"]) => t("workspace_projects.common.months_count", { months: 1 }),
     value: { months: 1 },
   },
   {
     key: "3_months",
-    label: "3 months",
+    label: (t: TTranslationStore["t"]) => t("workspace_projects.common.months_count", { months: 3 }),
     value: { months: 3 },
   },
   {
     key: "1_year",
-    label: "1 year",
+    label: (_t: TTranslationStore["t"]) => "1 năm",
     value: { years: 1 },
   },
 ];
 
 /** The expiry picker's rows: the presets plus the "Custom" row that reveals the date picker. */
-type TExpiryOption = { key: string; label: string };
+type TExpiryOption = { key: string; label: (t: TTranslationStore["t"]) => string };
 
 const EXPIRY_SELECT_OPTIONS: TExpiryOption[] = [
   ...EXPIRY_DATE_OPTIONS.map(({ key, label }) => ({ key, label })),
-  { key: "custom", label: "Custom" },
+  { key: "custom", label: (t) => t("notification.snooze.custom") },
 ];
 
 const defaultValues: Partial<IApiToken> = {
@@ -111,8 +112,8 @@ export function CreateApiTokenForm(props: Props) {
     if (!neverExpires && (!data.expired_at || (data.expired_at === "custom" && !customDate)))
       return setToast({
         type: "error",
-        title: "Error!",
-        message: "Please select an expiration date.",
+        title: t("toast.error"),
+        message: "Vui lòng chọn ngày hết hạn.",
       });
 
     const payload: Partial<IApiToken> = {
@@ -210,7 +211,7 @@ export function CreateApiTokenForm(props: Props) {
                         value={selectedOption}
                         onChange={onChange}
                         getOptionValue={(option) => option.key}
-                        getOptionLabel={(option) => option.label}
+                        getOptionLabel={(option) => option.label(t)}
                         showSearch={false}
                         pinSelected={false}
                         disabled={neverExpires}
@@ -220,7 +221,7 @@ export function CreateApiTokenForm(props: Props) {
                           the longest label here ("Set expiration date"). */}
                         <Select.Trigger variant="select-md" className="w-auto" prependIcon={<CalendarOutline />}>
                           <span className="min-w-0 grow truncate text-left">
-                            {value === "custom" ? "Custom date" : (selectedOption?.label ?? "Set expiration date")}
+                            {value === "custom" ? "Ngày tùy chỉnh" : (selectedOption?.label(t) ?? "Đặt ngày hết hạn")}
                           </span>
                         </Select.Trigger>
                       </Select>
@@ -233,7 +234,7 @@ export function CreateApiTokenForm(props: Props) {
                     onChange={(date) => setCustomDate(date)}
                     minDate={tomorrow}
                     icon={<CalendarOutline />}
-                    placeholder="Set date"
+                    placeholder="Đặt ngày"
                     disabled={neverExpires}
                     clearable
                     weekStartsOn={userProfile?.start_of_the_week}
@@ -245,10 +246,10 @@ export function CreateApiTokenForm(props: Props) {
                 <span className="text-caption-sm-regular text-placeholder">
                   {expiredAt === "custom"
                     ? customDate
-                      ? `Expires ${renderFormattedDate(customDateFormatted ?? "")} at ${renderFormattedTime(customDateFormatted ?? "")}`
+                      ? `Hết hạn ngày ${renderFormattedDate(customDateFormatted ?? "")} lúc ${renderFormattedTime(customDateFormatted ?? "")}`
                       : null
                     : expiredAt
-                      ? `Expires ${renderFormattedDate(expiryDate ?? "")} at ${renderFormattedTime(expiryDate ?? "")}`
+                      ? `Hết hạn ngày ${renderFormattedDate(expiryDate ?? "")} lúc ${renderFormattedTime(expiryDate ?? "")}`
                       : null}
                 </span>
               )}

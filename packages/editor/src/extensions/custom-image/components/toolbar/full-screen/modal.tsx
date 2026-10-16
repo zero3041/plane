@@ -205,7 +205,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
       })}
       role="dialog"
       aria-modal="true"
-      aria-label="Fullscreen image viewer"
+      aria-label="Trình xem hình ảnh toàn màn hình"
     >
       <div
         ref={modalRef}
@@ -216,7 +216,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
           type="button"
           onClick={handleClose}
           className="absolute top-10 right-10 grid size-8 place-items-center"
-          aria-label="Close image viewer"
+          aria-label="Đóng trình xem hình ảnh"
         >
           <CloseOutline className="size-8 text-white/60 transition-colors hover:text-white" />
         </button>
@@ -249,7 +249,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
               }}
               className="grid size-6 place-items-center text-white/60 transition-colors duration-200 hover:text-white disabled:text-white/30"
               disabled={magnification <= MIN_ZOOM}
-              aria-label="Zoom out"
+              aria-label="Thu nhỏ"
             >
               <MinusOutline className="size-4" />
             </button>
@@ -265,7 +265,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
               }}
               className="grid size-6 place-items-center text-white/60 transition-colors duration-200 hover:text-white disabled:text-white/30"
               disabled={magnification >= MAX_ZOOM}
-              aria-label="Zoom in"
+              aria-label="Phóng to"
             >
               <AddOutline className="size-4" />
             </button>
@@ -275,7 +275,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
               type="button"
               onClick={() => window.open(downloadSrc, "_blank")}
               className="grid size-8 flex-shrink-0 place-items-center text-white/60 transition-colors duration-200 hover:text-white"
-              aria-label="Download image"
+              aria-label="Tải hình ảnh"
             >
               <DownloadOutline className="size-4" />
             </button>
@@ -285,7 +285,7 @@ function ImageFullScreenModalWithoutPortal(props: Props) {
               type="button"
               onClick={() => window.open(src, "_blank")}
               className="grid size-8 flex-shrink-0 place-items-center text-white/60 transition-colors duration-200 hover:text-white"
-              aria-label="Open image in new tab"
+              aria-label="Mở hình ảnh trong thẻ mới"
             >
               <NewTabOutline className="size-4" />
             </button>

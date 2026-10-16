@@ -236,9 +236,9 @@ export function EditorAIMenu(props: Props) {
                         className="rounded-sm p-1 text-13 font-medium text-tertiary outline-none hover:bg-layer-1"
                         onClick={() => handleInsertText(false)}
                       >
-                        Replace selection
+                        Thay vùng chọn
                       </button>
-                      <Tooltip label="Add to next line">
+                      <Tooltip label="Thêm vào dòng tiếp theo">
                         <button
                           type="button"
                           className="grid size-6 flex-shrink-0 place-items-center rounded-sm outline-none hover:bg-layer-1"
@@ -247,7 +247,7 @@ export function EditorAIMenu(props: Props) {
                           <CornerRightDownOutline className="size-4 text-tertiary" />
                         </button>
                       </Tooltip>
-                      <Tooltip label="Re-generate response">
+                      <Tooltip label="Tạo lại câu trả lời">
                         <button
                           type="button"
                           className="grid size-6 flex-shrink-0 place-items-center rounded-sm outline-none hover:bg-layer-1"
@@ -304,7 +304,7 @@ export function EditorAIMenu(props: Props) {
             <WarningTriangleOutline className="size-3" />
           </span>
           <p className="flex-shrink-0 text-11 font-medium">
-            By using this feature, you consent to sharing the message with a 3rd party service.
+            Khi dùng tính năng này, bạn đồng ý chia sẻ nội dung tin nhắn với dịch vụ bên thứ ba.
           </p>
         </div>
       )}

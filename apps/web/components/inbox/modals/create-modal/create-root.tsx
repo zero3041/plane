@@ -101,8 +101,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     } else {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Lỗi!",
+        message: "Trình soạn thảo đang xử lý thay đổi. Vui lòng đợi trước khi tiếp tục.",
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -133,8 +133,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     if (!descriptionEditorRef.current?.isEditorReadyToDiscard()) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Lỗi!",
+        message: "Trình soạn thảo đang xử lý thay đổi. Vui lòng đợi trước khi tiếp tục.",
       });
       return;
     }
@@ -168,16 +168,16 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
         }
         setToast({
           type: "success",
-          title: `Success!`,
-          message: "Work item created successfully.",
+          title: `Thành công!`,
+          message: "Đã tạo mục công việc.",
         });
       })
       .catch((error) => {
         console.error(error);
         setToast({
           type: "error",
-          title: `Error!`,
-          message: "Some error occurred. Please try again.",
+          title: `Lỗi!`,
+          message: "Đã xảy ra lỗi. Vui lòng thử lại.",
         });
       });
     setFormSubmitting(false);
@@ -250,8 +250,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                 } else {
                   setToast({
                     type: "error",
-                    title: "Error!",
-                    message: "Editor is still processing changes. Please wait before proceeding.",
+                    title: "Lỗi!",
+                    message: "Trình soạn thảo đang xử lý thay đổi. Vui lòng đợi trước khi tiếp tục.",
                   });
                 }
               }}

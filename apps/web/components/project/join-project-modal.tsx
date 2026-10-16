@@ -68,7 +68,7 @@ export function JoinProjectModal(props: TJoinProjectModalProps) {
         <DialogMain>
           <DialogHeader>
             <DialogHeading>
-              <DialogTitle>Join Project?</DialogTitle>
+              <DialogTitle>Tham gia dự án?</DialogTitle>
             </DialogHeading>
           </DialogHeader>
           <DialogBody>
@@ -80,7 +80,7 @@ export function JoinProjectModal(props: TJoinProjectModalProps) {
           </DialogBody>
         </DialogMain>
         <DialogActions>
-          <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={handleClose} />
+          <Button variant="secondary" size="md" stretch="auto" label="Hủy" onClick={handleClose} />
           <Button
             variant="primary"
             size="md"

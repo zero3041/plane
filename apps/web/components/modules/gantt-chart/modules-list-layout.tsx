@@ -58,7 +58,7 @@ export const ModulesListGanttChartView = observer(function ModulesListGanttChart
   return (
     <TimeLineTypeContext.Provider value={GANTT_TIMELINE_TYPE.MODULE}>
       <GanttChartRoot
-        title="Modules"
+        title="Nhóm công việc"
         loaderTitle="Modules"
         blockIds={filteredModuleIds}
         sidebarToRender={(props) => <ModuleGanttSidebar {...props} />}

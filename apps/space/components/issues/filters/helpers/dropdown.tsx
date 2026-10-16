@@ -18,7 +18,7 @@ type Props = {
 };
 
 export function FiltersDropdown(props: Props) {
-  const { children, title = "Dropdown", placement = "auto" } = props;
+  const { children, title = "Danh sách thả xuống", placement = "auto" } = props;
   const { side, align } = toSideAndAlign(placement);
 
   return (

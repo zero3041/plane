@@ -17,12 +17,12 @@ interface IWebHookToggle {
 export function WebhookToggle({ control }: IWebHookToggle) {
   return (
     <div className="flex gap-6">
-      <div className="text-13 font-medium">Enable webhook</div>
+      <div className="text-13 font-medium">Bật webhook</div>
       <Controller
         control={control}
         name="is_active"
         render={({ field: { onChange, value } }) => (
-          <Switch size="sm" checked={value} onCheckedChange={onChange} aria-label="Enable webhook" />
+          <Switch size="sm" checked={value} onCheckedChange={onChange} aria-label="Bật webhook" />
         )}
       />
     </div>

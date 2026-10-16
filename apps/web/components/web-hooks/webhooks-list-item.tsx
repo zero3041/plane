@@ -50,7 +50,7 @@ export function WebhooksListItem(props: IWebhookListItem) {
             onCheckedChange={() => {
               void handleToggle();
             }}
-            aria-label="Toggle webhook"
+            aria-label="Bật hoặc tắt webhook"
           />
         </div>
       </Link>

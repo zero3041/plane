@@ -44,17 +44,17 @@ export const IMAGE_ALIGNMENT_OPTIONS: {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 }[] = [
   {
-    label: "Left",
+    label: "Trái",
     value: "left",
     icon: AlignLeftOutline,
   },
   {
-    label: "Center",
+    label: "Giữa",
     value: "center",
     icon: AlignCenterOutline,
   },
   {
-    label: "Right",
+    label: "Phải",
     value: "right",
     icon: AlignRightOutline,
   },

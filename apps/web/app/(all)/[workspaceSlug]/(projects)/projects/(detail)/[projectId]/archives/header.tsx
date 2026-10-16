@@ -34,17 +34,17 @@ const PROJECT_ARCHIVES_BREADCRUMB_LIST: {
   };
 } = {
   issues: {
-    label: "Work items",
+    label: "Công việc",
     href: "/issues",
     icon: WorkItemsOutline,
   },
   cycles: {
-    label: "Cycles",
+    label: "Chu kỳ",
     href: "/cycles",
     icon: CyclesOutline,
   },
   modules: {
-    label: "Modules",
+    label: "Mô-đun",
     href: "/modules",
     icon: ModuleOutline,
   },
@@ -82,7 +82,7 @@ export const ProjectArchivesHeader = observer(function ProjectArchivesHeader(pro
               component={
                 <BreadcrumbLink
                   href={`/${workspaceSlug}/projects/${projectId}/archives/issues`}
-                  label="Archives"
+                  label="Lưu trữ"
                   icon={<ArchiveOutline className="h-4 w-4 text-tertiary" />}
                 />
               }

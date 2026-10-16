@@ -110,12 +110,12 @@ export const DeleteWorkspaceForm = observer(function DeleteWorkspaceForm(props: 
         <DialogBody tabIndex={0}>
           <div className="space-y-4">
             <p className="text-body-xs-regular text-secondary">
-              You are about to delete the workspace{" "}
-              <span className="text-body-xs-semibold break-words">{data?.name}</span>. If you confirm, you will lose
-              access to all your work data in this workspace without any way to restore it. Tread very carefully.
+              Bạn sắp xóa không gian làm việc <span className="text-body-xs-semibold break-words">{data?.name}</span>.{" "}
+              {t("workspace_settings.settings.general.delete_workspace_description")} Vui lòng cân nhắc kỹ trước khi xác
+              nhận.
             </p>
             <div className="text-secondary">
-              <p className="text-body-xs-regular break-words">Type in this workspace&apos;s name to continue.</p>
+              <p className="text-body-xs-regular break-words">Nhập tên không gian làm việc này để tiếp tục.</p>
               <Controller
                 control={control}
                 name="workspaceName"
@@ -140,9 +140,8 @@ export const DeleteWorkspaceForm = observer(function DeleteWorkspaceForm(props: 
             </div>
             <div className="text-secondary">
               <p className="text-body-xs-regular">
-                For final confirmation, type{" "}
-                <span className="text-body-xs-medium text-primary">delete my workspace </span>
-                below.
+                Để xác nhận lần cuối, hãy nhập{" "}
+                <span className="text-body-xs-medium text-primary">delete my workspace</span> bên dưới.
               </p>
               <Controller
                 control={control}
@@ -158,7 +157,7 @@ export const DeleteWorkspaceForm = observer(function DeleteWorkspaceForm(props: 
                         value={value}
                         onChange={onChange}
                         ref={ref}
-                        placeholder=""
+                        placeholder="Nhập 'delete my workspace'"
                         autoComplete="off"
                       />
                     </InputGroup>

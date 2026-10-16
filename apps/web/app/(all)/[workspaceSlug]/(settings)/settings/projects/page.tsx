@@ -24,11 +24,10 @@ function ProjectSettingsPage() {
   const resolvedPath = resolvedTheme === "dark" ? ProjectDarkEmptyState : ProjectLightEmptyState;
   return (
     <div className="mx-auto flex h-full max-w-[480px] flex-col items-center justify-center gap-4">
-      <img src={resolvedPath} alt="No projects yet" />
-      <div className="text-16 font-semibold text-tertiary">No projects yet</div>
+      <img src={resolvedPath} alt="Chưa có dự án nào" />
+      <div className="text-16 font-semibold text-tertiary">Chưa có dự án nào</div>
       <div className="text-center text-13 text-tertiary">
-        Projects act as the foundation for goal-driven work. They let you manage your teams, tasks, and everything you
-        need to get things done.
+        Dự án là nơi bạn tổ chức mục tiêu, thành viên và công việc để cùng hoàn thành kế hoạch.
       </div>
       <div className="flex gap-2">
         <ButtonElement
@@ -37,13 +36,13 @@ function ProjectSettingsPage() {
           stretch="auto"
           render={<Link href="https://plane.so/" target="_blank" />}
         >
-          Learn more about projects
+          Tìm hiểu thêm về dự án
         </ButtonElement>
         <Button
           variant="primary"
           size="sm"
           stretch="auto"
-          label="Start your first project"
+          label="Tạo dự án đầu tiên"
           onClick={() => toggleCreateProjectModal(true)}
         />
       </div>

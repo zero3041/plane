@@ -47,7 +47,7 @@ export function TableDragHandleDropdownColorSelector(props: Props) {
     <Collapsible defaultOpen icon={<Icon icon={PaletteOutline} />} trigger="Color">
       <div className="mb-1.5 space-y-2 p-1">
         {/* <div className="space-y-1.5">
-          <p className="text-11 text-tertiary font-semibold">Text colors</p>
+          <p className="text-11 text-tertiary font-semibold">Màu chữ</p>
           <div className="flex items-center flex-wrap gap-2">
             {COLORS_LIST.map((color) => (
               <button
@@ -70,7 +70,7 @@ export function TableDragHandleDropdownColorSelector(props: Props) {
           </div>
         </div> */}
         <div className="space-y-1">
-          <p className="text-11 font-semibold text-tertiary">Background colors</p>
+          <p className="text-11 font-semibold text-tertiary">Màu nền</p>
           <div className="flex flex-wrap items-center gap-2">
             {COLORS_LIST.map((color) => (
               <button

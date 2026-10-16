@@ -33,7 +33,7 @@ export const PasswordLoginConfiguration = observer(function PasswordLoginConfigu
         updateConfig("ENABLE_EMAIL_PASSWORD", newEnableEmailPassword);
       }}
       size="sm"
-      aria-label="Enable login with passwords"
+      aria-label="Bật đăng nhập bằng mật khẩu"
       disabled={disabled}
     />
   );

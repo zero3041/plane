@@ -56,18 +56,16 @@ export function ConfirmIssueDiscard(props: Props) {
         <DialogMain>
           <DialogHeader>
             <DialogHeading>
-              <DialogTitle>Save this draft?</DialogTitle>
-              <DialogDescription>
-                You can save this work item to Drafts so you can come back to it later.
-              </DialogDescription>
+              <DialogTitle>Lưu bản nháp này?</DialogTitle>
+              <DialogDescription>Bạn có thể lưu mục công việc vào bản nháp để tiếp tục sau.</DialogDescription>
             </DialogHeading>
           </DialogHeader>
         </DialogMain>
         <DialogActions>
           <DialogInfo>
-            <Button variant="secondary" size="sm" stretch="auto" onClick={onDiscard} label="Discard" />
+            <Button variant="secondary" size="sm" stretch="auto" onClick={onDiscard} label="Bỏ" />
           </DialogInfo>
-          <Button variant="secondary" size="sm" stretch="auto" onClick={onClose} label="Cancel" />
+          <Button variant="secondary" size="sm" stretch="auto" onClick={onClose} label="Hủy" />
           <Button
             variant="primary"
             size="sm"

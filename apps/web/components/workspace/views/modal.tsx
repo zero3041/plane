@@ -55,16 +55,16 @@ export const CreateUpdateWorkspaceViewModal = observer(function CreateUpdateWork
       const res = await createGlobalView(workspaceSlug, payloadData);
       setToast({
         type: "success",
-        title: "Success!",
-        message: "View created successfully.",
+        title: "Thành công!",
+        message: "Đã tạo chế độ xem.",
       });
       router.push(`/${workspaceSlug}/workspace-views/${res.id}`);
       handleClose();
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "View could not be created. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể tạo chế độ xem. Vui lòng thử lại.",
       });
     }
   };
@@ -84,16 +84,16 @@ export const CreateUpdateWorkspaceViewModal = observer(function CreateUpdateWork
         resetExpression(EIssuesStoreType.GLOBAL, data.id, res.rich_filters);
         setToast({
           type: "success",
-          title: "Success!",
-          message: "View updated successfully.",
+          title: "Thành công!",
+          message: "Đã cập nhật chế độ xem.",
         });
         handleClose();
       }
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "View could not be updated. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể cập nhật chế độ xem. Vui lòng thử lại.",
       });
     }
   };

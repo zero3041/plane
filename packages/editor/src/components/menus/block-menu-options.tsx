@@ -86,7 +86,7 @@ export const getNodeOptions = (editor: Editor): BlockMenuOption[] => [
   {
     icon: DragDropOutline,
     key: "table-full-width",
-    label: "Fit to width",
+    label: "Vừa chiều rộng",
     isDisabled: !editor.isActive(CORE_EXTENSIONS.TABLE),
     onClick: () => setTableToFullWidth(editor),
   },

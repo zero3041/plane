@@ -38,16 +38,16 @@ type TPeekModeOption = {
 };
 
 const PEEK_MODES: TPeekModeOption[] = [
-  { key: "side", icon: SidePeekOutline, label: "Side Peek" },
+  { key: "side", icon: SidePeekOutline, label: "Xem bên cạnh" },
   {
     key: "modal",
     icon: ModalPeekOutline,
-    label: "Modal",
+    label: "Cửa sổ",
   },
   {
     key: "full",
     icon: FullScreenPeekOutline,
-    label: "Full Screen",
+    label: "Toàn màn hình",
   },
 ];
 
@@ -65,8 +65,8 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
     copyTextToClipboard(urlToCopy).then(() => {
       setToast({
         type: "success",
-        title: "Link copied!",
-        message: "Work item link copied to clipboard.",
+        title: "Đã sao chép liên kết!",
+        message: "Đã sao chép liên kết công việc.",
       });
     });
   };

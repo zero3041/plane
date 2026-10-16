@@ -49,8 +49,8 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
           if (cycleId || peekCycle) router.push(`/${workspaceSlug}/projects/${projectId}/cycles`);
           setToast({
             type: "success",
-            title: "Success!",
-            message: "Cycle deleted successfully.",
+            title: "Thành công!",
+            message: "Đã xóa chu kỳ.",
           });
         })
         .catch((errors) => {
@@ -68,8 +68,8 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
     } catch {
       setToast({
         type: "error",
-        title: "Warning!",
-        message: "Something went wrong please try again later.",
+        title: "Cảnh báo!",
+        message: "Đã xảy ra lỗi. Vui lòng thử lại sau.",
       });
     }
 
@@ -82,7 +82,7 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
       handleSubmit={formSubmit}
       isSubmitting={loader}
       isOpen={isOpen}
-      title="Delete cycle"
+      title="Xóa chu kỳ"
       content={
         <>
           Are you sure you want to delete cycle{' "'}

@@ -45,7 +45,7 @@ export function ImageFullScreenActionRoot(props: Props) {
         width={width}
         toggleFullScreenMode={setIsFullScreenEnabled}
       />
-      <Tooltip label="View in full screen" disabled={isTouchDevice}>
+      <Tooltip label="Xem toàn màn hình" disabled={isTouchDevice}>
         <button
           type="button"
           onClick={(e) => {
@@ -54,7 +54,7 @@ export function ImageFullScreenActionRoot(props: Props) {
             setIsFullScreenEnabled(true);
           }}
           className="grid h-full flex-shrink-0 place-items-center text-on-color/60 transition-colors hover:text-on-color"
-          aria-label="View image in full screen"
+          aria-label="Xem hình ảnh toàn màn hình"
         >
           <FullScreenOutline className="size-3" />
         </button>

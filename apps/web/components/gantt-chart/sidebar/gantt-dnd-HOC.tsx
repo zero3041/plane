@@ -106,9 +106,9 @@ export const GanttDnDHOC = observer(function GanttDnDHOC(props: Props) {
       onDragStart={() => {
         if (!isDragEnabled) {
           setToast({
-            title: "Warning!",
+            title: "Cảnh báo!",
             type: "warning",
-            message: "Drag and drop is only enabled when sorted by manual",
+            message: "Chỉ có thể kéo thả khi sắp xếp thủ công",
           });
         }
       }}

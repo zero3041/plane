@@ -73,11 +73,11 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
     setPromiseToast(addToFavoritePromise, {
       loading: "Adding module to favorites...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Module added to favorites.",
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Couldn't add the module to favorites. Please try again.",
       },
     });
@@ -97,11 +97,11 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
     setPromiseToast(removeFromFavoritePromise, {
       loading: "Removing module from favorites...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => "Module removed from favorites.",
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => "Couldn't remove the module from favorites. Please try again.",
       },
     });
@@ -114,14 +114,14 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
       .then(() => {
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Module updated successfully.",
+          title: "Thành công!",
+          message: "Đã cập nhật nhóm công việc.",
         });
       })
       .catch((err) => {
         setToast({
           type: "error",
-          title: "Error!",
+          title: "Lỗi!",
           message: err?.detail ?? "Module could not be updated. Please try again.",
         });
       });
@@ -166,7 +166,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
           <ButtonAvatars showTooltip={false} userIds={moduleLeadDetails?.id} />
         </span>
       ) : (
-        <Tooltip label="No lead">
+        <Tooltip label="Chưa có người phụ trách">
           <UserAltOutline className="h-4 w-4 text-tertiary" />
         </Tooltip>
       )}

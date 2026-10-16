@@ -32,7 +32,7 @@ export const InvalidFilterItem = observer(function InvalidFilterItem<
       <FilterItemProperty
         conditionId={condition.id}
         icon={WarningCircleOutline}
-        label="Invalid filter"
+        label="Bộ lọc không hợp lệ"
         filter={filter}
         isDisabled={isDisabled}
       />

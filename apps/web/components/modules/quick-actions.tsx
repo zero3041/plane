@@ -63,8 +63,8 @@ export const ModuleQuickActions = observer(function ModuleQuickActions(props: Pr
     copyUrlToClipboard(moduleLink).then(() => {
       setToast({
         type: "success",
-        title: "Link Copied!",
-        message: "Module link copied to clipboard.",
+        title: "Đã sao chép liên kết!",
+        message: "Đã sao chép liên kết nhóm công việc vào bộ nhớ tạm.",
       });
     });
   const handleOpenInNewTab = () => window.open(`/${moduleLink}`, "_blank");
@@ -74,15 +74,15 @@ export const ModuleQuickActions = observer(function ModuleQuickActions(props: Pr
       await restoreModule(workspaceSlug, projectId, moduleId);
       setToast({
         type: "success",
-        title: "Restore success",
-        message: "Your module can be found in project modules.",
+        title: "Đã khôi phục",
+        message: "Bạn có thể tìm nhóm công việc này trong dự án.",
       });
       router.push(`/${workspaceSlug}/projects/${projectId}/archives/modules`);
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Module could not be restored. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể khôi phục nhóm công việc. Vui lòng thử lại.",
       });
     }
   };

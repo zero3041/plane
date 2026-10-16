@@ -48,8 +48,8 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
     copyTextToClipboard(urlToCopy).then(() => {
       setToast({
         type: "info",
-        title: "Link copied!",
-        message: "Work item link copied to clipboard",
+        title: "Đã sao chép liên kết!",
+        message: "Đã sao chép liên kết công việc",
       });
     });
   };
@@ -72,7 +72,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
         <div className="flex h-8 items-center gap-3">
           <div className="flex w-1/4 flex-shrink-0 items-center gap-1 text-13 text-tertiary">
             <StateOutline className="size-4 flex-shrink-0" />
-            <span>State</span>
+            <span>Trạng thái</span>
           </div>
           <div className="flex w-3/4 items-center gap-1.5 py-0.5 text-13">
             <StateGroupIcon stateGroup={state?.group ?? "backlog"} color={state?.color} />
@@ -83,7 +83,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
         <div className="flex h-8 items-center gap-3">
           <div className="flex w-1/4 flex-shrink-0 items-center gap-1 text-13 text-tertiary">
             <PriorityOutline className="size-4 flex-shrink-0" />
-            <span>Priority</span>
+            <span>Độ ưu tiên</span>
           </div>
           <div className="w-3/4">
             <div
@@ -108,7 +108,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
         <div className="flex h-8 items-center gap-3">
           <div className="flex w-1/4 flex-shrink-0 items-center gap-1 text-13 text-tertiary">
             <DueDateOutline className="size-4 flex-shrink-0" />
-            <span>Due date</span>
+            <span>Hạn chót</span>
           </div>
           <div>
             {issueDetails.target_date ? (
@@ -121,7 +121,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
                 {renderFormattedDate(issueDetails.target_date)}
               </div>
             ) : (
-              <span className="text-13 text-secondary">Empty</span>
+              <span className="text-13 text-secondary">Trống</span>
             )}
           </div>
         </div>

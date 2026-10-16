@@ -56,9 +56,9 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
           if (!canDisable) {
             setToast({
               type: "error",
-              title: "Cannot disable authentication",
+              title: "Không thể tắt xác thực",
               message:
-                "At least one authentication method must remain enabled. Please enable another method before disabling this one.",
+                "Phải duy trì ít nhất một phương thức xác thực. Hãy bật phương thức khác trước khi tắt phương thức này.",
             });
             return;
           }
@@ -75,14 +75,14 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
       const updateConfigPromise = updateInstanceConfigurations(payload);
 
       setPromiseToast(updateConfigPromise, {
-        loading: "Saving configuration",
+        loading: "Đang lưu cấu hình",
         success: {
-          title: "Success",
-          message: () => "Configuration saved successfully",
+          title: "Thành công",
+          message: () => "Đã lưu cấu hình thành công",
         },
         error: {
-          title: "Error",
-          message: () => "Failed to save configuration",
+          title: "Lỗi",
+          message: () => "Không thể lưu cấu hình",
         },
       });
 
@@ -114,8 +114,8 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
   return (
     <PageWrapper
       header={{
-        title: "Manage authentication modes for your instance",
-        description: "Configure authentication modes for your team and restrict sign-ups to be invite only.",
+        title: "Quản lý phương thức xác thực cho máy chủ",
+        description: "Cấu hình phương thức xác thực cho nhóm và giới hạn đăng ký theo lời mời.",
       }}
     >
       {formattedConfig ? (
@@ -123,16 +123,16 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
           <div className={cn("flex w-full items-center gap-14 rounded-sm")}>
             <div className="flex grow items-center gap-4">
               <div className="grow">
-                <div className="pb-1 text-16 font-medium">Allow anyone to sign up even without an invite</div>
+                <div className="pb-1 text-16 font-medium">Cho phép mọi người đăng ký mà không cần lời mời</div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
-                  Toggling this off will only let users sign up when they are invited.
+                  Khi tắt, người dùng chỉ có thể đăng ký khi được mời.
                 </div>
               </div>
             </div>
             <div className={`shrink-0 pr-4 ${isSubmitting && "opacity-70"}`}>
               <div className="flex items-center gap-4">
                 <Switch
-                  aria-label="Allow anyone to sign up even without an invite"
+                  aria-label="Cho phép mọi người đăng ký mà không cần lời mời"
                   checked={Boolean(parseInt(enableSignUpConfig))}
                   onCheckedChange={() => {
                     if (Boolean(parseInt(enableSignUpConfig)) === true) {
@@ -147,7 +147,7 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
               </div>
             </div>
           </div>
-          <div className="text-lg pt-6 font-medium">Available authentication modes</div>
+          <div className="text-lg pt-6 font-medium">Các phương thức xác thực hiện có</div>
           {authenticationModes.map((method) => (
             <AuthenticationMethodCard
               key={method.key}

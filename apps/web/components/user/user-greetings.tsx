@@ -20,24 +20,28 @@ export function UserGreetingsView(props: IUserGreetingsView) {
   // current time hook
   const { currentTime } = useCurrentTime();
   // store hooks
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
+  const timeZone = user?.user_timezone || "Asia/Ho_Chi_Minh";
 
-  const hour = new Intl.DateTimeFormat("en-US", {
+  const hour = new Intl.DateTimeFormat(currentLocale, {
+    timeZone,
     hour12: false,
     hour: "numeric",
   }).format(currentTime);
 
-  const date = new Intl.DateTimeFormat("en-US", {
+  const date = new Intl.DateTimeFormat(currentLocale, {
+    timeZone,
     month: "short",
     day: "numeric",
   }).format(currentTime);
 
-  const weekDay = new Intl.DateTimeFormat("en-US", {
+  const weekDay = new Intl.DateTimeFormat(currentLocale, {
+    timeZone,
     weekday: "long",
   }).format(currentTime);
 
-  const timeString = new Intl.DateTimeFormat("en-US", {
-    timeZone: user?.user_timezone,
+  const timeString = new Intl.DateTimeFormat(currentLocale, {
+    timeZone,
     hour12: false, // Use 24-hour format
     hour: "2-digit",
     minute: "2-digit",

@@ -44,8 +44,8 @@ export const OnboardingRoot = observer(function OnboardingRoot({ invitations = [
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Failed",
-        message: "Failed to finish onboarding, Please try again later.",
+        title: "Thất bại",
+        message: "Không thể hoàn tất thiết lập ban đầu. Vui lòng thử lại sau.",
       });
     }
   }, [user, finishUserOnboarding]);

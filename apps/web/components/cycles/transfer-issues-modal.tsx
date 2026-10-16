@@ -60,16 +60,16 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
       .then(async () => {
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Work items have been transferred successfully",
+          title: "Thành công!",
+          message: "Đã chuyển mục công việc",
         });
         await getCycleDetails(payload.new_cycle_id);
       })
       .catch(() => {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "Unable to transfer work items. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể chuyển mục công việc. Vui lòng thử lại.",
         });
       });
   };
@@ -83,7 +83,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
     await Promise.all(cyclesFetch).catch((error) => {
       setToast({
         type: "error",
-        title: "Error",
+        title: "Lỗi",
         message: error.error || "Unable to fetch cycle details",
       });
     });
@@ -117,7 +117,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
             <div className="flex items-center gap-1">
               <TransferWorkItemOutline className="w-5 fill-primary" />
               <DialogHeading>
-                <DialogTitle>Transfer work items</DialogTitle>
+                <DialogTitle>Chuyển mục công việc</DialogTitle>
               </DialogHeading>
             </div>
           </DialogHeader>
@@ -125,7 +125,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
             <SearchOutline className="h-4 w-4 text-secondary" />
             <input
               className="text-13 outline-none"
-              placeholder="Search for a cycle..."
+              placeholder="Tìm chu kỳ..."
               onChange={(e) => setQuery(e.target.value)}
               value={query}
             />
@@ -171,7 +171,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
                   </div>
                 )
               ) : (
-                <p className="text-center text-secondary">Loading...</p>
+                <p className="text-center text-secondary">Đang tải...</p>
               )}
             </div>
           </DialogBody>

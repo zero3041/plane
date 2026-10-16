@@ -111,8 +111,8 @@ export const IssueDetailWidgetModals = observer(function IssueDetailWidgetModals
     if (data.length === 0) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Please select at least one work item.",
+        title: "Lỗi!",
+        message: "Vui lòng chọn ít nhất một mục công việc.",
       });
       return;
     }

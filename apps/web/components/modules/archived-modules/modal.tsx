@@ -43,16 +43,16 @@ export function ArchiveModuleModal(props: Props) {
       await archiveModule(workspaceSlug, projectId, moduleId);
       setToast({
         type: "success",
-        title: "Archive success",
-        message: "Your archives can be found in project archives.",
+        title: "Đã lưu trữ",
+        message: "Bạn có thể tìm thấy mục đã lưu trữ trong phần lưu trữ dự án.",
       });
       onClose();
       router.push(`/${workspaceSlug}/projects/${projectId}/modules`);
     } catch {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Module could not be archived. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể lưu trữ nhóm công việc. Vui lòng thử lại.",
       });
     } finally {
       setIsArchiving(false);

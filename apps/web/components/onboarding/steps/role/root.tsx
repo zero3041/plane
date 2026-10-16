@@ -69,14 +69,14 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
       [await updateUserProfile(profileUpdatePayload)];
       setToast({
         type: "success",
-        title: "Success",
-        message: "Profile setup completed!",
+        title: "Thành công",
+        message: "Đã thiết lập hồ sơ!",
       });
     } catch {
       setToast({
         type: "error",
-        title: "Error",
-        message: "Profile setup failed. Please try again!",
+        title: "Lỗi",
+        message: "Không thể thiết lập hồ sơ. Vui lòng thử lại!",
       });
     }
   };
@@ -96,10 +96,10 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
       {/* Header */}
-      <CommonOnboardingHeader title="What's your role?" description="Let's set up Plane for how you work." />
+      <CommonOnboardingHeader title="Vai trò của bạn là gì?" description="Thiết lập Plane theo cách bạn làm việc." />
       {/* Role Selection */}
       <div className="flex flex-col gap-3">
-        <p className="text-body-sm-semibold text-placeholder">Select one</p>
+        <p className="text-body-sm-semibold text-placeholder">Chọn một</p>
         <Controller
           control={control}
           name="role"
@@ -149,14 +149,14 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
       </div>
       {/* Action Buttons */}
       <div className="space-y-3">
-        <Button variant="primary" type="submit" stretch="full" size="lg" disabled={isButtonDisabled} label="Continue" />
+        <Button variant="primary" type="submit" stretch="full" size="lg" disabled={isButtonDisabled} label="Tiếp tục" />
         <Button
           variant="ghost"
           onClick={handleSkip}
           stretch="full"
           size="lg"
           render={<button type="button" className="text-tertiary" />}
-          label="Skip"
+          label="Bỏ qua"
         />
       </div>
     </form>

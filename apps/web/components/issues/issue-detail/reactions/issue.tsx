@@ -50,15 +50,15 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing fields");
           await createReaction(workspaceSlug, projectId, issueId, reaction);
           setToast({
-            title: "Success!",
+            title: "Thành công!",
             type: "success",
-            message: "Reaction created successfully",
+            message: "Đã thêm cảm xúc",
           });
         } catch (_error) {
           setToast({
-            title: "Error!",
+            title: "Lỗi!",
             type: "error",
-            message: "Reaction creation failed",
+            message: "Không thể thêm cảm xúc",
           });
         }
       },
@@ -67,15 +67,15 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
           if (!workspaceSlug || !projectId || !issueId || !currentUser?.id) throw new Error("Missing fields");
           await removeReaction(workspaceSlug, projectId, issueId, reaction, currentUser.id);
           setToast({
-            title: "Success!",
+            title: "Thành công!",
             type: "success",
-            message: "Reaction removed successfully",
+            message: "Đã bỏ cảm xúc",
           });
         } catch (_error) {
           setToast({
-            title: "Error!",
+            title: "Lỗi!",
             type: "error",
-            message: "Reaction remove failed",
+            message: "Không thể bỏ cảm xúc",
           });
         }
       },

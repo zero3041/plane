@@ -63,22 +63,22 @@ export function CreateUpdateModuleLinkModal(props: Props) {
         await createLink(payload);
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Module link created successfully.",
+          title: "Thành công!",
+          message: "Đã tạo liên kết nhóm công việc.",
         });
       } else {
         await updateLink(payload, data.id);
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Module link updated successfully.",
+          title: "Thành công!",
+          message: "Đã cập nhật liên kết nhóm công việc.",
         });
       }
       onClose();
     } catch (error: any) {
       setToast({
         type: "error",
-        title: "Error!",
+        title: "Lỗi!",
         message: error?.data?.error ?? "Some error occurred. Please try again.",
       });
     }
@@ -125,7 +125,7 @@ export function CreateUpdateModuleLinkModal(props: Props) {
                       onChange={onChange}
                       ref={ref}
                       error={errors.url?.message}
-                      placeholder="Type or paste a URL"
+                      placeholder="Nhập hoặc dán URL"
                     />
                   )}
                 />
@@ -138,13 +138,13 @@ export function CreateUpdateModuleLinkModal(props: Props) {
                       type="text"
                       size="xl"
                       orientation="vertical"
-                      label="Display title"
-                      description="Optional"
+                      label="Tiêu đề hiển thị"
+                      description="Tùy chọn"
                       value={value}
                       onChange={onChange}
                       ref={ref}
                       error={errors.title?.message}
-                      placeholder="What you'd like to see this link as"
+                      placeholder="Tên hiển thị của liên kết"
                     />
                   )}
                 />
@@ -152,7 +152,7 @@ export function CreateUpdateModuleLinkModal(props: Props) {
             </DialogBody>
           </DialogMain>
           <DialogActions>
-            <Button variant="secondary" size="md" stretch="auto" onClick={onClose} label="Cancel" />
+            <Button variant="secondary" size="md" stretch="auto" onClick={onClose} label="Hủy" />
             <Button
               variant="primary"
               size="md"

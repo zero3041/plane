@@ -140,8 +140,8 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
       if (!viewDetails) {
         setToast({
           type: "error",
-          title: "We couldn't find the view",
-          message: "The view you're trying to update doesn't exist.",
+          title: "Không tìm thấy chế độ xem",
+          message: "Chế độ xem bạn muốn cập nhật không tồn tại.",
         });
 
         return;
@@ -153,15 +153,15 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
         .then(() => {
           setToast({
             type: "success",
-            title: "Success!",
-            message: "Your view has been updated successfully.",
+            title: "Thành công!",
+            message: "Đã cập nhật chế độ xem.",
           });
         })
         .catch(() => {
           setToast({
             type: "error",
-            title: "Error!",
-            message: "Your view could not be updated. Please try again.",
+            title: "Lỗi!",
+            message: "Không thể cập nhật chế độ xem. Vui lòng thử lại.",
           });
         });
     },

@@ -40,7 +40,7 @@ export const PeekOverviewIssueActivity = observer(function PeekOverviewIssueActi
 
   return (
     <div className="pb-10">
-      <h4 className="font-medium">Comments</h4>
+      <h4 className="font-medium">Bình luận</h4>
       <div className="mt-4">
         <div className="space-y-4">
           {comments.map((comment) => (
@@ -68,7 +68,7 @@ export const PeekOverviewIssueActivity = observer(function PeekOverviewIssueActi
                 stretch="auto"
                 nativeButton={false}
                 render={<Link to={`/?next_path=${pathname}`} />}
-                label="Sign in"
+                label="Đăng nhập"
               />
             </div>
           ))}

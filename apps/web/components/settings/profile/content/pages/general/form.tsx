@@ -78,8 +78,8 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
       display_name: user.display_name || "",
       email: user.email || "",
       role: profile.role || "Product / Project Manager",
-      language: profile.language || "en",
-      user_timezone: user.user_timezone || "Asia/Kolkata",
+      language: profile.language || "vi-VN",
+      user_timezone: user.user_timezone || "Asia/Ho_Chi_Minh",
     },
   });
   // derived values
@@ -100,8 +100,8 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
       .then(() => {
         setToast({
           type: "success",
-          title: "Success!",
-          message: "Profile picture deleted successfully.",
+          title: "Thành công!",
+          message: "Đã xóa ảnh hồ sơ.",
         });
         setValue("avatar_url", "");
         return;
@@ -109,8 +109,8 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
       .catch(() => {
         setToast({
           type: "error",
-          title: "Error!",
-          message: "There was some error in deleting your profile picture. Please try again.",
+          title: "Lỗi!",
+          message: "Không thể xóa ảnh hồ sơ. Vui lòng thử lại.",
         });
       })
       .finally(() => {
@@ -180,11 +180,11 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
     setPromiseToast(updatePromise, {
       loading: "Updating...",
       success: {
-        title: "Success!",
+        title: "Thành công!",
         message: () => `Profile updated successfully.`,
       },
       error: {
-        title: "Error!",
+        title: "Lỗi!",
         message: () => `There was some error in updating your profile. Please try again.`,
       },
     });
@@ -291,7 +291,7 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
                           value={value}
                           onChange={onChange}
                           ref={ref}
-                          placeholder="Enter your first name"
+                          placeholder="Nhập tên"
                           maxLength={50}
                           autoComplete="on"
                         />
@@ -320,7 +320,7 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
                           value={value}
                           onChange={onChange}
                           ref={ref}
-                          placeholder="Enter your last name"
+                          placeholder="Nhập họ"
                           maxLength={50}
                           autoComplete="on"
                         />
@@ -353,7 +353,7 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
                           value={value}
                           onChange={onChange}
                           ref={ref}
-                          placeholder="Enter your display name"
+                          placeholder="Nhập tên hiển thị"
                           maxLength={50}
                         />
                       </InputGroup>
@@ -385,7 +385,7 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
                           type="email"
                           value={value}
                           ref={ref}
-                          placeholder="Enter your email"
+                          placeholder="Nhập email"
                           autoComplete="on"
                           disabled
                         />

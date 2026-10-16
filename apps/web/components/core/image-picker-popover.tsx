@@ -76,12 +76,12 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
       },
       {
         key: "images",
-        title: "Images",
+        title: "Hình ảnh",
         isEnabled: true,
       },
       {
         key: "upload",
-        title: "Upload",
+        title: "Tải lên",
         isEnabled: true,
       },
     ],
@@ -143,7 +143,7 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
           setToast({
             message: error?.error ?? "The image could not be uploaded",
             type: "error",
-            title: "Image not uploaded",
+            title: "Không thể tải ảnh lên",
           });
         });
     } else {
@@ -164,7 +164,7 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
           setToast({
             message: error?.error ?? "The image could not be uploaded",
             type: "error",
-            title: "Image not uploaded",
+            title: "Không thể tải ảnh lên",
           });
         });
     }
@@ -236,7 +236,7 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
                                         value={value}
                                         onChange={(e) => setFormData({ ...formData, search: e.target.value })}
                                         ref={ref}
-                                        placeholder="Search for images"
+                                        placeholder="Tìm hình ảnh"
                                       />
                                     </InputGroup>
                                   )}
@@ -245,7 +245,7 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
                                   variant="primary"
                                   size="lg"
                                   stretch="auto"
-                                  label="Search"
+                                  label="Tìm kiếm"
                                   onClick={() => setSearchParams(formData.search)}
                                 />
                               </div>
@@ -276,7 +276,7 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
                                     ))}
                                   </div>
                                 ) : (
-                                  <p className="pt-7 text-center text-11 text-secondary">No images found.</p>
+                                  <p className="pt-7 text-center text-11 text-secondary">Không tìm thấy hình ảnh.</p>
                                 )
                               ) : (
                                 <Loader className="grid grid-cols-4 gap-4">
@@ -357,14 +357,14 @@ function ImagePickerPopoverComponent<TFieldValues extends FieldValues = FieldVal
                             </p>
                           )}
 
-                          <p className="text-13 text-secondary">File formats supported- .jpeg, .jpg, .png, .webp</p>
+                          <p className="text-13 text-secondary">Định dạng hỗ trợ: .jpeg, .jpg, .png, .webp</p>
 
                           <div className="flex h-12 items-start justify-end gap-2">
                             <Button
                               variant="secondary"
                               size="sm"
                               stretch="auto"
-                              label="Cancel"
+                              label="Hủy"
                               onClick={() => {
                                 setIsOpen(false);
                                 setImage(null);

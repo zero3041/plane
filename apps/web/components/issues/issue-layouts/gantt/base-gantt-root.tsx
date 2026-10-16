@@ -102,7 +102,7 @@ export const BaseGanttRoot = observer(function BaseGanttRoot(props: IBaseGanttRo
         setToast({
           type: "error",
           title: t("toast.error"),
-          message: "Error while updating work item dates, Please try again Later",
+          message: "Không thể cập nhật ngày của mục công việc. Vui lòng thử lại sau.",
         });
       }),
     [issues, projectId, workspaceSlug]

@@ -22,8 +22,7 @@ import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
 const APP_TITLE = "Plane | Simple, extensible, open-source project management tool.";
-const APP_DESCRIPTION =
-  "Open-source project management tool to manage work items, sprints, and product roadmaps with peace of mind.";
+const APP_DESCRIPTION = "Công cụ quản lý dự án mã nguồn mở để theo dõi công việc, sprint và lộ trình sản phẩm.";
 
 export const links: LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: appleTouchIcon },
@@ -43,7 +42,7 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="vi-VN" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -91,7 +90,7 @@ export function HydrateFallback() {
 export function ErrorBoundary({ error: _error }: Route.ErrorBoundaryProps) {
   return (
     <div>
-      <p>Something went wrong.</p>
+      <p>Đã xảy ra lỗi.</p>
     </div>
   );
 }

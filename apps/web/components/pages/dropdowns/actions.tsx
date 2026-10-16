@@ -117,14 +117,14 @@ export const PageActions = observer(function PageActions(props: Props) {
         {
           key: "open-in-new-tab",
           action: pageOperations.openInNewTab,
-          title: "Open in new tab",
+          title: "Mở trong tab mới",
           icon: NewTabOutline,
           shouldRender: true,
         },
         {
           key: "copy-link",
           action: pageOperations.copyLink,
-          title: "Copy link",
+          title: "Sao chép liên kết",
           icon: LinkOutline,
           shouldRender: true,
         },
@@ -133,7 +133,7 @@ export const PageActions = observer(function PageActions(props: Props) {
           action: () => {
             pageOperations.duplicate();
           },
-          title: "Make a copy",
+          title: "Tạo bản sao",
           icon: CopyOutline,
           shouldRender: canCurrentUserDuplicatePage,
         },
@@ -151,14 +151,14 @@ export const PageActions = observer(function PageActions(props: Props) {
           action: () => {
             setDeletePageModal(true);
           },
-          title: "Delete",
+          title: "Xóa",
           icon: DeleteOutline,
           shouldRender: canCurrentUserDeletePage && !!archived_at,
         },
         {
           key: "move",
           action: () => setMovePageModal(true),
-          title: "Move",
+          title: "Di chuyển",
           icon: ExportOutline,
           shouldRender: canCurrentUserMovePage && isMovePageEnabled,
         },

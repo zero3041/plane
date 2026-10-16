@@ -115,265 +115,265 @@ const errorCodeMessages: {
 } = {
   // global
   [EAuthenticationErrorCodes.INSTANCE_NOT_CONFIGURED]: {
-    title: `Instance not configured`,
-    message: () => `Instance not configured. Please contact your administrator.`,
+    title: `Hệ thống chưa được cấu hình`,
+    message: () => `Hệ thống chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.INVALID_EMAIL]: {
-    title: `Invalid email`,
-    message: () => `Invalid email. Please try again.`,
+    title: `Email không hợp lệ`,
+    message: () => `Email không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.EMAIL_REQUIRED]: {
-    title: `Email required`,
-    message: () => `Email required. Please try again.`,
+    title: `Vui lòng nhập email`,
+    message: () => `Vui lòng nhập email và thử lại.`,
   },
   [EAuthenticationErrorCodes.SIGNUP_DISABLED]: {
-    title: `Sign up disabled`,
-    message: () => `Sign up disabled. Please contact your administrator.`,
+    title: `Đã tắt đăng ký`,
+    message: () => `Đã tắt đăng ký. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.MAGIC_LINK_LOGIN_DISABLED]: {
-    title: `Magic link login disabled`,
-    message: () => `Magic link login disabled. Please contact your administrator.`,
+    title: `Đã tắt đăng nhập bằng liên kết`,
+    message: () => `Đã tắt đăng nhập bằng liên kết. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.PASSWORD_LOGIN_DISABLED]: {
-    title: `Password login disabled`,
-    message: () => `Password login disabled. Please contact your administrator.`,
+    title: `Đã tắt đăng nhập bằng mật khẩu`,
+    message: () => `Đã tắt đăng nhập bằng mật khẩu. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.USER_ACCOUNT_DEACTIVATED]: {
-    title: `User account deactivated`,
-    message: () => `User account deactivated. Please contact ${SUPPORT_EMAIL ? SUPPORT_EMAIL : "administrator"}.`,
+    title: `Tài khoản đã bị vô hiệu hóa`,
+    message: () => `Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ ${SUPPORT_EMAIL ? SUPPORT_EMAIL : "quản trị viên"}.`,
   },
   [EAuthenticationErrorCodes.BOT_USER_LOGIN_FORBIDDEN]: {
-    title: `Sign in not allowed`,
-    message: () => `This account cannot be used to sign in. Please use a personal account.`,
+    title: `Không thể đăng nhập`,
+    message: () => `Không thể đăng nhập bằng tài khoản này. Vui lòng dùng tài khoản cá nhân.`,
   },
   [EAuthenticationErrorCodes.INVALID_PASSWORD]: {
-    title: `Invalid password`,
-    message: () => `Invalid password. Please try again.`,
+    title: `Mật khẩu không hợp lệ`,
+    message: () => `Mật khẩu không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.PASSWORD_TOO_WEAK]: {
-    title: `Password too weak`,
-    message: () => `Please use a stronger password.`,
+    title: `Mật khẩu quá yếu`,
+    message: () => `Vui lòng dùng mật khẩu mạnh hơn.`,
   },
   [EAuthenticationErrorCodes.SMTP_NOT_CONFIGURED]: {
-    title: `SMTP not configured`,
-    message: () => `SMTP not configured. Please contact your administrator.`,
+    title: `SMTP chưa được cấu hình`,
+    message: () => `SMTP chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
 
   // sign up
   [EAuthenticationErrorCodes.USER_ALREADY_EXIST]: {
-    title: `User already exists`,
+    title: `Người dùng đã tồn tại`,
     message: (email = undefined) => (
       <div>
-        Your account is already registered.&nbsp;
+        Tài khoản của bạn đã được đăng ký.&nbsp;
         <Link
           className="font-medium underline underline-offset-4 transition-all hover:font-bold"
           href={`/sign-in${email ? `?email=${encodeURIComponent(email)}` : ``}`}
         >
-          Sign In
+          Đăng nhập
         </Link>
-        &nbsp;now.
+        &nbsp;ngay.
       </div>
     ),
   },
   [EAuthenticationErrorCodes.REQUIRED_EMAIL_PASSWORD_SIGN_UP]: {
-    title: `Email and password required`,
-    message: () => `Email and password required. Please try again.`,
+    title: `Vui lòng nhập email và mật khẩu`,
+    message: () => `Vui lòng nhập email và mật khẩu rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.AUTHENTICATION_FAILED_SIGN_UP]: {
-    title: `Authentication failed`,
-    message: () => `Authentication failed. Please try again.`,
+    title: `Xác thực thất bại`,
+    message: () => `Xác thực thất bại. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_EMAIL_SIGN_UP]: {
-    title: `Invalid email`,
-    message: () => `Invalid email. Please try again.`,
+    title: `Email không hợp lệ`,
+    message: () => `Email không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.MAGIC_SIGN_UP_EMAIL_CODE_REQUIRED]: {
-    title: `Email and code required`,
-    message: () => `Email and code required. Please try again.`,
+    title: `Vui lòng nhập email và mã`,
+    message: () => `Vui lòng nhập email và mã rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_EMAIL_MAGIC_SIGN_UP]: {
-    title: `Invalid email`,
-    message: () => `Invalid email. Please try again.`,
+    title: `Email không hợp lệ`,
+    message: () => `Email không hợp lệ. Vui lòng thử lại.`,
   },
 
   [EAuthenticationErrorCodes.USER_DOES_NOT_EXIST]: {
-    title: `User does not exist`,
+    title: `Người dùng không tồn tại`,
     message: (email = undefined) => (
       <div>
-        No account found.&nbsp;
+        Không tìm thấy tài khoản.&nbsp;
         <Link
           className="font-medium underline underline-offset-4 transition-all hover:font-bold"
           href={`/${email ? `?email=${encodeURIComponent(email)}` : ``}`}
         >
-          Create one
+          Tạo tài khoản
         </Link>
-        &nbsp;to get started.
+        &nbsp;để bắt đầu.
       </div>
     ),
   },
   [EAuthenticationErrorCodes.REQUIRED_EMAIL_PASSWORD_SIGN_IN]: {
-    title: `Email and password required`,
-    message: () => `Email and password required. Please try again.`,
+    title: `Vui lòng nhập email và mật khẩu`,
+    message: () => `Vui lòng nhập email và mật khẩu rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.AUTHENTICATION_FAILED_SIGN_IN]: {
-    title: `Authentication failed`,
-    message: () => `Authentication failed. Please try again.`,
+    title: `Xác thực thất bại`,
+    message: () => `Xác thực thất bại. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_EMAIL_SIGN_IN]: {
-    title: `Invalid email`,
-    message: () => `Invalid email. Please try again.`,
+    title: `Email không hợp lệ`,
+    message: () => `Email không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.MAGIC_SIGN_IN_EMAIL_CODE_REQUIRED]: {
-    title: `Email and code required`,
-    message: () => `Email and code required. Please try again.`,
+    title: `Vui lòng nhập email và mã`,
+    message: () => `Vui lòng nhập email và mã rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_EMAIL_MAGIC_SIGN_IN]: {
-    title: `Invalid email`,
-    message: () => `Invalid email. Please try again.`,
+    title: `Email không hợp lệ`,
+    message: () => `Email không hợp lệ. Vui lòng thử lại.`,
   },
 
   // Both Sign in and Sign up
   [EAuthenticationErrorCodes.INVALID_MAGIC_CODE_SIGN_IN]: {
-    title: `Authentication failed`,
-    message: () => `Invalid magic code. Please try again.`,
+    title: `Xác thực thất bại`,
+    message: () => `Mã đăng nhập không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_MAGIC_CODE_SIGN_UP]: {
-    title: `Authentication failed`,
-    message: () => `Invalid magic code. Please try again.`,
+    title: `Xác thực thất bại`,
+    message: () => `Mã đăng nhập không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.EXPIRED_MAGIC_CODE_SIGN_IN]: {
-    title: `Expired magic code`,
-    message: () => `Expired magic code. Please try again.`,
+    title: `Mã đăng nhập đã hết hạn`,
+    message: () => `Mã đăng nhập đã hết hạn. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.EXPIRED_MAGIC_CODE_SIGN_UP]: {
-    title: `Expired magic code`,
-    message: () => `Expired magic code. Please try again.`,
+    title: `Mã đăng nhập đã hết hạn`,
+    message: () => `Mã đăng nhập đã hết hạn. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.EMAIL_CODE_ATTEMPT_EXHAUSTED_SIGN_IN]: {
-    title: `Expired magic code`,
-    message: () => `Expired magic code. Please try again.`,
+    title: `Mã đăng nhập đã hết hạn`,
+    message: () => `Mã đăng nhập đã hết hạn. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.EMAIL_CODE_ATTEMPT_EXHAUSTED_SIGN_UP]: {
-    title: `Expired magic code`,
-    message: () => `Expired magic code. Please try again.`,
+    title: `Mã đăng nhập đã hết hạn`,
+    message: () => `Mã đăng nhập đã hết hạn. Vui lòng thử lại.`,
   },
 
   // Oauth
   [EAuthenticationErrorCodes.OAUTH_NOT_CONFIGURED]: {
-    title: `OAuth not configured`,
-    message: () => `OAuth not configured. Please contact your administrator.`,
+    title: `OAuth chưa được cấu hình`,
+    message: () => `OAuth chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.GOOGLE_NOT_CONFIGURED]: {
-    title: `Google not configured`,
-    message: () => `Google not configured. Please contact your administrator.`,
+    title: `Google chưa được cấu hình`,
+    message: () => `Google chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.GITHUB_NOT_CONFIGURED]: {
-    title: `GitHub not configured`,
-    message: () => `GitHub not configured. Please contact your administrator.`,
+    title: `GitHub chưa được cấu hình`,
+    message: () => `GitHub chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.GITLAB_NOT_CONFIGURED]: {
-    title: `GitLab not configured`,
-    message: () => `GitLab not configured. Please contact your administrator.`,
+    title: `GitLab chưa được cấu hình`,
+    message: () => `GitLab chưa được cấu hình. Vui lòng liên hệ quản trị viên.`,
   },
   [EAuthenticationErrorCodes.GOOGLE_OAUTH_PROVIDER_ERROR]: {
-    title: `Google OAuth provider error`,
-    message: () => `Google OAuth provider error. Please try again.`,
+    title: `Lỗi nhà cung cấp Google OAuth`,
+    message: () => `Lỗi nhà cung cấp Google OAuth. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.GITHUB_OAUTH_PROVIDER_ERROR]: {
-    title: `GitHub OAuth provider error`,
-    message: () => `GitHub OAuth provider error. Please try again.`,
+    title: `Lỗi nhà cung cấp GitHub OAuth`,
+    message: () => `Lỗi nhà cung cấp GitHub OAuth. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.GITLAB_OAUTH_PROVIDER_ERROR]: {
-    title: `GitLab OAuth provider error`,
-    message: () => `GitLab OAuth provider error. Please try again.`,
+    title: `Lỗi nhà cung cấp GitLab OAuth`,
+    message: () => `Lỗi nhà cung cấp GitLab OAuth. Vui lòng thử lại.`,
   },
 
   // Reset Password
   [EAuthenticationErrorCodes.INVALID_PASSWORD_TOKEN]: {
-    title: `Invalid password token`,
-    message: () => `Invalid password token.`,
+    title: `Mã đặt lại mật khẩu không hợp lệ`,
+    message: () => `Mã đặt lại mật khẩu không hợp lệ.`,
   },
   [EAuthenticationErrorCodes.EXPIRED_PASSWORD_TOKEN]: {
-    title: `Expired password token`,
-    message: () => `Expired password token. Please try again.`,
+    title: `Mã đặt lại mật khẩu đã hết hạn`,
+    message: () => `Mã đặt lại mật khẩu đã hết hạn. Vui lòng thử lại.`,
   },
 
   // Change password
   [EAuthenticationErrorCodes.MISSING_PASSWORD]: {
-    title: `Password required`,
-    message: () => `Password required. Please try again.`,
+    title: `Vui lòng nhập mật khẩu`,
+    message: () => `Vui lòng nhập mật khẩu rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.INCORRECT_OLD_PASSWORD]: {
-    title: `Incorrect old password`,
-    message: () => `Incorrect old password. Please try again.`,
+    title: `Mật khẩu cũ không đúng`,
+    message: () => `Mật khẩu cũ không đúng. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_NEW_PASSWORD]: {
-    title: `Invalid new password`,
-    message: () => `Invalid new password. Please try again.`,
+    title: `Mật khẩu mới không hợp lệ`,
+    message: () => `Mật khẩu mới không hợp lệ. Vui lòng thử lại.`,
   },
 
   // set password
   [EAuthenticationErrorCodes.PASSWORD_ALREADY_SET]: {
-    title: `Password already set`,
-    message: () => `Password already set. Please try again.`,
+    title: `Mật khẩu đã được đặt`,
+    message: () => `Mật khẩu đã được đặt. Vui lòng thử lại.`,
   },
 
   // admin
   [EAuthenticationErrorCodes.ADMIN_ALREADY_EXIST]: {
-    title: `Admin already exists`,
-    message: () => `Admin already exists. Please try again.`,
+    title: `Quản trị viên đã tồn tại`,
+    message: () => `Quản trị viên đã tồn tại. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.REQUIRED_ADMIN_EMAIL_PASSWORD_FIRST_NAME]: {
-    title: `Email, password and first name required`,
-    message: () => `Email, password and first name required. Please try again.`,
+    title: `Vui lòng nhập email, mật khẩu và tên`,
+    message: () => `Vui lòng nhập email, mật khẩu và tên rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_ADMIN_EMAIL]: {
-    title: `Invalid admin email`,
-    message: () => `Invalid admin email. Please try again.`,
+    title: `Email quản trị viên không hợp lệ`,
+    message: () => `Email quản trị viên không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.INVALID_ADMIN_PASSWORD]: {
-    title: `Invalid admin password`,
-    message: () => `Invalid admin password. Please try again.`,
+    title: `Mật khẩu quản trị viên không hợp lệ`,
+    message: () => `Mật khẩu quản trị viên không hợp lệ. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.REQUIRED_ADMIN_EMAIL_PASSWORD]: {
-    title: `Email and password required`,
-    message: () => `Email and password required. Please try again.`,
+    title: `Vui lòng nhập email và mật khẩu`,
+    message: () => `Vui lòng nhập email và mật khẩu rồi thử lại.`,
   },
   [EAuthenticationErrorCodes.ADMIN_AUTHENTICATION_FAILED]: {
-    title: `Authentication failed`,
-    message: () => `Authentication failed. Please try again.`,
+    title: `Xác thực thất bại`,
+    message: () => `Xác thực thất bại. Vui lòng thử lại.`,
   },
   [EAuthenticationErrorCodes.ADMIN_USER_ALREADY_EXIST]: {
-    title: `Admin user already exists`,
+    title: `Tài khoản quản trị đã tồn tại`,
     message: () => (
       <div>
-        Admin user already exists.&nbsp;
+        Tài khoản quản trị đã tồn tại.&nbsp;
         <Link className="font-medium underline underline-offset-4 transition-all hover:font-bold" href={`/admin`}>
-          Sign In
+          Đăng nhập
         </Link>
-        &nbsp;now.
+        &nbsp;ngay.
       </div>
     ),
   },
   [EAuthenticationErrorCodes.ADMIN_USER_DOES_NOT_EXIST]: {
-    title: `Admin user does not exist`,
+    title: `Tài khoản quản trị không tồn tại`,
     message: () => (
       <div>
-        Admin user does not exist.&nbsp;
+        Tài khoản quản trị không tồn tại.&nbsp;
         <Link className="font-medium underline underline-offset-4 transition-all hover:font-bold" href={`/admin`}>
-          Sign In
+          Đăng nhập
         </Link>
-        &nbsp;now.
+        &nbsp;ngay.
       </div>
     ),
   },
   [EAuthenticationErrorCodes.ADMIN_USER_DEACTIVATED]: {
-    title: `Admin user deactivated`,
-    message: () => <div>Your account is deactivated</div>,
+    title: `Tài khoản quản trị đã bị vô hiệu hóa`,
+    message: () => <div>Tài khoản của bạn đã bị vô hiệu hóa</div>,
   },
   [EAuthenticationErrorCodes.RATE_LIMIT_EXCEEDED]: {
     title: "",
-    message: () => `Rate limit exceeded. Please try again later.`,
+    message: () => `Đã vượt quá giới hạn yêu cầu. Vui lòng thử lại sau.`,
   },
 };
 

@@ -55,8 +55,8 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
     if (data.length === 0) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "Please select at least one work item.",
+        title: "Lỗi!",
+        message: "Vui lòng chọn ít nhất một mục công việc.",
       });
       return;
     }
@@ -137,7 +137,7 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
                       </Link>
                     </Tooltip>
                     {!disabled && (
-                      <Tooltip label="Remove" side="bottom" disabled={isMobile}>
+                      <Tooltip label="Xóa" side="bottom" disabled={isMobile}>
                         {/* eslint-disable-next-line jsx_a11y/click-events-have-key-events oxlint-disable-next-line jsx_a11y/no-static-element-interactions */}
                         <span
                           onClick={(e) => {

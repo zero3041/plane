@@ -20,7 +20,7 @@ import { useIssueFilter } from "@/hooks/store/use-issue-filter";
 import type { Route } from "./+types/layout";
 
 const DEFAULT_TITLE = "Plane";
-const DEFAULT_DESCRIPTION = "Made with Plane, an AI-powered work management platform with publishing capabilities.";
+const DEFAULT_DESCRIPTION = "Được tạo bằng Plane, nền tảng quản lý công việc có hỗ trợ AI và khả năng xuất bản.";
 
 interface IssueMetadata {
   name?: string;

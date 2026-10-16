@@ -73,7 +73,7 @@ export function CreateApiTokenModal(props: Props) {
       .catch((err) => {
         setToast({
           type: "error",
-          title: "Error!",
+          title: "Lỗi!",
           message: err.message || err.detail,
         });
 

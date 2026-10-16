@@ -46,14 +46,14 @@ export const DeleteProjectViewModal = observer(function DeleteProjectViewModal(p
       router.push(`/${workspaceSlug}/projects/${projectId}/views`);
       setToast({
         type: "success",
-        title: "Success!",
-        message: "View deleted successfully.",
+        title: "Thành công!",
+        message: "Đã xóa chế độ xem.",
       });
     } catch (_error) {
       setToast({
         type: "error",
-        title: "Error!",
-        message: "View could not be deleted. Please try again.",
+        title: "Lỗi!",
+        message: "Không thể xóa chế độ xem. Vui lòng thử lại.",
       });
     }
     setIsDeleteLoading(false);

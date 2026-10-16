@@ -7,6 +7,7 @@
 import type { TLanguage, ILanguageOption } from "../types";
 
 export const FALLBACK_LANGUAGE: TLanguage = "en";
+export const DEFAULT_LANGUAGE: TLanguage = "vi-VN";
 
 export const SUPPORTED_LANGUAGES: ILanguageOption[] = [
   { label: "English", value: "en" },

@@ -60,14 +60,14 @@ export const PageVersionsMainContent = observer(function PageVersionsMainContent
       .then(() => {
         setToast({
           type: "success",
-          title: "Page version restored.",
+          title: "Đã khôi phục phiên bản trang.",
         });
         handleClose();
       })
       .catch(() =>
         setToast({
           type: "error",
-          title: "Failed to restore page version.",
+          title: "Không thể khôi phục phiên bản trang.",
         })
       )
       .finally(() => setIsRestoring(false));
@@ -90,14 +90,14 @@ export const PageVersionsMainContent = observer(function PageVersionsMainContent
               <WarningTriangleOutline className="size-10" />
             </span>
             <div>
-              <h6 className="text-16 font-semibold">Something went wrong!</h6>
-              <p className="text-13 text-tertiary">The version could not be loaded, please try again.</p>
+              <h6 className="text-16 font-semibold">Đã xảy ra lỗi!</h6>
+              <p className="text-13 text-tertiary">Không thể tải phiên bản. Vui lòng thử lại.</p>
             </div>
             <Button
               variant="ghost"
               size="sm"
               stretch="auto"
-              label="Try again"
+              label="Thử lại"
               onClick={() => void handleRetry()}
               loading={isRetrying}
             />
@@ -114,7 +114,7 @@ export const PageVersionsMainContent = observer(function PageVersionsMainContent
               </h6>
               <span className="flex flex-shrink-0 items-center gap-1 rounded-sm bg-accent-primary/20 px-1.5 py-1 text-11 font-medium text-accent-primary">
                 <ShowOutline className="size-3 flex-shrink-0" />
-                View only
+                Chỉ xem
               </span>
             </div>
             {restoreEnabled && (

@@ -41,8 +41,8 @@ export function InstanceImageConfigForm(props: IInstanceImageConfigForm) {
       .then(() =>
         setToast({
           type: "success",
-          title: "Success",
-          message: "Image Configuration Settings updated successfully",
+          title: "Thành công",
+          message: "Đã cập nhật cài đặt hình ảnh thành công",
         })
       )
       .catch((err) => console.error(err));
@@ -55,18 +55,18 @@ export function InstanceImageConfigForm(props: IInstanceImageConfigForm) {
           control={control}
           type="password"
           name="UNSPLASH_ACCESS_KEY"
-          label="Access key from your Unsplash account"
+          label="Khóa truy cập từ tài khoản Unsplash"
           description={
             <>
-              You will find your access key in your Unsplash developer console.&nbsp;
+              Bạn có thể tìm khóa truy cập trong bảng điều khiển nhà phát triển Unsplash.&nbsp;
               <a
                 href="https://unsplash.com/documentation#creating-a-developer-account"
                 target="_blank"
                 className="text-accent-primary hover:underline"
                 rel="noreferrer"
-                aria-label="Unsplash developer account documentation"
+                aria-label="Tài liệu tài khoản nhà phát triển Unsplash"
               >
-                Learn more.
+                Tìm hiểu thêm.
               </a>
             </>
           }
@@ -83,7 +83,7 @@ export function InstanceImageConfigForm(props: IInstanceImageConfigForm) {
           stretch="auto"
           onClick={handleSubmit(onSubmit)}
           loading={isSubmitting}
-          label={isSubmitting ? "Saving" : "Save changes"}
+          label={isSubmitting ? "Đang lưu" : "Lưu thay đổi"}
         />
       </div>
     </div>
