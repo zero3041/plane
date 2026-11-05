@@ -8,7 +8,13 @@ import { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import Link from "next/link";
 // icons
-import { ChevronDownOutline, LogOutOutline, MailOutline, PlusCircleOutline } from "@makeplane/propel/icons";
+import {
+  ChevronDownOutline,
+  HomeOutline,
+  LogOutOutline,
+  MailOutline,
+  PlusCircleOutline,
+} from "@makeplane/propel/icons";
 // plane imports
 import { Icon } from "@makeplane/propel/components/icon";
 import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from "@makeplane/propel/components/menu";
@@ -169,6 +175,16 @@ export const WorkspaceMenuRoot = observer(function WorkspaceMenuRoot(props: Work
             )}
           </div>
           <div className="shrink-0">
+            <MenuSeparator />
+            <MenuItem
+              icon={<Icon icon={HomeOutline} />}
+              label={t("your_work")}
+              render={<Link href="/" />}
+              onClick={() => {
+                handleClose();
+                handleItemClick();
+              }}
+            />
             <MenuSeparator />
             {!isWorkspaceCreationDisabled && (
               <MenuItem

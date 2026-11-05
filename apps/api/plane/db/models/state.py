@@ -77,6 +77,16 @@ class TriageStateManager(SoftDeletionManager):
 
 
 class State(ProjectBaseModel):
+    class AttentionKind(models.TextChoices):
+        NORMAL = "normal", "Normal"
+        BLOCKED = "blocked", "Blocked"
+        PAUSED = "paused", "Paused"
+
+    attention_kind = models.CharField(
+        choices=AttentionKind.choices,
+        default=AttentionKind.NORMAL,
+        max_length=20,
+    )
     name = models.CharField(max_length=255, verbose_name="State Name")
     description = models.TextField(verbose_name="State Description", blank=True)
     color = models.CharField(max_length=255, verbose_name="State Color")

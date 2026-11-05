@@ -5,14 +5,15 @@
  */
 
 import { useEffect, useState } from "react";
-import { Field } from "@makeplane/propel/components/field";
+import { Field, FieldLabel } from "@makeplane/propel/components/field";
 import { Input, InputGroup } from "@makeplane/propel/components/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@makeplane/propel/components/popover";
+import { Select, SelectContent, SelectItem, SelectList, SelectTrigger } from "@makeplane/propel/components/select";
 import { TextArea, TextAreaGroup } from "@makeplane/propel/components/text-area";
 import { Button } from "@makeplane/propel/components/button";
 import { ColorSwatchPicker } from "@plane/blocks/common";
 import { useTranslation } from "@plane/i18n";
-import type { IState } from "@plane/types";
+import type { IState, TStateAttentionKind } from "@plane/types";
 
 type TStateForm = {
   data: Partial<IState>;
@@ -41,8 +42,15 @@ export function StateForm(props: TStateForm) {
   const [formData, setFromData] = useState<Partial<IState> | undefined>(undefined);
   const [errors, setErrors] = useState<Partial<Record<keyof IState, string>> | undefined>(undefined);
 
+  const isOpenGroup = ["backlog", "unstarted", "started"].includes(formData?.group ?? "");
+  const attentionOptions: { value: TStateAttentionKind; label: string }[] = [
+    { value: "normal", label: t("home.personal_dashboard.attention_normal") },
+    { value: "blocked", label: t("home.personal_dashboard.attention_blocked") },
+    { value: "paused", label: t("home.personal_dashboard.attention_paused") },
+  ];
+
   useEffect(() => {
-    if (data && !formData) setFromData(data);
+    if (data && !formData) setFromData({ ...data, attention_kind: data.attention_kind ?? "normal" });
   }, [data, formData]);
 
   const handleFormData = <T extends keyof IState>(key: T, value: IState[T]) => {
@@ -62,7 +70,10 @@ export function StateForm(props: TStateForm) {
     }
 
     try {
-      await onSubmit(formData);
+      await onSubmit({
+        ...formData,
+        attention_kind: isOpenGroup ? (formData.attention_kind ?? "normal") : "normal",
+      });
     } catch (error) {
       console.log("error", error);
     }
@@ -103,6 +114,7 @@ export function StateForm(props: TStateForm) {
               value={formData?.name}
               onChange={(e) => handleFormData("name", e.target.value)}
               maxLength={100}
+              // oxlint-disable-next-line jsx-a11y/no-autofocus -- Focus the primary required field when the modal opens.
               autoFocus
             />
           </InputGroup>
@@ -124,6 +136,32 @@ export function StateForm(props: TStateForm) {
             />
           </TextAreaGroup>
         </Field>
+
+        {isOpenGroup && (
+          <Field name="attention_kind">
+            <FieldLabel size="lg" inset={false}>
+              {t("home.personal_dashboard.attention_label")}
+            </FieldLabel>
+            <Select<TStateAttentionKind>
+              name="attention_kind"
+              items={attentionOptions}
+              value={formData?.attention_kind ?? "normal"}
+              onValueChange={(value) => {
+                if (value) handleFormData("attention_kind", value);
+              }}
+              disabled={buttonDisabled}
+            >
+              <SelectTrigger size="lg" />
+              <SelectContent>
+                <SelectList>
+                  {attentionOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value} label={option.label} size="lg" />
+                  ))}
+                </SelectList>
+              </SelectContent>
+            </Select>
+          </Field>
+        )}
 
         <div className="flex items-center space-x-2">
           <Button

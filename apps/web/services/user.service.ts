@@ -18,6 +18,8 @@ import type {
   TIssuesResponse,
   TUserProfile,
   IEmailCheckResponse,
+  IPersonalDashboardParams,
+  IPersonalDashboardResponse,
 } from "@plane/types";
 import { APIService } from "@/services/api.service";
 // types
@@ -32,6 +34,11 @@ export class UserService extends APIService {
     return {
       url: `${this.baseURL}/api/users/me/`,
     };
+  }
+
+  async getPersonalIssues(params: IPersonalDashboardParams): Promise<IPersonalDashboardResponse> {
+    const response = await this.get("/api/users/me/issues/", { params });
+    return response.data;
   }
 
   async userIssues(

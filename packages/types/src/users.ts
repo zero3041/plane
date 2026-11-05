@@ -5,8 +5,117 @@
  */
 
 import type { TUserPermissions } from "./enums";
-import type { IIssueActivity, TIssuePriorities, TStateGroups } from ".";
+import type { IIssueActivity, TIssuePriorities, TStateAttentionKind, TStateGroups } from ".";
 import type { TLoginMediums } from "./instance";
+
+export type TPersonalDashboardBucket =
+  | "all_items"
+  | "all"
+  | "today"
+  | "overdue"
+  | "in_progress"
+  | "blocked_or_paused"
+  | "high_priority"
+  | "upcoming"
+  | "completed"
+  | "cancelled";
+
+export type TPersonalDashboardDateRange = "all" | "today" | "overdue" | "next_7" | "next_30" | "no_due";
+
+export interface IPersonalDashboardIssue {
+  id: string;
+  name: string;
+  sequence_id: number;
+  priority: TIssuePriorities;
+  start_date: string | null;
+  target_date: string | null;
+  state: { id: string; name: string; color: string; group: TStateGroups; attention_kind?: TStateAttentionKind };
+  project: { id: string; name: string; identifier: string };
+  workspace: { id: string; name: string; slug: string };
+}
+
+export interface IPersonalDashboardOverview {
+  total: number;
+  open: number;
+  completed: number;
+  cancelled: number;
+  overdue: number;
+  due_soon: number;
+  blocked_or_paused: number;
+  high_priority: number;
+  unassigned_open: number;
+  project_count: number;
+  workspace_count: number;
+}
+
+export interface IPersonalDashboardStateSummary {
+  id: string;
+  name: string;
+  color: string;
+  group: TStateGroups;
+  attention_kind: TStateAttentionKind;
+  count: number;
+}
+
+export interface IPersonalDashboardProjectSummary {
+  id: string;
+  name: string;
+  identifier: string;
+  workspace_slug: string;
+  workspace_name: string;
+  total_count: number;
+  open_count: number;
+  completed_count: number;
+  overdue_count: number;
+}
+
+export interface IPersonalDashboardProjectOption {
+  id: string;
+  name: string;
+  identifier: string;
+  workspace_slug: string;
+  workspace_name: string;
+}
+
+export interface IPersonalDashboardAssigneeSummary {
+  id: string;
+  display_name: string;
+  open_count: number;
+}
+
+export interface IPersonalDashboardFilterOptions {
+  states: Pick<IPersonalDashboardStateSummary, "id" | "name" | "color" | "group">[];
+  assignees: Pick<IPersonalDashboardAssigneeSummary, "id" | "display_name">[];
+}
+
+export interface IPersonalDashboardResponse {
+  results: IPersonalDashboardIssue[];
+  total_count: number;
+  next_cursor: string | null;
+  next_page_results: boolean;
+  counts: Record<TPersonalDashboardBucket, number>;
+  overview: IPersonalDashboardOverview;
+  state_breakdown: IPersonalDashboardStateSummary[];
+  filter_options: IPersonalDashboardFilterOptions;
+  project_breakdown: IPersonalDashboardProjectSummary[];
+  project_options: IPersonalDashboardProjectOption[];
+  assignee_workload: IPersonalDashboardAssigneeSummary[];
+  today: string;
+  timezone: string;
+}
+
+export interface IPersonalDashboardParams {
+  bucket: TPersonalDashboardBucket;
+  workspace_slug?: string;
+  project_id?: string;
+  state_id?: string;
+  priority?: TIssuePriorities;
+  assignee_id?: string;
+  due_range?: TPersonalDashboardDateRange;
+  include_sub_issues?: boolean;
+  cursor?: string;
+  per_page?: number;
+}
 
 /**
  * @description The start of the week for the user

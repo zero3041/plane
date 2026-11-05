@@ -11,6 +11,7 @@ from plane.app.views import (
     UpdateUserTourCompletedEndpoint,
     UserActivityEndpoint,
     UserActivityGraphEndpoint,
+    UserDashboardIssuesEndpoint,
     ## User
     UserEndpoint,
     UserIssueCompletedGraphEndpoint,
@@ -28,6 +29,7 @@ urlpatterns = [
         UserEndpoint.as_view({"get": "retrieve", "patch": "partial_update", "delete": "deactivate"}),
         name="users",
     ),
+    path("users/me/issues/", UserDashboardIssuesEndpoint.as_view(), name="user-dashboard-issues"),
     path("users/session/", UserSessionEndpoint.as_view(), name="user-session"),
     path(
         "users/me/settings/",

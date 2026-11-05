@@ -10,6 +10,7 @@ import Link from "next/link";
 import { SUPPORT_EMAIL } from "@plane/constants";
 
 export enum EPageTypes {
+  HOME = "HOME",
   PUBLIC = "PUBLIC",
   NON_AUTHENTICATED = "NON_AUTHENTICATED",
   SET_PASSWORD = "SET_PASSWORD",

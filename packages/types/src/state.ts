@@ -6,12 +6,15 @@
 
 export type TStateGroups = "backlog" | "unstarted" | "started" | "completed" | "cancelled";
 
+export type TStateAttentionKind = "normal" | "blocked" | "paused";
+
 export interface IState {
   readonly id: string;
   color: string;
   default: boolean;
   description: string;
   group: TStateGroups;
+  attention_kind?: TStateAttentionKind;
   name: string;
   project_id: string;
   sequence: number;
@@ -22,6 +25,7 @@ export interface IState {
 export interface IStateLite {
   color: string;
   group: TStateGroups;
+  attention_kind?: TStateAttentionKind;
   id: string;
   name: string;
 }
