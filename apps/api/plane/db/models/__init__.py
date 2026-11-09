@@ -92,3 +92,5 @@ from .sticky import Sticky
 from .description import Description, DescriptionVersion
 
 from .dntt import DnttEntry, DnttImport, DnttMonth, DnttSheet, DnttUploaderPermission
+
+from .personal_dashboard_view import PersonalDashboardView

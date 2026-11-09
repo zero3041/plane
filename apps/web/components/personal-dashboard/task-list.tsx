@@ -5,17 +5,37 @@
  */
 
 import Link from "next/link";
-import { CalendarOutline, PauseOutline, WarningTriangleOutline } from "@makeplane/propel/icons";
+import {
+  CalendarOutline,
+  PauseOutline,
+  SortAscendingOutline,
+  SortDescendingOutline,
+  WarningTriangleOutline,
+} from "@makeplane/propel/icons";
 import { EmptyStateCompact } from "@plane/blocks/empty-state";
 import { PriorityIcon, StateGroupIcon } from "@plane/blocks/icons";
 import { Loader } from "@plane/blocks/skeleton";
 import { useTranslation } from "@plane/i18n";
-import type { IPersonalDashboardIssue } from "@plane/types";
+import type {
+  IPersonalDashboardIssue,
+  TPersonalDashboardColumn,
+  TPersonalDashboardSortDirection,
+  TPersonalDashboardSortField,
+} from "@plane/types";
 import { generateWorkItemLink } from "@plane/utils";
 import { DataTable } from "@/components/common/data-table";
+import type { DataTableColumn } from "@/components/common/data-table";
 import { formatDashboardDate, getDashboardDueStatus } from "./helpers";
 
-type Props = { issues: IPersonalDashboardIssue[]; isLoading: boolean; today?: string };
+type Props = {
+  issues: IPersonalDashboardIssue[];
+  isLoading: boolean;
+  today?: string;
+  columns: TPersonalDashboardColumn[];
+  sortBy: TPersonalDashboardSortField;
+  sortDirection: TPersonalDashboardSortDirection;
+  onSort: (sortBy: TPersonalDashboardSortField) => void;
+};
 
 function TaskState({ issue }: { issue: IPersonalDashboardIssue }) {
   const { t } = useTranslation();
@@ -91,11 +111,20 @@ function TaskDueDate({ issue, today }: { issue: IPersonalDashboardIssue; today?:
   );
 }
 
-export function PersonalTaskList({ issues, isLoading, today }: Props) {
+export function PersonalTaskList({
+  issues,
+  isLoading,
+  today,
+  columns: visibleColumns,
+  sortBy,
+  sortDirection,
+  onSort,
+}: Props) {
   const { t, currentLocale } = useTranslation();
-  const columns = [
+  const columnDefinitions: (DataTableColumn<IPersonalDashboardIssue> & { sortBy: TPersonalDashboardSortField })[] = [
     {
       key: "work-item",
+      sortBy: "name",
       content: t("work_items"),
       tdRender: (issue: IPersonalDashboardIssue) => (
         <Link
@@ -117,6 +146,7 @@ export function PersonalTaskList({ issues, isLoading, today }: Props) {
     },
     {
       key: "workspace",
+      sortBy: "project",
       content: t("home.personal_dashboard.workspaces"),
       tdRender: (issue: IPersonalDashboardIssue) => (
         <div className="min-w-36">
@@ -125,14 +155,21 @@ export function PersonalTaskList({ issues, isLoading, today }: Props) {
         </div>
       ),
     },
-    { key: "state", content: t("state"), tdRender: (issue: IPersonalDashboardIssue) => <TaskState issue={issue} /> },
+    {
+      key: "state",
+      sortBy: "state",
+      content: t("state"),
+      tdRender: (issue: IPersonalDashboardIssue) => <TaskState issue={issue} />,
+    },
     {
       key: "priority",
+      sortBy: "priority",
       content: t("priority"),
       tdRender: (issue: IPersonalDashboardIssue) => <TaskPriority issue={issue} />,
     },
     {
       key: "start-date",
+      sortBy: "start_date",
       content: t("start_date"),
       tdRender: (issue: IPersonalDashboardIssue) => (
         <span className="text-body-xs-regular whitespace-nowrap text-secondary">
@@ -142,10 +179,40 @@ export function PersonalTaskList({ issues, isLoading, today }: Props) {
     },
     {
       key: "due-date",
+      sortBy: "due_date",
       content: t("due_date"),
       tdRender: (issue: IPersonalDashboardIssue) => <TaskDueDate issue={issue} today={today} />,
     },
   ];
+  const columns = columnDefinitions
+    .filter((column) => visibleColumns.includes(column.key as TPersonalDashboardColumn))
+    // oxlint-disable-next-line oxc/no-map-spread -- Build fresh DataTable column definitions with sort handlers.
+    .map(({ sortBy: columnSortBy, ...column }) => ({
+      ...column,
+      thRender: () => (
+        <button
+          type="button"
+          className="inline-flex items-center gap-1 text-left focus-visible:outline-2 focus-visible:outline-offset-2"
+          aria-label={t(
+            sortBy === columnSortBy
+              ? sortDirection === "asc"
+                ? "home.personal_dashboard.sort_ascending"
+                : "home.personal_dashboard.sort_descending"
+              : "home.personal_dashboard.sort_column",
+            { column: column.content }
+          )}
+          onClick={() => onSort(columnSortBy)}
+        >
+          {column.content}
+          {sortBy === columnSortBy &&
+            (sortDirection === "asc" ? (
+              <SortAscendingOutline className="size-3.5" aria-hidden="true" />
+            ) : (
+              <SortDescendingOutline className="size-3.5" aria-hidden="true" />
+            ))}
+        </button>
+      ),
+    }));
   if (!isLoading && issues.length === 0)
     return <EmptyStateCompact title={t("home.personal_dashboard.empty")} rootClassName="min-h-48 px-6 py-12" />;
   return (

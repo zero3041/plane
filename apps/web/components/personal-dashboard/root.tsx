@@ -17,7 +17,12 @@ import { Switch } from "@makeplane/propel/components/switch";
 import { CalendarOutline, PauseOutline, PriorityUrgent, WarningTriangleOutline } from "@makeplane/propel/icons";
 import { PlaneLockup } from "@plane/blocks/icons";
 import { useTranslation } from "@plane/i18n";
-import type { TIssuePriorities, TPersonalDashboardDateRange } from "@plane/types";
+import type {
+  IPersonalDashboardSavedView,
+  TIssuePriorities,
+  TPersonalDashboardDateRange,
+  TPersonalDashboardSortField,
+} from "@plane/types";
 import { getFileURL, orderWorkspacesList } from "@plane/utils";
 import { PageHead } from "@/components/core/page-title";
 import { WorkspaceLogo } from "@/components/workspace/logo";
@@ -26,13 +31,17 @@ import { useWorkspace } from "@/hooks/store/use-workspace";
 import { UserService } from "@/services/user.service";
 import {
   buildDashboardFilterUrl,
+  DEFAULT_DASHBOARD_COLUMNS,
   formatDashboardDate,
   getDashboardFilters,
   getPersonalDashboardKey,
+  getPersonalDashboardViewsKey,
   type TDashboardFilters,
   type TDashboardFilterUpdates,
 } from "./helpers";
+import { PersonalDashboardColumnSelector } from "./column-selector";
 import { PersonalDashboardOverview } from "./overview";
+import { PersonalDashboardSavedViewsControl } from "./saved-views-control";
 import { PersonalTaskList } from "./task-list";
 
 const userService = new UserService();
@@ -87,6 +96,12 @@ export const PersonalDashboard = observer(function PersonalDashboard() {
   const searchParams = useSearchParams();
   const filters = getDashboardFilters(new URLSearchParams(searchParams.toString()));
   const { bucket, workspace_slug: workspaceSlug, project_id: projectId } = filters;
+  const { data: savedViews = [], mutate: mutateSavedViews } = useSWR(
+    getPersonalDashboardViewsKey(user?.id),
+    () => userService.getPersonalDashboardViews(),
+    { revalidateOnFocus: true }
+  );
+  const selectedView = savedViews.find((view) => view.id === filters.saved_view_id);
   const [cursors, setCursors] = useState<(string | null)[]>([null]);
   const cursor = cursors[cursors.length - 1];
   const dashboardFilters: TDashboardFilters = filters;
@@ -102,6 +117,8 @@ export const PersonalDashboard = observer(function PersonalDashboard() {
         assignee_id: filters.assignee_id || undefined,
         due_range: filters.due_range,
         include_sub_issues: filters.include_sub_issues,
+        sort_by: filters.sort_by,
+        sort_direction: filters.sort_direction,
         cursor: cursor ?? undefined,
         per_page: PERSONAL_DASHBOARD_PAGE_SIZE,
       }),
@@ -125,6 +142,32 @@ export const PersonalDashboard = observer(function PersonalDashboard() {
     navigate(buildDashboardFilterUrl(pathname, new URLSearchParams(searchParams.toString()), updates), {
       replace: true,
       preventScrollReset: true,
+    });
+  };
+  const applySavedView = (view: IPersonalDashboardSavedView | null) => {
+    if (!view) {
+      changeFilters({ saved_view_id: "" });
+      return;
+    }
+    changeFilters({
+      bucket: view.filters.bucket ?? "all",
+      workspace_slug: view.filters.workspace_slug ?? "",
+      project_id: view.filters.project_id ?? "",
+      state_id: view.filters.state_id ?? "",
+      priority: view.filters.priority ?? "",
+      assignee_id: view.filters.assignee_id ?? "",
+      due_range: view.filters.due_range ?? "all",
+      include_sub_issues: String(view.filters.include_sub_issues ?? true),
+      columns: view.columns,
+      sort_by: view.sort_by,
+      sort_direction: view.sort_direction,
+      saved_view_id: view.id,
+    });
+  };
+  const changeSort = (sortBy: TPersonalDashboardSortField) => {
+    changeFilters({
+      sort_by: sortBy,
+      sort_direction: filters.sort_by === sortBy && filters.sort_direction === "asc" ? "desc" : "asc",
     });
   };
   const stateOptions = [
@@ -247,153 +290,172 @@ export const PersonalDashboard = observer(function PersonalDashboard() {
                 </span>
               )}
             </div>
-            <div className="grid w-full grid-cols-1 gap-2 sm:w-auto sm:grid-cols-2 lg:grid-cols-3">
-              <div className="w-full sm:w-60">
-                <Select<string>
-                  value={workspaceSlug}
-                  onValueChange={(nextValue) => {
-                    changeFilters({ workspace_slug: nextValue ?? "", project_id: "" });
-                  }}
-                  items={workspaceOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.workspaces")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {workspaceOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="w-full sm:w-80">
-                <Select<string>
-                  value={projectId}
-                  onValueChange={(nextValue) => {
-                    changeFilters({ project_id: nextValue ?? "" });
-                  }}
-                  items={projectOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("projects")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {projectOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="w-full sm:w-60">
-                <Select<string>
-                  value={filters.state_id}
-                  onValueChange={(nextValue) => changeFilters({ state_id: nextValue ?? "" })}
-                  items={stateOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.state_filter")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {stateOptions.map((option) => (
-                        <SelectItem
-                          key={option.value || "all-states"}
-                          value={option.value}
-                          size="lg"
-                          label={option.label}
-                        />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="w-full sm:w-60">
-                <Select<string>
-                  value={filters.assignee_id}
-                  onValueChange={(nextValue) => changeFilters({ assignee_id: nextValue ?? "" })}
-                  items={assigneeOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.assignee_filter")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {assigneeOptions.map((option) => (
-                        <SelectItem
-                          key={option.value || "all-assignees"}
-                          value={option.value}
-                          size="lg"
-                          label={option.label}
-                        />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="w-full sm:w-60">
-                <Select<string>
-                  value={filters.priority}
-                  onValueChange={(nextValue) => changeFilters({ priority: nextValue ?? "" })}
-                  items={priorityOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.priority_filter")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {priorityOptions.map((option) => (
-                        <SelectItem
-                          key={option.value || "all-priorities"}
-                          value={option.value}
-                          size="lg"
-                          label={option.label}
-                        />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="w-full sm:w-60">
-                <Select<TPersonalDashboardDateRange>
-                  value={filters.due_range}
-                  onValueChange={(nextValue) => nextValue && changeFilters({ due_range: nextValue })}
-                  items={dueRangeOptions}
-                >
-                  <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.due_range_filter")} />
-                  <SelectContent side="bottom" align="end">
-                    <SelectList>
-                      {dueRangeOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
-                      ))}
-                    </SelectList>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex min-h-10 items-center justify-between gap-3 rounded-md border border-subtle px-3">
-                <span className="text-body-xs-medium text-secondary">
-                  {t("home.personal_dashboard.include_sub_issues")}
-                </span>
-                <Switch
-                  size="sm"
-                  checked={filters.include_sub_issues}
-                  onCheckedChange={(checked) => changeFilters({ include_sub_issues: String(checked) })}
-                  aria-label={t("home.personal_dashboard.include_sub_issues")}
+            <div className="flex w-full flex-col gap-2 sm:w-auto">
+              <PersonalDashboardSavedViewsControl
+                views={savedViews}
+                selectedView={selectedView}
+                filters={filters}
+                onApply={applySavedView}
+                onViewsChanged={() => mutateSavedViews()}
+              />
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="w-full sm:w-60">
+                  <Select<string>
+                    value={workspaceSlug}
+                    onValueChange={(nextValue) => {
+                      changeFilters({ workspace_slug: nextValue ?? "", project_id: "" });
+                    }}
+                    items={workspaceOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.workspaces")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {workspaceOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full sm:w-80">
+                  <Select<string>
+                    value={projectId}
+                    onValueChange={(nextValue) => {
+                      changeFilters({ project_id: nextValue ?? "" });
+                    }}
+                    items={projectOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("projects")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {projectOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full sm:w-60">
+                  <Select<string>
+                    value={filters.state_id}
+                    onValueChange={(nextValue) => changeFilters({ state_id: nextValue ?? "" })}
+                    items={stateOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.state_filter")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {stateOptions.map((option) => (
+                          <SelectItem
+                            key={option.value || "all-states"}
+                            value={option.value}
+                            size="lg"
+                            label={option.label}
+                          />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full sm:w-60">
+                  <Select<string>
+                    value={filters.assignee_id}
+                    onValueChange={(nextValue) => changeFilters({ assignee_id: nextValue ?? "" })}
+                    items={assigneeOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.assignee_filter")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {assigneeOptions.map((option) => (
+                          <SelectItem
+                            key={option.value || "all-assignees"}
+                            value={option.value}
+                            size="lg"
+                            label={option.label}
+                          />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full sm:w-60">
+                  <Select<string>
+                    value={filters.priority}
+                    onValueChange={(nextValue) => changeFilters({ priority: nextValue ?? "" })}
+                    items={priorityOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.priority_filter")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {priorityOptions.map((option) => (
+                          <SelectItem
+                            key={option.value || "all-priorities"}
+                            value={option.value}
+                            size="lg"
+                            label={option.label}
+                          />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full sm:w-60">
+                  <Select<TPersonalDashboardDateRange>
+                    value={filters.due_range}
+                    onValueChange={(nextValue) => nextValue && changeFilters({ due_range: nextValue })}
+                    items={dueRangeOptions}
+                  >
+                    <SelectTrigger size="lg" aria-label={t("home.personal_dashboard.due_range_filter")} />
+                    <SelectContent side="bottom" align="end">
+                      <SelectList>
+                        {dueRangeOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value} size="lg" label={option.label} />
+                        ))}
+                      </SelectList>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex min-h-10 items-center justify-between gap-3 rounded-md border border-subtle px-3">
+                  <span className="text-body-xs-medium text-secondary">
+                    {t("home.personal_dashboard.include_sub_issues")}
+                  </span>
+                  <Switch
+                    size="sm"
+                    checked={filters.include_sub_issues}
+                    onCheckedChange={(checked) => changeFilters({ include_sub_issues: String(checked) })}
+                    aria-label={t("home.personal_dashboard.include_sub_issues")}
+                  />
+                </div>
+                <PersonalDashboardColumnSelector
+                  columns={filters.columns}
+                  onChange={(columns) => changeFilters({ columns })}
                 />
-              </div>
-              <div className="flex items-center justify-between gap-3 sm:col-span-2 lg:col-span-3">
-                <span className="text-body-xs-regular text-tertiary">{t("home.personal_dashboard.quick_filters")}</span>
-                <Button
-                  variant="tertiary"
-                  size="sm"
-                  stretch="auto"
-                  label={t("home.personal_dashboard.clear_filters")}
-                  onClick={() =>
-                    changeFilters({
-                      bucket: "all",
-                      workspace_slug: "",
-                      project_id: "",
-                      state_id: "",
-                      priority: "",
-                      assignee_id: "",
-                      due_range: "all",
-                      include_sub_issues: "true",
-                    })
-                  }
-                />
+                <div className="flex items-center justify-between gap-3 sm:col-span-2 lg:col-span-3">
+                  <span className="text-body-xs-regular text-tertiary">
+                    {t("home.personal_dashboard.quick_filters")}
+                  </span>
+                  <Button
+                    variant="tertiary"
+                    size="sm"
+                    stretch="auto"
+                    label={t("home.personal_dashboard.clear_filters")}
+                    onClick={() =>
+                      changeFilters({
+                        bucket: "all",
+                        saved_view_id: "",
+                        workspace_slug: "",
+                        project_id: "",
+                        state_id: "",
+                        priority: "",
+                        assignee_id: "",
+                        due_range: "all",
+                        include_sub_issues: "true",
+                        columns: DEFAULT_DASHBOARD_COLUMNS,
+                        sort_by: "due_date",
+                        sort_direction: "asc",
+                      })
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -410,7 +472,15 @@ export const PersonalDashboard = observer(function PersonalDashboard() {
               />
             </div>
           ) : (
-            <PersonalTaskList issues={data?.results ?? []} isLoading={isLoading && !data} today={data?.today} />
+            <PersonalTaskList
+              issues={data?.results ?? []}
+              isLoading={isLoading && !data}
+              today={data?.today}
+              columns={filters.columns}
+              sortBy={filters.sort_by}
+              sortDirection={filters.sort_direction}
+              onSort={changeSort}
+            />
           )}
           {!error && data && (cursors.length > 1 || data.next_page_results) && (
             <div className="flex justify-end gap-2 border-t border-subtle px-4 py-3 md:px-5">

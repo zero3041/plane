@@ -6,7 +6,7 @@ import re
 from datetime import timedelta
 from uuid import UUID
 
-from django.db.models import Count, Exists, F, OuterRef, Q
+from django.db.models import Case, Count, Exists, F, IntegerField, OuterRef, Q, Value, When
 from django.utils import timezone
 from rest_framework.exceptions import ParseError
 from rest_framework.response import Response
@@ -24,6 +24,12 @@ from plane.db.models import (
     StateGroup,
     WorkspaceMember,
 )
+from plane.utils.personal_dashboard import (
+    PERSONAL_DASHBOARD_BUCKETS,
+    PERSONAL_DASHBOARD_DUE_RANGES,
+    PERSONAL_DASHBOARD_PRIORITIES,
+    PERSONAL_DASHBOARD_SORT_FIELDS,
+)
 from plane.utils.paginator import Cursor
 
 DEFAULT_PER_PAGE = 50
@@ -31,20 +37,6 @@ MAX_PER_PAGE = 100
 # PostgreSQL LIMIT/OFFSET are signed bigint values, including the look-ahead row.
 MAX_OFFSET = (1 << 63) - 1 - MAX_PER_PAGE - 1
 OPEN_GROUPS = (StateGroup.BACKLOG.value, StateGroup.UNSTARTED.value, StateGroup.STARTED.value)
-BUCKETS = (
-    "all_items",
-    "all",
-    "today",
-    "overdue",
-    "in_progress",
-    "blocked_or_paused",
-    "high_priority",
-    "upcoming",
-    "completed",
-    "cancelled",
-)
-DUE_RANGES = ("all", "today", "overdue", "next_7", "next_30", "no_due")
-PRIORITIES = ("urgent", "high", "medium", "low", "none")
 
 
 class UserDashboardIssuesEndpoint(BaseAPIView):
@@ -52,7 +44,7 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
 
     def _get_parameters(self, params):
         bucket = params.get("bucket", "all")
-        if bucket not in BUCKETS:
+        if bucket not in PERSONAL_DASHBOARD_BUCKETS:
             raise ParseError("Invalid bucket parameter.")
         raw_per_page = params.get("per_page", str(DEFAULT_PER_PAGE))
         if not re.fullmatch(r"[0-9]{1,3}", raw_per_page):
@@ -86,7 +78,7 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
         else:
             state_id = None
         priority = params.get("priority")
-        if priority is not None and priority not in PRIORITIES:
+        if priority is not None and priority not in PERSONAL_DASHBOARD_PRIORITIES:
             raise ParseError("Invalid priority parameter.")
         raw_assignee_id = params.get("assignee_id")
         if raw_assignee_id == "unassigned":
@@ -99,8 +91,14 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
         else:
             assignee_id = None
         due_range = params.get("due_range", "all")
-        if due_range not in DUE_RANGES:
+        if due_range not in PERSONAL_DASHBOARD_DUE_RANGES:
             raise ParseError("Invalid due_range parameter.")
+        sort_by = params.get("sort_by", "due_date")
+        if sort_by not in PERSONAL_DASHBOARD_SORT_FIELDS:
+            raise ParseError("Invalid sort_by parameter.")
+        sort_direction = params.get("sort_direction", "asc")
+        if sort_direction not in {"asc", "desc"}:
+            raise ParseError("Invalid sort_direction parameter.")
         raw_include_sub_issues = params.get("include_sub_issues", "true")
         if raw_include_sub_issues not in {"true", "false"}:
             raise ParseError("include_sub_issues must be true or false.")
@@ -116,6 +114,8 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
             assignee_id,
             due_range,
             include_sub_issues,
+            sort_by,
+            sort_direction,
         )
 
     def _get_authorized_issues(self, user):
@@ -248,6 +248,8 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
             assignee_id,
             due_range,
             include_sub_issues,
+            sort_by,
+            sort_direction,
         ) = self._get_parameters(request.query_params)
         today = timezone.localdate()
         scope_issues = self._get_authorized_issues(request.user)
@@ -328,6 +330,35 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
         filtered = issues.filter(filters[bucket])
         total_count = counts[bucket]
         offset = cursor.offset * per_page
+        if sort_by == "priority":
+            priority_rank = Case(
+                When(priority="none", then=Value(0)),
+                When(priority="low", then=Value(1)),
+                When(priority="medium", then=Value(2)),
+                When(priority="high", then=Value(3)),
+                When(priority="urgent", then=Value(4)),
+                default=Value(-1),
+                output_field=IntegerField(),
+            )
+            primary_order = priority_rank.asc() if sort_direction == "asc" else priority_rank.desc()
+        else:
+            sort_fields = {
+                "due_date": "target_date",
+                "start_date": "start_date",
+                "name": "name",
+                "state": "state__name",
+                "project": "project__name",
+                "sequence_id": "sequence_id",
+            }
+            sort_field = sort_fields[sort_by]
+            if sort_by in {"due_date", "start_date"}:
+                primary_order = (
+                    F(sort_field).asc(nulls_last=True)
+                    if sort_direction == "asc"
+                    else F(sort_field).desc(nulls_last=True)
+                )
+            else:
+                primary_order = F(sort_field).asc() if sort_direction == "asc" else F(sort_field).desc()
         rows = list(
             filtered.select_related("state", "project", "workspace")
             .only(
@@ -349,7 +380,7 @@ class UserDashboardIssuesEndpoint(BaseAPIView):
                 "workspace__name",
                 "workspace__slug",
             )
-            .order_by(F("target_date").asc(nulls_last=True), "id")[offset : offset + per_page + 1]
+            .order_by(primary_order, "id")[offset : offset + per_page + 1]
         )
         has_next = len(rows) > per_page
         overview_counts = issues.aggregate(

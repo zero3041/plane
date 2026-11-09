@@ -38,6 +38,10 @@ test("dashboard filters can be restored and shared through the URL", () => {
     assignee_id: "unassigned",
     due_range: "next_7",
     include_sub_issues: false,
+    columns: ["work-item", "workspace", "state", "priority", "start-date", "due-date"],
+    sort_by: "due_date",
+    sort_direction: "asc",
+    saved_view_id: "",
   });
   assert.equal(
     buildDashboardFilterUrl("/", params, { project_id: "", due_range: "all" }),

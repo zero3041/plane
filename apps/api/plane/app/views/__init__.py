@@ -34,6 +34,7 @@ from .user.base import (
 
 from .base import BaseAPIView, BaseViewSet
 from .user.issues import UserDashboardIssuesEndpoint
+from .user.dashboard_views import PersonalDashboardViewDetailEndpoint, PersonalDashboardViewsEndpoint
 from .dntt import (
     DnttAccessEndpoint,
     DnttImportDetailEndpoint,

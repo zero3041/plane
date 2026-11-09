@@ -20,6 +20,8 @@ import type {
   IEmailCheckResponse,
   IPersonalDashboardParams,
   IPersonalDashboardResponse,
+  IPersonalDashboardSavedView,
+  TPersonalDashboardSavedViewPayload,
 } from "@plane/types";
 import { APIService } from "@/services/api.service";
 // types
@@ -39,6 +41,28 @@ export class UserService extends APIService {
   async getPersonalIssues(params: IPersonalDashboardParams): Promise<IPersonalDashboardResponse> {
     const response = await this.get("/api/users/me/issues/", { params });
     return response.data;
+  }
+
+  async getPersonalDashboardViews(): Promise<IPersonalDashboardSavedView[]> {
+    const response = await this.get("/api/users/me/dashboard-views/");
+    return response.data;
+  }
+
+  async createPersonalDashboardView(payload: TPersonalDashboardSavedViewPayload): Promise<IPersonalDashboardSavedView> {
+    const response = await this.post("/api/users/me/dashboard-views/", payload);
+    return response.data;
+  }
+
+  async updatePersonalDashboardView(
+    viewId: string,
+    payload: Partial<TPersonalDashboardSavedViewPayload>
+  ): Promise<IPersonalDashboardSavedView> {
+    const response = await this.patch(`/api/users/me/dashboard-views/${viewId}/`, payload);
+    return response.data;
+  }
+
+  async deletePersonalDashboardView(viewId: string): Promise<void> {
+    await this.delete(`/api/users/me/dashboard-views/${viewId}/`);
   }
 
   async userIssues(

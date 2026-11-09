@@ -22,6 +22,19 @@ export type TPersonalDashboardBucket =
 
 export type TPersonalDashboardDateRange = "all" | "today" | "overdue" | "next_7" | "next_30" | "no_due";
 
+export type TPersonalDashboardColumn = "work-item" | "workspace" | "state" | "priority" | "start-date" | "due-date";
+
+export type TPersonalDashboardSortField =
+  | "due_date"
+  | "start_date"
+  | "name"
+  | "priority"
+  | "state"
+  | "project"
+  | "sequence_id";
+
+export type TPersonalDashboardSortDirection = "asc" | "desc";
+
 export interface IPersonalDashboardIssue {
   id: string;
   name: string;
@@ -113,9 +126,39 @@ export interface IPersonalDashboardParams {
   assignee_id?: string;
   due_range?: TPersonalDashboardDateRange;
   include_sub_issues?: boolean;
+  sort_by?: TPersonalDashboardSortField;
+  sort_direction?: TPersonalDashboardSortDirection;
   cursor?: string;
   per_page?: number;
 }
+
+export type TPersonalDashboardFilterConfig = Partial<
+  Pick<
+    IPersonalDashboardParams,
+    | "bucket"
+    | "workspace_slug"
+    | "project_id"
+    | "state_id"
+    | "priority"
+    | "assignee_id"
+    | "due_range"
+    | "include_sub_issues"
+  >
+>;
+
+export interface IPersonalDashboardSavedView {
+  id: string;
+  name: string;
+  filters: TPersonalDashboardFilterConfig;
+  columns: TPersonalDashboardColumn[];
+  sort_by: TPersonalDashboardSortField;
+  sort_direction: TPersonalDashboardSortDirection;
+  is_favorite: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export type TPersonalDashboardSavedViewPayload = Omit<IPersonalDashboardSavedView, "id" | "created_at" | "updated_at">;
 
 /**
  * @description The start of the week for the user
