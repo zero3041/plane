@@ -130,7 +130,7 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
               )}
             >
               <MoreHorizontalOutline className="size-4 flex-shrink-0" />
-              <span>{isExtendedSidebarOpened ? "Hide" : "More"}</span>
+              <span>{t(isExtendedSidebarOpened ? "sidebar.hide" : "sidebar.more")}</span>
             </button>
           </SidebarNavItem>
         </div>

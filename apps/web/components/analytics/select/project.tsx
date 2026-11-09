@@ -10,6 +10,7 @@ import { observer } from "mobx-react";
 import { Select } from "@plane/blocks/select";
 import { Logo } from "@plane/blocks/emoji-icon-picker";
 import { ProjectsOutline } from "@makeplane/propel/icons";
+import { useTranslation } from "@plane/i18n";
 import type { TLogoProps } from "@plane/types";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
@@ -30,6 +31,7 @@ type Props = {
 
 export const ProjectSelect = observer(function ProjectSelect(props: Props) {
   const { value, onChange, projectIds } = props;
+  const { t } = useTranslation();
   const { getProjectById } = useProject();
 
   // derived values
@@ -82,10 +84,10 @@ export const ProjectSelect = observer(function ProjectSelect(props: Props) {
         {(selectedOptions) => (
           <span className="truncate">
             {selectedOptions.length > 3
-              ? `3+ projects`
+              ? `3+ ${t("common.projects")}`
               : selectedOptions.length > 0
                 ? selectedOptions.map((option) => option.name).join(", ")
-                : "All projects"}
+                : t("workspace_analytics.all_projects")}
           </span>
         )}
       </Select.Trigger>

@@ -7,6 +7,8 @@
     }
   },
   "sidebar": {
+    "more": "More",
+    "hide": "Hide",
     "stickies": "便利貼",
     "your_work": "你的工作",
     "projects": "專案",

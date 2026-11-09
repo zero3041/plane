@@ -66,6 +66,43 @@
     }
   },
   "workspace_analytics": {
+    "filters": {
+      "duration": {
+        "yesterday": "Hôm qua",
+        "last_7_days": "7 ngày qua",
+        "last_30_days": "30 ngày qua",
+        "last_3_months": "3 tháng qua"
+      },
+      "x_axis": {
+        "states": "Tên trạng thái",
+        "state_groups": "Nhóm trạng thái",
+        "priority": "Mức ưu tiên",
+        "labels": "Nhãn",
+        "assignees": "Người được giao",
+        "estimate_points": "Điểm ước lượng",
+        "cycles": "Chu kỳ",
+        "modules": "Mô-đun",
+        "completed_at": "Ngày hoàn thành",
+        "target_date": "Hạn hoàn thành",
+        "start_date": "Ngày bắt đầu",
+        "created_at": "Ngày tạo"
+      },
+      "y_axis": {
+        "work_item_count": "Mục công việc",
+        "estimate_point_count": "Ước lượng",
+        "epic_work_item_count": "Epic"
+      },
+      "add_property": "Thêm thuộc tính",
+      "add_metric": "Thêm chỉ số",
+      "no_value": "Không có giá trị",
+      "duration_label": "Khoảng thời gian"
+    },
+    "chart": {
+      "created": "Đã tạo",
+      "resolved": "Đã giải quyết",
+      "count": "Số lượng",
+      "week": "Tuần {count}"
+    },
     "label": "Phân tích",
     "page_label": "{workspace} - Phân tích",
     "open_tasks": "Tổng nhiệm vụ đang mở",
@@ -106,7 +143,7 @@
     "trend_on_charts": "Xu hướng trên biểu đồ",
     "active_projects": "Dự án đang hoạt động",
     "customized_insights": "Thông tin chi tiết tùy chỉnh",
-    "created_vs_resolved": "Đã tạo vs Đã giải quyết",
+    "created_vs_resolved": "Đã tạo và đã giải quyết",
     "empty_state": {
       "project_insights": {
         "title": "Chưa có dữ liệu",

@@ -35,13 +35,13 @@ test("ngôn ngữ mặc định là tiếng Việt và vẫn có tiếng Anh d�
 
 test("tiếng Việt có cùng namespace và khóa với tiếng Anh", () => {
   assert.deepEqual(
-    vietnamese.namespaces.map(({ name }) => name).sort(),
-    english.namespaces.map(({ name }) => name).sort()
+    vietnamese.namespaces.map(({ name }) => name).toSorted(),
+    english.namespaces.map(({ name }) => name).toSorted()
   );
   for (const namespace of english.namespaces) {
     const target = vietnamese.namespaces.find(({ name }) => name === namespace.name);
     assert.ok(target, namespace.name);
-    assert.deepEqual([...target.keys].sort(), [...namespace.keys].sort(), namespace.name);
+    assert.deepEqual([...target.keys].toSorted(), [...namespace.keys].toSorted(), namespace.name);
   }
 });
 
@@ -81,4 +81,41 @@ test("nhãn Epic đã sửa tuân theo thuật ngữ chuẩn của dự án", ()
   const labels = new Map(vietnamese.namespaces.flatMap(({ data }) => flattenStrings(data)));
   assert.equal(labels.get("sidebar.epics"), "Epic");
   assert.equal(labels.get("common.epics"), "Epic");
+});
+
+test("nhãn phân tích mục công việc có bản dịch tiếng Việt", () => {
+  const labels = new Map(vietnamese.namespaces.flatMap(({ data }) => flattenStrings(data)));
+  assert.equal(labels.get("workspace_analytics.filters.duration.last_30_days"), "30 ngày qua");
+  assert.equal(labels.get("workspace_analytics.filters.x_axis.states"), "Tên trạng thái");
+  assert.equal(labels.get("workspace_analytics.filters.y_axis.work_item_count"), "Mục công việc");
+  assert.equal(labels.get("workspace_analytics.chart.created"), "Đã tạo");
+  assert.equal(labels.get("workspace_analytics.chart.resolved"), "Đã giải quyết");
+});
+
+test("nhãn mở rộng thanh bên có bản dịch tiếng Việt", () => {
+  const labels = new Map(vietnamese.namespaces.flatMap(({ data }) => flattenStrings(data)));
+  assert.equal(labels.get("sidebar.more"), "Xem thêm");
+  assert.equal(labels.get("sidebar.hide"), "Ẩn bớt");
+});
+
+test("các khóa dùng trên biểu đồ ưu tiên trả về nhãn thay vì nguyên khóa", async () => {
+  const instance = createInstance();
+  await instance.use(ICU).init({
+    lng: "vi-VN",
+    fallbackLng: false,
+    resources: {
+      "vi-VN": Object.fromEntries(vietnamese.namespaces.map(({ name, data }) => [name, data])),
+    },
+    ns: vietnamese.namespaces.map(({ name }) => name),
+    defaultNS: "common",
+    fallbackNS: vietnamese.namespaces.map(({ name }) => name).filter((name) => name !== "common"),
+    nsSeparator: false,
+  });
+
+  assert.equal(instance.t("high"), "Cao");
+  assert.equal(instance.t("low"), "Thấp");
+  assert.equal(instance.t("medium"), "Trung bình");
+  assert.equal(instance.t("urgent"), "Khẩn cấp");
+  assert.equal(instance.t("unassigned"), "Chưa phân công");
+  assert.equal(instance.t("sidebar.more"), "Xem thêm");
 });

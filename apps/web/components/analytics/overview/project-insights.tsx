@@ -32,7 +32,7 @@ const ProjectInsights = observer(function ProjectInsights() {
   const params = useParams();
   const { t } = useTranslation();
   const workspaceSlug = params.workspaceSlug.toString();
-  const { selectedDuration, selectedDurationLabel, selectedProjects, selectedCycle, selectedModule, isPeekView } =
+  const { selectedDuration, selectedDurationI18nKey, selectedProjects, selectedCycle, selectedModule, isPeekView } =
     useAnalytics();
 
   const { data: projectInsightsData, isLoading: isLoadingProjectInsight } = useSWR(
@@ -54,7 +54,7 @@ const ProjectInsights = observer(function ProjectInsights() {
   return (
     <AnalyticsSectionWrapper
       title={`${t("workspace_analytics.project_insights")}`}
-      subtitle={selectedDurationLabel}
+      subtitle={selectedDurationI18nKey ? t(selectedDurationI18nKey) : undefined}
       className="md:col-span-3"
     >
       {isLoadingProjectInsight ? (
@@ -77,7 +77,7 @@ const ProjectInsights = observer(function ProjectInsights() {
                 radars={[
                   {
                     key: "count",
-                    name: "Count",
+                    name: t("workspace_analytics.chart.count"),
                     fill: "var(--text-color-accent-primary)",
                     stroke: "var(--text-color-accent-primary)",
                     fillOpacity: 0.6,

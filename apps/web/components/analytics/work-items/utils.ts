@@ -7,12 +7,38 @@
 // plane package imports
 import type { ChartYAxisMetric, IState } from "@plane/types";
 import { ChartXAxisProperty } from "@plane/types";
+import { getDate } from "@plane/utils";
 
 interface ParamsProps {
   x_axis: ChartXAxisProperty;
   y_axis: ChartYAxisMetric;
   group_by?: ChartXAxisProperty;
 }
+
+export const localizeChartLabel = (
+  label: string,
+  property: ChartXAxisProperty | undefined,
+  t: (key: string) => string
+): string => {
+  const normalized = label.toLowerCase().replaceAll("_", "");
+  if (normalized === "none" || normalized === "null") return t("common.none");
+  if (property === ChartXAxisProperty.PRIORITY && ["urgent", "high", "medium", "low"].includes(normalized)) {
+    return t(normalized);
+  }
+  if (
+    property === ChartXAxisProperty.STATE_GROUPS &&
+    ["backlog", "unstarted", "started", "completed", "cancelled"].includes(normalized)
+  ) {
+    return t(`workspace_projects.state.${normalized}`);
+  }
+  return label;
+};
+
+export const formatAnalyticsDate = (value: string, locale: string): string => {
+  const date = getDate(value);
+  if (!date || Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(date);
+};
 
 export const generateBarColor = (
   value: string | null | undefined,

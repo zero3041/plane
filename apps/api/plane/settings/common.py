@@ -342,6 +342,7 @@ CELERY_IMPORTS = (
     "plane.bgtasks.file_asset_task",
     "plane.bgtasks.email_notification_task",
     "plane.bgtasks.cleanup_task",
+    "plane.bgtasks.dntt_import_task",
     "plane.license.bgtasks.telemetry_metrics",
     # management tasks
     "plane.bgtasks.dummy_data_task",
@@ -351,6 +352,13 @@ CELERY_IMPORTS = (
 )
 
 FILE_SIZE_LIMIT = int(os.environ.get("FILE_SIZE_LIMIT", 5242880))
+# Keep DNTT workbooks separately configurable while preserving the instance's
+# current upload limit by default. Multipart framing needs a small margin above
+# the file's declared size in Django's request parser.
+DNTT_MAX_UPLOAD_SIZE = int(os.environ.get("DNTT_MAX_UPLOAD_SIZE", FILE_SIZE_LIMIT))
+# Leave blank for S3 providers that disable ACLs; those deployments must keep
+# the storage bucket private through its policy. Otherwise enforce private ACLs.
+DNTT_SOURCE_ACL = os.environ.get("DNTT_SOURCE_ACL", "private").strip() or None
 
 # Unsplash Access key
 UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY")
@@ -364,7 +372,7 @@ ANALYTICS_BASE_API = os.environ.get("ANALYTICS_BASE_API", False)
 # Skip environment variable configuration
 SKIP_ENV_VAR = os.environ.get("SKIP_ENV_VAR", "1") == "1"
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get("FILE_SIZE_LIMIT", 5242880))
+DATA_UPLOAD_MAX_MEMORY_SIZE = max(int(os.environ.get("FILE_SIZE_LIMIT", 5242880)), DNTT_MAX_UPLOAD_SIZE + 128 * 1024)
 
 # Cookie Settings
 SESSION_COOKIE_SECURE = secure_origins

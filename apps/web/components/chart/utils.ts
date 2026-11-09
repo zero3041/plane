@@ -7,16 +7,15 @@
 import { getWeekOfMonth, isValid } from "date-fns";
 import { CHART_X_AXIS_DATE_PROPERTIES, ChartXAxisDateGrouping, TO_CAPITALIZE_PROPERTIES } from "@plane/constants";
 import type { ChartXAxisProperty, TChart, TChartDatum } from "@plane/types";
-import {
-  capitalizeFirstLetter,
-  hexToHsl,
-  hslToHex,
-  renderFormattedDate,
-  renderFormattedDateWithoutYear,
-} from "@plane/utils";
+import { capitalizeFirstLetter, hexToHsl, hslToHex } from "@plane/utils";
 //
 
-const getDateGroupingName = (date: string, dateGrouping: ChartXAxisDateGrouping): string => {
+const getDateGroupingName = (
+  date: string,
+  dateGrouping: ChartXAxisDateGrouping,
+  locale: string,
+  formatWeek: (count: number) => string
+): string => {
   if (!date || ["none", "null"].includes(date.toLowerCase())) return "None";
 
   const formattedData = new Date(date);
@@ -33,17 +32,22 @@ const getDateGroupingName = (date: string, dateGrouping: ChartXAxisDateGrouping)
 
   switch (dateGrouping) {
     case ChartXAxisDateGrouping.DAY:
-      if (isCurrentYear) parsedName = renderFormattedDateWithoutYear(formattedData);
-      else parsedName = renderFormattedDate(formattedData);
+      parsedName = new Intl.DateTimeFormat(locale, {
+        day: "numeric",
+        month: "short",
+        ...(!isCurrentYear && { year: "numeric" as const }),
+      }).format(formattedData);
       break;
     case ChartXAxisDateGrouping.WEEK: {
-      const month = renderFormattedDate(formattedData, "MMM");
-      parsedName = `${month}, Week ${getWeekOfMonth(formattedData)}`;
+      const month = new Intl.DateTimeFormat(locale, { month: "short" }).format(formattedData);
+      parsedName = `${month}, ${formatWeek(getWeekOfMonth(formattedData))}`;
       break;
     }
     case ChartXAxisDateGrouping.MONTH:
-      if (isCurrentYear) parsedName = renderFormattedDate(formattedData, "MMM");
-      else parsedName = renderFormattedDate(formattedData, "MMM, yyyy");
+      parsedName = new Intl.DateTimeFormat(locale, {
+        month: "short",
+        ...(!isCurrentYear && { year: "numeric" as const }),
+      }).format(formattedData);
       break;
     case ChartXAxisDateGrouping.YEAR:
       parsedName = `${year}`;
@@ -59,7 +63,9 @@ export const parseChartData = (
   data: TChart | null | undefined,
   xAxisProperty: ChartXAxisProperty | null | undefined,
   groupByProperty: ChartXAxisProperty | null | undefined,
-  xAxisDateGrouping: ChartXAxisDateGrouping | null | undefined
+  xAxisDateGrouping: ChartXAxisDateGrouping | null | undefined,
+  locale = "en",
+  formatWeek: (count: number) => string = (count) => `Week ${count}`
 ): TChart => {
   if (!data) {
     return {
@@ -70,6 +76,7 @@ export const parseChartData = (
   const widgetData = structuredClone(data.data);
   const schema = structuredClone(data.schema);
   const allKeys = Object.keys(schema);
+  // oxlint-disable-next-line oxc/no-map-spread -- Keep each returned datum immutable.
   const updatedWidgetData: TChartDatum[] = widgetData.map((datum) => {
     const keys = Object.keys(datum);
     const missingKeys = allKeys.filter((key) => !keys.includes(key));
@@ -83,7 +90,12 @@ export const parseChartData = (
 
       // parse timestamp to visual date if xAxisProperty is in WIDGET_X_AXIS_DATE_PROPERTIES
       if (CHART_X_AXIS_DATE_PROPERTIES.includes(xAxisProperty)) {
-        datum.name = getDateGroupingName(datum.name, xAxisDateGrouping ?? ChartXAxisDateGrouping.DAY);
+        datum.name = getDateGroupingName(
+          datum.name,
+          xAxisDateGrouping ?? ChartXAxisDateGrouping.DAY,
+          locale,
+          formatWeek
+        );
       }
     }
 
@@ -104,7 +116,12 @@ export const parseChartData = (
 
     if (CHART_X_AXIS_DATE_PROPERTIES.includes(groupByProperty)) {
       Object.keys(updatedSchema).forEach((key) => {
-        updatedSchema[key] = getDateGroupingName(updatedSchema[key], xAxisDateGrouping ?? ChartXAxisDateGrouping.DAY);
+        updatedSchema[key] = getDateGroupingName(
+          updatedSchema[key],
+          xAxisDateGrouping ?? ChartXAxisDateGrouping.DAY,
+          locale,
+          formatWeek
+        );
       });
     }
   }
@@ -131,7 +148,7 @@ export const generateExtendedColors = (baseColorSet: string[], targetCount: numb
   const avgLight = baseHSL.reduce((sum, hsl) => sum + hsl.l, 0) / baseHSL.length;
 
   // Sort base colors by hue for better distribution
-  const sortedBaseHSL = [...baseHSL].sort((a, b) => a.h - b.h);
+  const sortedBaseHSL = [...baseHSL].toSorted((a, b) => a.h - b.h);
 
   // Generate additional colors for each base color
   const colorsNeeded = targetCount - baseCount;

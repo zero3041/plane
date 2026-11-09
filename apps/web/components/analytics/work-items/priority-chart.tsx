@@ -29,7 +29,7 @@ import { AnalyticsService } from "@/services/analytics.service";
 import { exportCSV } from "../export";
 import { DataTable } from "../insight-table/data-table";
 import { ChartLoader } from "../loaders";
-import { generateBarColor } from "./utils";
+import { generateBarColor, localizeChartLabel } from "./utils";
 
 declare module "@tanstack/react-table" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -50,9 +50,10 @@ interface Props {
 }
 
 const analyticsService = new AnalyticsService();
+
 const PriorityChart = observer(function PriorityChart(props: Props) {
   const { x_axis, y_axis, group_by } = props;
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
   // store hooks
   const { selectedDuration, selectedProjects, selectedCycle, selectedModule, isPeekView, isEpic } = useAnalytics();
   const { workspaceStates } = useProjectState();
@@ -79,11 +80,25 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
         isPeekView
       )
   );
-  const parsedData = useMemo(
-    () =>
-      priorityChartData && parseChartData(priorityChartData, props.x_axis, props.group_by, props.x_axis_date_grouping),
-    [priorityChartData, props.x_axis, props.group_by, props.x_axis_date_grouping]
-  );
+  const parsedData = useMemo(() => {
+    if (!priorityChartData) return undefined;
+    const parsed = parseChartData(
+      priorityChartData,
+      props.x_axis,
+      props.group_by,
+      props.x_axis_date_grouping,
+      currentLocale,
+      (count) => t("workspace_analytics.chart.week", { count })
+    );
+    return {
+      data: parsed.data.map((datum) =>
+        Object.assign({}, datum, { name: localizeChartLabel(datum.name, props.x_axis, t) })
+      ),
+      schema: Object.fromEntries(
+        Object.entries(parsed.schema).map(([key, label]) => [key, localizeChartLabel(label, props.group_by, t)])
+      ),
+    };
+  }, [priorityChartData, props.x_axis, props.group_by, props.x_axis_date_grouping, currentLocale, t]);
   const chart_model = props.group_by ? EChartModels.STACKED : EChartModels.BASIC;
 
   const bars: TBarItem<string>[] = useMemo(() => {
@@ -96,7 +111,7 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
       parsedBars = [
         {
           key: "count",
-          label: "Count",
+          label: t("workspace_analytics.chart.count"),
           stackId: "bar-one",
           fill: (payload) => generateBarColor(payload.key, { x_axis, y_axis, group_by }, baseColors, workspaceStates),
           textClassName: "",
@@ -138,16 +153,16 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
       parsedBars = [];
     }
     return parsedBars;
-  }, [chart_model, group_by, parsedData, resolvedTheme, workspaceStates, x_axis, y_axis]);
+  }, [chart_model, group_by, parsedData, resolvedTheme, workspaceStates, x_axis, y_axis, t]);
 
-  const yAxisLabel = useMemo(
-    () => ANALYTICS_Y_AXIS_VALUES.find((item) => item.value === props.y_axis)?.label ?? props.y_axis,
-    [props.y_axis]
-  );
-  const xAxisLabel = useMemo(
-    () => ANALYTICS_X_AXIS_VALUES.find((item) => item.value === props.x_axis)?.label ?? props.x_axis,
-    [props.x_axis]
-  );
+  const yAxisLabel = useMemo(() => {
+    const option = ANALYTICS_Y_AXIS_VALUES.find((item) => item.value === props.y_axis);
+    return option ? t(option.i18nKey) : props.y_axis;
+  }, [props.y_axis, t]);
+  const xAxisLabel = useMemo(() => {
+    const option = ANALYTICS_X_AXIS_VALUES.find((item) => item.value === props.x_axis);
+    return option ? t(option.i18nKey) : props.x_axis;
+  }, [props.x_axis, t]);
 
   const defaultColumns: ColumnDef<TChartDatum>[] = useMemo(
     () => [
@@ -168,14 +183,14 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
         cell: ({ row }) => <div className="text-right">{row.original.count}</div>,
         meta: {
           export: {
-            key: "Count",
+            key: t("workspace_analytics.chart.count"),
             value: (row) => row.original.count,
-            label: "Count",
+            label: t("workspace_analytics.chart.count"),
           },
         },
       },
     ],
-    [xAxisLabel]
+    [xAxisLabel, t]
   );
 
   const columns: ColumnDef<TChartDatum>[] = useMemo(
@@ -217,7 +232,7 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
             }}
             yAxis={{
               key: "count",
-              label: t("common.no_of", { entity: yAxisLabel.replace("_", " ") }),
+              label: t("common.no_of", { entity: yAxisLabel.replace("_", " ").toLocaleLowerCase(currentLocale) }),
               offset: -60,
               dx: -26,
             }}

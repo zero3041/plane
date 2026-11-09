@@ -33,6 +33,16 @@ from .user.base import (
 
 
 from .base import BaseAPIView, BaseViewSet
+from .user.issues import UserDashboardIssuesEndpoint
+from .dntt import (
+    DnttAccessEndpoint,
+    DnttImportDetailEndpoint,
+    DnttImportPublishEndpoint,
+    DnttMonthImportsEndpoint,
+    DnttMonthShareLinkEndpoint,
+    DnttUploaderPermissionDetailEndpoint,
+    DnttUploaderPermissionEndpoint,
+)
 
 from .workspace.base import (
     WorkSpaceViewSet,
@@ -238,4 +248,3 @@ from .notification.base import MarkAllReadNotificationViewSet
 from .user.base import AccountEndpoint, ProfileEndpoint, UserSessionEndpoint
 
 from .timezone.base import TimezoneEndpoint
-from .user.issues import UserDashboardIssuesEndpoint

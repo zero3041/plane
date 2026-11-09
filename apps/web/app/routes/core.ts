@@ -47,6 +47,9 @@ export const coreRoutes: RouteConfigEntry[] = [
   // ALL APP ROUTES
   // ========================================================================
   layout("./(all)/layout.tsx", [
+    // DNTT upload management (instance-wide, outside workspace context)
+    route("dntt/manage", "./(all)/dntt/page.tsx"),
+
     // ======================================================================
     // WORKSPACE-SCOPED ROUTES
     // ======================================================================

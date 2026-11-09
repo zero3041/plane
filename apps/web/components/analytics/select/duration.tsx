@@ -20,21 +20,23 @@ type Props = {
   placeholder?: string;
 };
 
-const getDurationOption = (value: string | null) =>
-  ANALYTICS_DURATION_FILTER_OPTIONS.find((option) => option.value === value) ?? null;
-
-function DurationDropdown({ placeholder = "Duration", onChange, value }: Props) {
-  useTranslation();
+function DurationDropdown({ placeholder, onChange, value }: Props) {
+  const { t } = useTranslation();
 
   // derived values
-  const selectedOption = getDurationOption(value);
+  const options = ANALYTICS_DURATION_FILTER_OPTIONS.map((option) => ({
+    value: option.value,
+    i18nKey: option.i18nKey,
+    name: t(option.i18nKey),
+  }));
+  const selectedOption = options.find((option) => option.value === value) ?? null;
 
   return (
     <Select<TDurationOption>
-      getValues={() => [...ANALYTICS_DURATION_FILTER_OPTIONS]}
+      getValues={() => options}
       value={selectedOption}
       onChange={(val) => {
-        const option = getDurationOption(val);
+        const option = options.find((item) => item.value === val);
         if (option) onChange(option.value);
       }}
       getOptionValue={(option) => option.value}
@@ -42,7 +44,11 @@ function DurationDropdown({ placeholder = "Duration", onChange, value }: Props) 
       pinSelected={false}
     >
       <Select.Trigger<TDurationOption> variant="select-md" prependIcon={<CalendarOutline aria-hidden="true" />}>
-        {(selected) => <span className="truncate">{selected[0]?.name ?? placeholder}</span>}
+        {(selected) => (
+          <span className="truncate">
+            {selected[0]?.name ?? placeholder ?? t("workspace_analytics.filters.duration_label")}
+          </span>
+        )}
       </Select.Trigger>
     </Select>
   );

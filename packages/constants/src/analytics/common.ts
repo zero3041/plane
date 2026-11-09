@@ -106,84 +106,103 @@ export const ANALYTICS_DURATION_FILTER_OPTIONS = [
   {
     name: "Yesterday",
     value: "yesterday",
+    i18nKey: "workspace_analytics.filters.duration.yesterday",
   },
   {
     name: "Last 7 days",
     value: "last_7_days",
+    i18nKey: "workspace_analytics.filters.duration.last_7_days",
   },
   {
     name: "Last 30 days",
     value: "last_30_days",
+    i18nKey: "workspace_analytics.filters.duration.last_30_days",
   },
   {
     name: "Last 3 months",
     value: "last_3_months",
+    i18nKey: "workspace_analytics.filters.duration.last_3_months",
   },
 ];
 
-export const ANALYTICS_X_AXIS_VALUES: { value: ChartXAxisProperty; label: string }[] = [
+export const ANALYTICS_X_AXIS_VALUES: { value: ChartXAxisProperty; label: string; i18nKey: string }[] = [
   {
     value: ChartXAxisProperty.STATES,
     label: "State name",
+    i18nKey: "workspace_analytics.filters.x_axis.states",
   },
   {
     value: ChartXAxisProperty.STATE_GROUPS,
     label: "State group",
+    i18nKey: "workspace_analytics.filters.x_axis.state_groups",
   },
   {
     value: ChartXAxisProperty.PRIORITY,
     label: "Priority",
+    i18nKey: "workspace_analytics.filters.x_axis.priority",
   },
   {
     value: ChartXAxisProperty.LABELS,
     label: "Label",
+    i18nKey: "workspace_analytics.filters.x_axis.labels",
   },
   {
     value: ChartXAxisProperty.ASSIGNEES,
     label: "Assignee",
+    i18nKey: "workspace_analytics.filters.x_axis.assignees",
   },
   {
     value: ChartXAxisProperty.ESTIMATE_POINTS,
     label: "Estimate point",
+    i18nKey: "workspace_analytics.filters.x_axis.estimate_points",
   },
   {
     value: ChartXAxisProperty.CYCLES,
     label: "Cycle",
+    i18nKey: "workspace_analytics.filters.x_axis.cycles",
   },
   {
     value: ChartXAxisProperty.MODULES,
     label: "Module",
+    i18nKey: "workspace_analytics.filters.x_axis.modules",
   },
   {
     value: ChartXAxisProperty.COMPLETED_AT,
     label: "Completed date",
+    i18nKey: "workspace_analytics.filters.x_axis.completed_at",
   },
   {
     value: ChartXAxisProperty.TARGET_DATE,
     label: "Due date",
+    i18nKey: "workspace_analytics.filters.x_axis.target_date",
   },
   {
     value: ChartXAxisProperty.START_DATE,
     label: "Start date",
+    i18nKey: "workspace_analytics.filters.x_axis.start_date",
   },
   {
     value: ChartXAxisProperty.CREATED_AT,
     label: "Created date",
+    i18nKey: "workspace_analytics.filters.x_axis.created_at",
   },
 ];
 
-export const ANALYTICS_Y_AXIS_VALUES: { value: ChartYAxisMetric; label: string }[] = [
+export const ANALYTICS_Y_AXIS_VALUES: { value: ChartYAxisMetric; label: string; i18nKey: string }[] = [
   {
     value: ChartYAxisMetric.WORK_ITEM_COUNT,
     label: "Work item",
+    i18nKey: "workspace_analytics.filters.y_axis.work_item_count",
   },
   {
     value: ChartYAxisMetric.ESTIMATE_POINT_COUNT,
     label: "Estimate",
+    i18nKey: "workspace_analytics.filters.y_axis.estimate_point_count",
   },
   {
     value: ChartYAxisMetric.EPIC_WORK_ITEM_COUNT,
     label: "Epic",
+    i18nKey: "workspace_analytics.filters.y_axis.epic_work_item_count",
   },
 ];
 
